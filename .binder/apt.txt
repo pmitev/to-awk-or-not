@@ -1,0 +1,4 @@
+gawk
+vim
+nano
+mc

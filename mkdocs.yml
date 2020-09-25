@@ -1,0 +1,84 @@
+site_name: To awk or not
+repo_url: https://github.com/pmitev/to-awk-or-not
+nav:
+  - Home: index.md
+  - 1.Simple examples: 1.Simple_example.md
+  - 2.Teasing with grep: 2.Teasing_with_grep.md
+  - 3.Shell we awk: 3.Shell_we_awk.md
+  - 4.Brief commands: 4.Brief_commands.md
+  - 5.String manipulation: 5.String_manipulation.md
+  - 6.One line programs: 6.One_line_programs.md
+  - Python vs. awk: Python_vs_awk.md
+  - Exercises:
+    - Warming up: Exercises/Exercises.md
+    - 01.Simple arithmetic *: Exercises/01.Simple_arithmetic.md
+    - 02.Data extraction *: Exercises/02.Data_extraction.md
+    - 03.Data extraction **: Exercises/03.Data_extraction.md
+    - 04.Data manipulation **: Exercises/04.Data_manipulation.md
+    - 05.Easy tricks *: Exercises/05.Easy_tricks.md
+    - 06.Bioinformaticians corner *: Exercises/06.Bioinformaticians_corner.md
+    - Advanced data analysis ****: Exercises/Advanced_data_analysis.md
+    - Carpool ***: Exercises/Carpool.md
+    - Difficult to extract data ****: Exercises/Dificult_data.md
+    - Scrubbing a web page **: Exercises/Scrubbing.md
+    - String manipulation **: Exercises/String_manipulation.md
+    - Simple linear regresion ***: Exercises/Linear_regression.md
+  - "= Case Studies =": Case_studies/List.md
+  - More with awk:
+    - User defined functions: More_awk/User_defined_functions.md
+    - Parameters on the command line : More_awk/Command_params.md
+    - Input/Output to external program: More_awk/Input_output.md
+    - Running averages: More_awk/Running_average.md
+  - Fixed size fields: Other/Fixed_size_fields.md
+  - Backreferences: Other/Backreferences.md
+  - Multi-Line records: https://www.gnu.org/software/gawk/manual/html_node/Multiple-Line.html
+  - Awk arrays: arrays.md
+  - Awk or Bash: awk_bash.md
+  - Localization problems: Other/Localization.md
+  - Awk vs. nawk vs. gawk: http://www.thegeekstuff.com/2011/06/awk-nawk-gawk/
+  - GitHub & Binder: Other/Binder.md
+  - Handy to have: handy.md
+  - tinytils: tinyutils.md
+  - Links: Links.md
+  - About: About.md
+theme: 
+  name: material
+  custom_dir: overrides
+#  features:
+#    - search.highlight
+#plugins:
+#  - search:
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.snippets
+  - pymdownx.tabbed
+  - pymdownx.smartsymbols
+  - footnotes
+  - attr_list
+  - def_list
+  - meta
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.highlight:
+      use_pygments: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+extra_javascript:
+  - javascripts/config.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+google_analytics:
+  - UA-175317500-1
+  - auto
+site_url: https://pmitev.github.io/to-awk-or-not/
+#theme: readthedocs
