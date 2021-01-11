@@ -22,6 +22,7 @@ nav:
     - Difficult to extract data ****: Exercises/Dificult_data.md
     - Scrubbing a web page **: Exercises/Scrubbing.md
     - String manipulation **: Exercises/String_manipulation.md
+    - Awk and json **: Exercises/awk-json.md  
     - Simple linear regresion ***: Exercises/Linear_regression.md
   - "= Case Studies =": Case_studies/List.md
   - More with awk:
