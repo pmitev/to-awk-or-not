@@ -1,4 +1,4 @@
-i# Awk and json
+# Awk and json
 
 To begin with, awk is not strong at dealing with json or csv. Having said that, one can still tackle particular or specific problems.
 
