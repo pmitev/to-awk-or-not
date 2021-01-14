@@ -9,32 +9,58 @@ Find the GFF3 [here](https://tinyurl.com/y2opo93p "Drosophila_melanogaster.BDGP6
 ### The genome sequence used in this project:
 The genome is located [here](https://tinyurl.com/yyldprwp "Drosophila_melanogaster.BDGP6.28.dna.toplevel.fa").
 
-### The comparison of all the variants in the cell lines in the freeze project.
+### The comparison of all the variants in the cell lines in the freeze project
 Finally, [here](http://dgrp2.gnets.ncsu.edu/data.html "dgrp2.vcf") is the VCF file.
 
-### Starting to work
-Let's say we want to find out all genes that contains a variant. What do we want to do first?
+### Starting to work with the data
+Let's say we want to find out all genes that contains a variant. What do we want to do first? Take a look at the vcf file. That is the one that contains all the variants. Then look at the gff file, which contains the genes and other annotations. Finally, take a look at the DNA sequence. You will need to combine all three to answer the question. Also, to make this faster, lets just look at **chromosome 4**, which means we have to extract that data as well.
 
-<details><summary><i>First steps</i></summary>
+#### Tips before starting
+* For readability of the vcf file:
+
+`awk '{print $1"\t"$2"\t"$3"\t"$4"\t"$5"\t"$6"\t"$7"\t"$8"\t"$9}' dgrp2.vcf > dgrp2_trimmed.vcf &`
+
+* If your awk takes too long to run (10h or so) - Make sure you have the latest awk, and also you might want to think about parallelisation.
+
+### The exercise
+Identify the steps you need to do and what each step does. Open the hints if you get stuck.
+<details><summary><i>Hint 1</i></summary>
 <p>
-    Take a look at the vcf file. That is the one that contains all the variants. Then look at the gff file, which contains the genes and other annotations. Finally, take a look at the DNA sequence. You will need to combine all three to answer the question.
+extract chr4  
+</p>
+</details>
+<details><summary><i>Hint 2</i></summary>
+<p>
+Get distribution of variants and list them in two separate files
+</p>
+</details>
+<details><summary><i>Hint 3</i></summary>
+<p>
+Compare back and separate the annotation into features that do and don’t have variants
+</p>
+</details>
+<details><summary><i>Hint 4</i></summary>
+<p>
+Filter for genes and possibly CDSs before doing the analysis.
+</p>
+</details>
+<details><summary><i>Hint 5</i></summary>
+<p>
+Now do the same for the SNPs themselves, to see which are actually located inside genes
 </p>
 </details>
 
-<details><summary><b>My entire solution</b></summary>  
+<details><summary><b>My entire solution; Take a look at your own risk</b></summary>  
 <p>
-Note that some things here are redundant and possibly not the best solution. Try to make your own!
+Note that some things here are redundant and possibly not the best solution. Try to make your own first!
     
 `cat dgrp2.vcf | grep -v "#" | awk 'function abs(x){return ((x < 0.0) ? -x : x)} {if (length($4)>1||length($5)>1){a="INDEL";b=length($4)-length($5);cnt[b]+=1;} else {a="SNP";b="-";} printf("%s\t%s\t%s\t%s\t%s\t%s\n", $1, $2, a, b, $4, $5) > "indels_dgrp2";}END{for (x in cnt){print x,cnt[x] > "distr_dgrp2"}}' & awk 'FNR==NR{a[$1,$2]="T"; next}{ hits=0; for(N=$4; N<=$5; N++) { if (a[$1,N] == "T") {hits+=1}} if (hits>0) {print hits "\t" $0 > "haveSNPINDEL.gff"} else {print $0 > "noSNPINDEL.gff"}}' indels_dgrp2 Drosophila_melanogaster.BDGP6.28.101.chr.gff3 &`
 
 </p>
 </details>
 
-Too much time (10h) - Make sure you have the latest awk, and also think about parallelisation.
 
-#### For readability:
 
-`awk '{print $1"\t"$2"\t"$3"\t"$4"\t"$5"\t"$6"\t"$7"\t"$8"\t"$9}' dgrp2.vcf > dgrp2_trimmed.vcf &`
 
 1. extract chr4:
 
