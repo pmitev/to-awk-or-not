@@ -24,31 +24,103 @@ Let's say we want to find out all genes that contains a variant. What do we want
 
 ### The exercise
 Identify the steps you need to do and what each step does. Open the hints if you get stuck.
-<details><summary><i>Hint 1</i></summary>
+
+
+### Step 1
+<details><summary><i>Hint</i>, what is step 1?</summary>
 <p>
-extract chr4  
+    
+#### Extract chr4 from the vcf and the gff 
 </p>
 </details>
-<details><summary><i>Hint 2</i></summary>
+
+
+<details><summary><i>Hint</i></summary>
 <p>
-Get distribution of variants and list them in two separate files
+
+#### All lines start with a **4**
 </p>
 </details>
-<details><summary><i>Hint 3</i></summary>
+
+
+<details><summary><i>Solution</i></summary>
 <p>
-Compare back and separate the annotation into features that do and don’t have variants
+    
+    `awk '/^4/{print $0}' Drosophila_melanogaster.BDGP6.28.101.chr.gff3 > Drosophila_melanogaster.chr4.gff3`
+    `awk '/^4/{print $0}' dgrp2_trimmed.vcf > dgrp2_chr4.vcf`
+
 </p>
 </details>
-<details><summary><i>Hint 4</i></summary>
+
+
+
+### Step 2
+<details><summary><i>Hint</i>, what is step 2?</summary>
 <p>
-Filter for genes and possibly CDSs before doing the analysis.
+    
+#### Get distribution of variants and list them in two separate files
 </p>
 </details>
-<details><summary><i>Hint 5</i></summary>
+
+<details><summary><i>Solution</i></summary>
 <p>
-Now do the same for the SNPs themselves, to see which are actually located inside genes
+        
+`cat dgrp2_chr4.vcf | grep -v "#" | awk 'function abs(x){return ((x < 0.0) ? -x : x)} {if (length($4)>1||length($5)>1){a="INDEL";b=length($4)-length($5);cnt[b]+=1;} else {a="SNP";b="-";} printf("%s\t%s\t%s\t%s\t%s\t%s\n", $1, $2, a, b, $4, $5) > "indels_Drosophila_chr4";}END{for (x in cnt){print x,cnt[x] > "distr_Drosophila_chr4"}}'`
+
 </p>
 </details>
+
+
+### Step 3
+<details><summary><i>Hint</i>, what is step 3?</summary>
+<p>
+    
+#### Compare back and separate the annotation into features that do and don’t have variants
+</p>
+</details>
+
+<details><summary><i>Solution</i></summary>
+<p>
+    
+`awk 'FNR==NR{a[$1,$2]="T"; next}{ hits=0; for(N=$4; N<=$5; N++) { if (a[$1,N] == "T") {hits+=1}} if (hits>0) {print hits "\t" $0 > "haveSNPINDEL_Drosophila_chr4.gff"} else {print $0 > "noSNPINDEL_Drosophila_chr4.gff"}}' indels_Drosophila_chr4 Drosophila_melanogaster.chr4.gff3`
+    
+</p>
+</details>
+
+
+### Step 4
+<details><summary><i>Hint</i>, what is step 4?</summary>
+<p>
+    
+#### Filter for genes and possibly CDSs before doing the analysis.
+</p>
+</details>
+
+<details><summary><i>Solution</i></summary>
+<p>
+
+`awk '{if ($3=="gene" || $3=="CDS") print $0}' Drosophila_melanogaster.chr4.gff3 > Drosophila_melanogaster.chr4_genesCDSs.gff3`
+    
+</p>
+</details>
+
+
+### Step 5
+<details><summary><i>Hint</i>, what is step 5?</summary>
+<p>
+
+#### Repeat step 3 for the SNPs themselves, to see which are actually located inside genes
+</p>
+</details>
+
+<details><summary><i>Solution</i></summary>
+<p>
+    
+`awk 'FNR==NR{ingene[$1,$4]=$5; next}{sats="Not in gene";for (pair in ingene) {split(pair, t, SUBSEP); if ($1==t[1] && $2>=t[2] && $2<=ingene[t[1],t[2]]) {sats=(t[1] " " t[2] " " ingene[t[1],t[2]])}} print $0, " ", sats }' Drosophila_melanogaster.chr4_genesCDSs.gff3 indels_Drosophila_chr4 > SNPsInGenes_Drosophila_ch4`
+
+</p>
+</details>
+
 
 <details><summary><b>My entire solution; Take a look at your own risk</b></summary>  
 <p>
