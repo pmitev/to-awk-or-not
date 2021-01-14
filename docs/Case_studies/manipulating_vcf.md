@@ -17,6 +17,7 @@ Let's say we want to find out all genes that contains a variant. What do we want
 
 <details><summary><i>First steps</i></summary>
 <p>
+    Take a look at the vcf file. That is the one that contains all the variants. Then look at the gff file, which contains the genes and other annotations. Finally, take a look at the DNA sequence. You will need to combine all three to answer the question.
 </p>
 </details>
 
@@ -29,7 +30,7 @@ Note that some things here are redundant and possibly not the best solution. Try
 </p>
 </details>
 
-Too much time (10h) - Make sure you have the latest awk, and also think about prallelisation.
+Too much time (10h) - Make sure you have the latest awk, and also think about parallelisation.
 
 #### For readability:
 
