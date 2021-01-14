@@ -12,18 +12,20 @@ The genome is located [here](https://tinyurl.com/yyldprwp "Drosophila_melanogast
 ### The comparison of all the variants in the cell lines in the freeze project.
 Finally, [here](http://dgrp2.gnets.ncsu.edu/data.html "dgrp2.vcf") is the VCF file.
 
-
 ### Starting to work
 Let's say we want to find out all genes that contains a variant. What do we want to do first?
 
-<details><summary>First steps</summary>
+<details><summary><i>First steps</i></summary>
 <p>
 </p>
 </details>
 
-<details><summary>My solution</summary>
+<details><summary><b>My entire solution</b></summary>  
 <p>
-cat dgrp2.vcf | grep -v "#" | awk 'function abs(x){return ((x < 0.0) ? -x : x)} {if (length($4)>1||length($5)>1){a="INDEL";b=length($4)-length($5);cnt[b]+=1;} else {a="SNP";b="-";} printf("%s\t%s\t%s\t%s\t%s\t%s\n", $1, $2, a, b, $4, $5) > "indels_dgrp2";}END{for (x in cnt){print x,cnt[x] > "distr_dgrp2"}}' & awk 'FNR==NR{a[$1,$2]="T"; next}{ hits=0; for(N=$4; N<=$5; N++) { if (a[$1,N] == "T") {hits+=1}} if (hits>0) {print hits "\t" $0 > "haveSNPINDEL.gff"} else {print $0 > "noSNPINDEL.gff"}}' indels_dgrp2 Drosophila_melanogaster.BDGP6.28.101.chr.gff3 &`
+Note that some things here are redundant and possibly not the best solution. Try to make your own!
+    
+`cat dgrp2.vcf | grep -v "#" | awk 'function abs(x){return ((x < 0.0) ? -x : x)} {if (length($4)>1||length($5)>1){a="INDEL";b=length($4)-length($5);cnt[b]+=1;} else {a="SNP";b="-";} printf("%s\t%s\t%s\t%s\t%s\t%s\n", $1, $2, a, b, $4, $5) > "indels_dgrp2";}END{for (x in cnt){print x,cnt[x] > "distr_dgrp2"}}' & awk 'FNR==NR{a[$1,$2]="T"; next}{ hits=0; for(N=$4; N<=$5; N++) { if (a[$1,N] == "T") {hits+=1}} if (hits>0) {print hits "\t" $0 > "haveSNPINDEL.gff"} else {print $0 > "noSNPINDEL.gff"}}' indels_dgrp2 Drosophila_melanogaster.BDGP6.28.101.chr.gff3 &`
+
 </p>
 </details>
 
