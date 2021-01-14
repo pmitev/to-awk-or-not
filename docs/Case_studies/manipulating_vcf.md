@@ -15,24 +15,32 @@ Finally, [here](http://dgrp2.gnets.ncsu.edu/data.html "dgrp2.vcf") is the VCF fi
 ### Starting to work with the data
 Let's say we want to find out all genes that contains a variant and all variants that are located within a gene. What do we want to do first? Take a look at the vcf file. That is the one that contains all the variants. Then look at the gff file, which contains the genes and other annotations. Finally, take a look at the DNA sequence. You will need to combine all three to answer the question. Also, to make this faster, lets just look at **chromosome 4**, which means we have to extract that data as well.
 
+### What do we need to get
+* Fles containing only chromosome 4
+* Positions for SNPs and INDELs
+* Positions for genes and CDSs
+* Separation of variants (SNPs and INDELs) into two groups, inside and outside genes (and CDSs)
+* Separation of genes/CDSs into those with and without variants (and maybe how many there are per gene)
+
 #### Tips before starting
 * For readability of the vcf file:
 
 `awk '{print $1"\t"$2"\t"$3"\t"$4"\t"$5"\t"$6"\t"$7"\t"$8"\t"$9}' dgrp2.vcf > dgrp2_trimmed.vcf &`
 
 * If your awk takes too long to run (10h or so) - Make sure you have the latest awk, and also you might want to think about parallelisation.
-
 * My solutions also work for files with more than one chromosome, so in some cases they are longer than needed for your exercise. I left it so on purpose.
+* *SNPs* and *INDELs* are collectively named **variants**
+* *Genes* and *CoDing Sequences (CDSs)* are sometimes just collectively called **genes**
 
 ### The exercise
 Identify the steps you need to do and what each step does. Open the hints if you get stuck.
 
 
-### Step 1
-<details><summary><i>Hint</i>, what is step 1?</summary>
+### Chromosome 4
+<details><summary><i>Hint</i>, what does that mean?</summary>
 <p>
     
-#### Extract chr4 from the vcf and the gff 
+#### Extract chr4 from the vcf and the gff and make new files
 </p>
 </details>
 
@@ -56,8 +64,8 @@ Identify the steps you need to do and what each step does. Open the hints if you
 
 
 
-### Step 2
-<details><summary><i>Hint</i>, what is step 2?</summary>
+### SNPs and INDELs
+<details><summary><i>Hint</i>, what does that mean?</summary>
 <p>
     
 #### Get distribution of variants and list them in two separate files. For a bonus plot of the lengths of the INDELS, get the length of all INDELS into a third file
@@ -95,8 +103,8 @@ Identify the steps you need to do and what each step does. Open the hints if you
 </details>
 
 
-### Step 3
-<details><summary><i>Hint</i>, what is step 3?</summary>
+### Genes with variants
+<details><summary><i>Hint</i>, what does that mean?</summary>
 <p>
     
 #### Compare back and separate the annotation into features that do and don’t have variants. For a bonus, also record the number of variants in each feature
@@ -126,8 +134,8 @@ Identify the steps you need to do and what each step does. Open the hints if you
 </details>
 
 
-### Step 4
-<details><summary><i>Hint</i>, what is step 4?</summary>
+### Genes/CDSs only
+<details><summary><i>Hint</i>, what is this?</summary>
 <p>
     
 #### Filter for genes and possibly CDSs before doing the analysis.
@@ -150,11 +158,11 @@ Identify the steps you need to do and what each step does. Open the hints if you
 </details>
 
 
-### Step 5
-<details><summary><i>Hint</i>, what is step 5?</summary>
+### Final list of variants
+<details><summary><i>Hint</i>, what does that mean?</summary>
 <p>
 
-#### Repeat step 3 for the SNPs themselves, to see which are actually located inside genes
+#### Repeat step 3 for the SNPs/INDELs themselves, to see which are actually located inside genes
 </p>
 </details>
 
