@@ -37,7 +37,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
 
 
 ### Chromosome 4
-<details><summary><i>Hint</i>, what does that mean?</summary>
+<details><summary><i>Hint</i>, what do we need?</summary>
 <p>
     
 #### Extract chr4 from the vcf and the gff and make new files
@@ -65,7 +65,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
 
 
 ### SNPs and INDELs
-<details><summary><i>Hint</i>, what does that mean?</summary>
+<details><summary><i>Hint</i>, which output do we want?</summary>
 <p>
     
 #### Get distribution of variants and list them in two separate files. For a bonus plot of the lengths of the INDELS, get the length of all INDELS into a third file
@@ -104,7 +104,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
 
 
 ### Genes with variants
-<details><summary><i>Hint</i>, what does that mean?</summary>
+<details><summary><i>Hint</i>, how do we get those?</summary>
 <p>
     
 #### Compare back and separate the annotation into features that do and don’t have variants. For a bonus, also record the number of variants in each feature
@@ -135,10 +135,10 @@ Identify the steps you need to do and what each step does. Open the hints if you
 
 
 ### Genes/CDSs only
-<details><summary><i>Hint</i>, what is this?</summary>
+<details><summary><i>Hint</i>, what features do we look for?</summary>
 <p>
     
-#### Filter for genes and possibly CDSs before doing the analysis.
+#### Filter for genes and CDSs before doing the analysis.
 </p>
 </details>
 
@@ -159,7 +159,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
 
 
 ### Final list of variants
-<details><summary><i>Hint</i>, what does that mean?</summary>
+<details><summary><i>Hint</i>, how do we classify the variants?</summary>
 <p>
 
 #### Repeat step 3 for the SNPs/INDELs themselves, to see which are actually located inside genes
