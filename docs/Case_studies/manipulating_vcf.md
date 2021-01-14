@@ -13,7 +13,7 @@ The genome is located [here](https://tinyurl.com/yyldprwp "Drosophila_melanogast
 Finally, [here](http://dgrp2.gnets.ncsu.edu/data.html "dgrp2.vcf") is the VCF file.
 
 ### Starting to work with the data
-Let's say we want to find out all genes that contains a variant. What do we want to do first? Take a look at the vcf file. That is the one that contains all the variants. Then look at the gff file, which contains the genes and other annotations. Finally, take a look at the DNA sequence. You will need to combine all three to answer the question. Also, to make this faster, lets just look at **chromosome 4**, which means we have to extract that data as well.
+Let's say we want to find out all genes that contains a variant and all variants that are located within a gene. What do we want to do first? Take a look at the vcf file. That is the one that contains all the variants. Then look at the gff file, which contains the genes and other annotations. Finally, take a look at the DNA sequence. You will need to combine all three to answer the question. Also, to make this faster, lets just look at **chromosome 4**, which means we have to extract that data as well.
 
 #### Tips before starting
 * For readability of the vcf file:
@@ -165,7 +165,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
 </p>
 </details>
 
-details><summary><i>Hint</i></summary>
+<details><summary><i>Hint</i></summary>
 <p>
 
 #### For each feature from your step 2 file, check the position agains the index and print whether or not the variant is inside a gene.
