@@ -37,6 +37,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
 
 
 ### Chromosome 4
+
 <details><summary><i>Hint</i>, what do we need?</summary>
 <p>
     
@@ -62,9 +63,28 @@ Identify the steps you need to do and what each step does. Open the hints if you
 </p>
 </details>
 
+##### *Task to check your output:* Count and sort the different genomic features in chromosome 4 by number.
+<details><summary><b>Task result example</b></summary>
+<pre>
+   1 chromosome
+   1 snoRNA
+   2 pre_miRNA
+   7 pseudogene
+  11 pseudogenic_transcript
+  26 ncRNA_gene
+  31 ncRNA
+  79 gene
+ 295 mRNA
+ 338 three_prime_UTR
+ 571 five_prime_UTR
+2740 CDS
+3155 exon
+</pre>
+</details>
 
 
 ### SNPs and INDELs
+
 <details><summary><i>Hint</i>, which output do we want?</summary>
 <p>
     
@@ -102,8 +122,27 @@ Identify the steps you need to do and what each step does. Open the hints if you
 </p>
 </details>
 
+##### *Task to check your output are doing good:* Print nucleotide substitution that these SNPs introduce sorted by number.
+<details><summary><i>Task result example</i></summary>
+<pre>
+1182 C->T
+1133 G->A
+ 932 A->G
+ 929 A->T
+ 892 T->A
+ 880 T->C
+ 639 G->T
+ 621 C->A
+ 436 A->C
+ 396 T->G
+ 372 G->C
+ 357 C->G
+</pre>
+</details>
+
 
 ### Genes with variants
+
 <details><summary><i>Hint</i>, how do we get those?</summary>
 <p>
     
@@ -131,6 +170,25 @@ Identify the steps you need to do and what each step does. Open the hints if you
 `awk 'FNR==NR{a[$1,$2]="T"; next}{ hits=0; for(N=$4; N<=$5; N++) { if (a[$1,N] == "T") {hits+=1}} if (hits>0) {print hits "\t" $0 > "haveSNPINDEL_Drosophila_chr4.gff"} else {print $0 > "noSNPINDEL_Drosophila_chr4.gff"}}' indels_Drosophila_chr4 Drosophila_melanogaster.chr4.gff3`
     
 </p>
+</details>
+
+##### *Task to check your output are doing good:* Count and sort the SNPs (not INDELs) in your output and compare to the output from the first step.
+<details><summary><i>Task result example</i></summary>
+<pre>
+   1 chromosome
+   1 pre_miRNA
+   1 snoRNA
+   6 pseudogene
+   9 pseudogenic_transcript
+  22 ncRNA_gene
+  28 ncRNA
+  79 gene
+ 264 three_prime_UTR
+ 290 five_prime_UTR
+ 295 mRNA
+1798 CDS
+2181 exon
+</pre>
 </details>
 
 
