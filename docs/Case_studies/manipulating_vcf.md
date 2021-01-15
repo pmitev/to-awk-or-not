@@ -57,8 +57,9 @@ Identify the steps you need to do and what each step does. Open the hints if you
 <details><summary><i>Solution</i></summary>
 <p>
     
-    awk '/^4/{print $0}' Drosophila_melanogaster.BDGP6.28.101.chr.gff3 > Drosophila_melanogaster.chr4.gff3
-    awk '/^4/{print $0}' dgrp2_trimmed.vcf > dgrp2_chr4.vcf
+`awk '/^4/{print $0}' Drosophila_melanogaster.BDGP6.28.101.chr.gff3 > Drosophila_melanogaster.chr4.gff3`
+   
+`awk '/^4/{print $0}' dgrp2_trimmed.vcf > dgrp2_chr4.vc`
 
 </p>
 </details>
