@@ -63,7 +63,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
 </p>
 </details>
 
-##### *Task to check your output:* Count and sort the different genomic features in chromosome 4 by number.
+##### *Follow-up task:* Count and sort the different genomic features in chromosome 4 by number.
 <details><summary><b>Task result example</b></summary>
 <pre>
    1 chromosome
@@ -122,7 +122,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
 </p>
 </details>
 
-##### *Task to check your output are doing good:* Print nucleotide substitution that these SNPs introduce sorted by number.
+##### *Follow-up task:* Print nucleotide substitution that these SNPs introduce sorted by number.
 <details><summary><i>Task result example</i></summary>
 <pre>
 1182 C->T
@@ -172,7 +172,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
 </p>
 </details>
 
-##### *Task to check your output are doing good:* Count and sort the SNPs (not INDELs) in your output and compare to the output from the first step.
+##### *Follow-up task:* Count and sort the SNPs (not INDELs) in your output and compare to the output from the first step.
 <details><summary><i>Task result example</i></summary>
 <pre>
    1 chromosome
