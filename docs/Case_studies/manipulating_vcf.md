@@ -123,7 +123,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
 </p>
 </details>
 
-##### *Follow-up task:* Print nucleotide substitution that these SNPs introduce sorted by number.
+##### *Follow-up task:* Print nucleotide substitution that these SNPs introduce sorted by number. Remember the coins...
 <details><summary><i>Task result example</i></summary>
 <pre>
 1182 C->T
