@@ -12,6 +12,9 @@ The genome is located [here](https://tinyurl.com/yyldprwp "Drosophila_melanogast
 ### The comparison of all the variants in the cell lines in the freeze project
 Finally, [here](http://dgrp2.gnets.ncsu.edu/data.html "dgrp2.vcf") is the VCF file.
 
+### For the extra task
+A [file](http://ftp.flybase.org/releases/FB2020_06/precomputed_files/genes/fbgn_fbtr_fbpp_expanded_fb_2020_06.tsv.gz) to get the name of each gene.
+
 ### Starting to work with the data
 Let's say we want to find out all genes that contains a variant and all variants that are located within a gene. What do we want to do first? Take a look at the vcf file. That is the one that contains all the variants. Then look at the gff file, which contains the genes and other annotations. Finally, take a look at the DNA sequence. You will need to combine all three to answer the question. Also, to make this faster, lets just look at **chromosome 4**, which means we have to extract that data as well.
 
