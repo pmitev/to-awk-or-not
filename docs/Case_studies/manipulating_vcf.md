@@ -12,9 +12,6 @@ The genome is located [here](https://tinyurl.com/yyldprwp "Drosophila_melanogast
 ### The comparison of all the variants in the cell lines in the freeze project
 Finally, [here](http://dgrp2.gnets.ncsu.edu/data.html "dgrp2.vcf") is the VCF file.
 
-### For the extra task
-A [file](http://ftp.flybase.org/releases/FB2020_06/precomputed_files/genes/fbgn_fbtr_fbpp_expanded_fb_2020_06.tsv.gz) to get the name of each gene.
-
 ### Starting to work with the data
 Let's say we want to find out all genes that contains a variant and all variants that are located within a gene. What do we want to do first? Take a look at the vcf file. That is the one that contains all the variants. Then look at the gff file, which contains the genes and other annotations. Finally, take a look at the DNA sequence. You will need to combine all three to answer the question. Also, to make this faster, lets just look at **chromosome 4**, which means we have to extract that data as well.
 
@@ -254,12 +251,19 @@ Identify the steps you need to do and what each step does. Open the hints if you
 ### Final result
 Here we can see all SNPs and INDELs which are inside a relevant region. We have successfully made two gff:s containing all gene positions for genes with variants and genes without. Along the way we also got a list of all genes that contain variants too.
 
+### Extra task
+Re-do the files but this time include the gene ID (i.e. FBtr0089178 from column nine) and translate that into the full gene name found in this [file](http://ftp.flybase.org/releases/FB2020_06/precomputed_files/genes/fbgn_fbtr_fbpp_expanded_fb_2020_06.tsv.gz).
 
-<details><summary><b>My entire solution; Take a look at your own risk</b></summary>  
+
+<details><summary><b>Solution</b></summary>  
 <p>
-Note that some things here are redundant and possibly not the best solution. Try to make your own first!
     
-`cat dgrp2.vcf | grep -v "#" | awk 'function abs(x){return ((x < 0.0) ? -x : x)} {if (length($4)>1||length($5)>1){a="INDEL";b=length($4)-length($5);cnt[b]+=1;} else {a="SNP";b="-";} printf("%s\t%s\t%s\t%s\t%s\t%s\n", $1, $2, a, b, $4, $5) > "indels_dgrp2";}END{for (x in cnt){print x,cnt[x] > "distr_dgrp2"}}' & awk 'FNR==NR{a[$1,$2]="T"; next}{ hits=0; for(N=$4; N<=$5; N++) { if (a[$1,N] == "T") {hits+=1}} if (hits>0) {print hits "\t" $0 > "haveSNPINDEL.gff"} else {print $0 > "noSNPINDEL.gff"}}' indels_dgrp2 Drosophila_melanogaster.BDGP6.28.101.chr.gff3 &`
+`awk 'FNR==1{++fileidx} fileidx==1{split($9,a,";|:");ingene[$1,$4,$5]=a[2]; next} fileidx==2{FS="\t";name[$3]=$5} fileidx==3{state="Not in gene";for (trip in ingene) {split(trip, t, SUBSEP); if ($1==t[1] && $2>=t[2] && $2<=t[3]) {state=(t[1] "\t" t[2] "\t" t[3] "\t" name[ingene[t[1],t[2],t[3]]])}} print $0, "\t", state }' Drosophila_melanogaster.chr4_genesCDSs.gff3 fbgn_fbtr_fbpp_expanded_fb_2020_06.tsv indels_Drosophila_chr4 > SNPsInNamedGenes_Drosophila_ch4`
+
+Look at the distribution of genes:
+
+`awk -F"\t" '{print $10}' SNPsInNamedGenes_Drosophila_ch4 | sort | uniq -c | sort -n`
+
 
 </p>
 </details>
