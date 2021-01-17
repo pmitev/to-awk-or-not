@@ -135,7 +135,7 @@ Might not be the best solution but it is easy to read and modify, for now. Note,
 $ ./01.tabulate-names.awk names.dmp | sort -g -k 1 > names.tab
 
 # Or with bzip2 compression "on the fly"
-$ ./01.tabulate-names.awk <(bzcat names.dmp.bz2) | bzip2 -c > inames.tab.bz2
+$ ./01.tabulate-names.awk <(bzcat names.dmp.bz2) | bzip2 -c > names.tab.bz2
 ```
 
 ??? note "01.tabulate-names.awk"
@@ -191,6 +191,14 @@ Now we can use the tabulated data in `names.tab` and perform the replacement in 
 ```
 
 Again, this might not be the best way but it works. The suggested solutions could be easily merged into a single script. I would prefer to have them in steps, so I can make sure that the first step has completed successfully (*it takes some time*) before I continue. Also I can filter the unnecessary data in the newly tabulated file and use only relevant data or alter further if I need. 
+
+``` bash
+$ ./02.substitute.awk  names.tab  hg38.100way.scientificNames.nh > NEW.g38.100way.scientificNames.nh
+
+# Or with bzip2 compression "on the fly"
+$ ./02.substitute.awk <(bzcat names.tab.bz2) hg38.100way.scientificNames.nh > NEW.g38.100way.scientificNames.nh
+```
+
 
 ``` bash
 $ ./02.substitute.awk names.tab hg38.100way.scientificNames.nh

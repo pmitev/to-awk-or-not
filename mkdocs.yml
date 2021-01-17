@@ -39,7 +39,7 @@ nav:
   - Awk vs. nawk vs. gawk: http://www.thegeekstuff.com/2011/06/awk-nawk-gawk/
   - GitHub & Binder: Other/Binder.md
   - Handy to have: handy.md
-  - tinytils: tinyutils.md
+  - tinyutils: tinyutils.md
   - Links: Links.md
   - About: About.md
 theme: 
