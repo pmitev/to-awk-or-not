@@ -53,19 +53,19 @@ Identify the steps you need to do and what each step does. Open the hints if you
 Count and sort the different genomic features in chromosome 4 by number.
 
 ??? "__Task result example__"
-       1 chromosome
-       1 snoRNA
-       2 pre_miRNA
-       7 pseudogene
-      11 pseudogenic_transcript
-      26 ncRNA_gene
-      31 ncRNA
-      79 gene
-     295 mRNA
-     338 three_prime_UTR
-     571 five_prime_UTR
-    2740 CDS
-    3155 exon
+`      1 chromosome`
+`      1 snoRNA`
+`      2 pre_miRNA`
+`      7 pseudogene`
+`     11 pseudogenic_transcript`
+`     26 ncRNA_gene`
+`     31 ncRNA`
+`     79 gene`
+`    295 mRNA`
+`    338 three_prime_UTR`
+`    571 five_prime_UTR`
+`   2740 CDS`
+`   3155 exon`
 
 ### SNPs and INDELs
 
