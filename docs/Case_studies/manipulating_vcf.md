@@ -121,21 +121,19 @@ Identify the steps you need to do and what each step does. Open the hints if you
 
 #### *Follow-up task:* Count and sort the SNPs (not INDELs) in your output and compare to the output from the first step.
 ??? "_Task result example_"
-<pre>
-   1 chromosome
-   1 pre_miRNA
-   1 snoRNA
-   6 pseudogene
-   9 pseudogenic_transcript
-  22 ncRNA_gene
-  28 ncRNA
-  79 gene
- 264 three_prime_UTR
- 290 five_prime_UTR
- 295 mRNA
-1798 CDS
-2181 exon
-</pre>
+       1 chromosome
+       1 pre_miRNA
+       1 snoRNA
+       6 pseudogene
+       9 pseudogenic_transcript
+      22 ncRNA_gene
+      28 ncRNA
+      79 gene
+     264 three_prime_UTR
+     290 five_prime_UTR
+     295 mRNA
+    1798 CDS
+    2181 exon
 
 ### Genes/CDSs only
 ??? "_Hint_, what features do we look for?"
@@ -171,7 +169,7 @@ Re-do the files but this time include the gene ID (i.e. FBtr0089178 from column 
 ??? "__Solution__"  
     `awk 'FNR==1{++fileidx} fileidx==1{split($9,a,";|:");ingene[$1,$4,$5]=a[2]; next} fileidx==2{FS="\t";name[$3]=$5} fileidx==3{state="Not in gene";for (trip in ingene) {split(trip, t, SUBSEP); if ($1==t[1] && $2>=t[2] && $2<=t[3]) {state=(t[1] "\t" t[2] "\t" t[3] "\t" name[ingene[t[1],t[2],t[3]]])}} print $0, "\t", state }' Drosophila_melanogaster.chr4_genesCDSs.gff3 fbgn_fbtr_fbpp_expanded_fb_2020_06.tsv indels_Drosophila_chr4 > SNPsInNamedGenes_Drosophila_ch4`
 
-Look at the distribution of genes:
+    Look at the distribution of genes:
 
-`awk -F"\t" '{print $10}' SNPsInNamedGenes_Drosophila_ch4 | sort | uniq -c | sort -n`
+    `awk -F"\t" '{print $10}' SNPsInNamedGenes_Drosophila_ch4 | sort | uniq -c | sort -n`
 
