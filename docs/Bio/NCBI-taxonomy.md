@@ -68,7 +68,7 @@ The format of the tree file is
 
 See a description of the Newick tree format [here](https://en.wikipedia.org/wiki/Newick_format).
 
-The phylogenetic tree could be visualized online at https://itol.embl.de/ (notice that this application takes care of removing the _ from the scientific name).
+The phylogenetic tree could be visualized online at [https://itol.embl.de/](https://itol.embl.de/) (notice that this application takes care of removing the _ from the scientific name).
 
 ![](../images/1t.png)
 
