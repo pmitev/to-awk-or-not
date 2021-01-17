@@ -120,7 +120,6 @@ Print nucleotide substitution that these SNPs introduce sorted by number. Rememb
 Count and sort the SNPs (not INDELs) in your output and compare to the output from the first step.
 
 ??? "_Task result example_"
-``` html
     <pre>
    1 chromosome
    1 pre_miRNA
@@ -136,7 +135,6 @@ Count and sort the SNPs (not INDELs) in your output and compare to the output fr
 1798 CDS
 2181 exon
     </pre>
-    ```
 
 ### Genes/CDSs only
 
