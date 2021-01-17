@@ -53,19 +53,19 @@ Identify the steps you need to do and what each step does. Open the hints if you
 Count and sort the different genomic features in chromosome 4 by number.
 
 ??? "__Task result example__"
-    `&nbsp;&nbsp;&nbsp;   1 chromosome`  
-    `&nbsp;&nbsp;&nbsp;   1 snoRNA`  
-    `&nbsp;&nbsp;&nbsp;   2 pre_miRNA`  
-    `&nbsp;&nbsp;&nbsp;   7 pseudogene`  
-    `&nbsp;&nbsp;  11 pseudogenic_transcript`  
-    `&nbsp;&nbsp;  26 ncRNA_gene`  
-    `&nbsp;&nbsp;  31 ncRNA`  
-    `&nbsp;&nbsp;  79 gene`  
-    `&nbsp; 295 mRNA`  
-    `&nbsp; 338 three_prime_UTR`  
-    `&nbsp; 571 five_prime_UTR`  
-    `2740 CDS`  
-    `3155 exon`  
+    ```   1 chromosome```  
+    ```   1 snoRNA```  
+    ```   2 pre_miRNA```  
+    ```   7 pseudogene```  
+    ```  11 pseudogenic_transcript```  
+    ```  26 ncRNA_gene```  
+    ```  31 ncRNA```  
+    ```  79 gene```  
+    ``` 295 mRNA```  
+    ``` 338 three_prime_UTR```  
+    ``` 571 five_prime_UTR```  
+    ```2740 CDS```  
+    ```3155 exon```  
 
 ### SNPs and INDELs
 
@@ -88,18 +88,18 @@ Count and sort the different genomic features in chromosome 4 by number.
 Print nucleotide substitution that these SNPs introduce sorted by number. Remember the coins...
 
 ??? "_Task result example_"
-    `1182 C->T`  
-    `1133 G->A`  
-    ` 932 A->G`  
-    ` 929 A->T`  
-    ` 892 T->A`  
-    ` 880 T->C`  
-    ` 639 G->T`  
-    ` 621 C->A`  
-    ` 436 A->C`  
-    ` 396 T->G`  
-    ` 372 G->C`  
-    ` 357 C->G`  
+    ```1182 C->T```  
+    ```1133 G->A```  
+    ``` 932 A->G```  
+    ``` 929 A->T```  
+    ``` 892 T->A```  
+    ``` 880 T->C```  
+    ``` 639 G->T```  
+    ``` 621 C->A```  
+    ``` 436 A->C```  
+    ``` 396 T->G```  
+    ``` 372 G->C```  
+    ``` 357 C->G```  
 
 ### Genes with variants
 
@@ -120,19 +120,19 @@ Print nucleotide substitution that these SNPs introduce sorted by number. Rememb
 Count and sort the SNPs (not INDELs) in your output and compare to the output from the first step.
 
 ??? "_Task result example_"
-    `   1 chromosome`  
-    `   1 pre_miRNA`  
-    `   1 snoRNA`  
-    `   6 pseudogene`  
-    `   9 pseudogenic_transcript`  
-    `  22 ncRNA_gene`  
-    `  28 ncRNA`  
-    `  79 gene`  
-    ` 264 three_prime_UTR`  
-    ` 290 five_prime_UTR`  
-    ` 295 mRNA`  
-    `1798 CDS`  
-    `2181 exon`  
+    ```   1 chromosome```  
+    ```   1 pre_miRNA```  
+    ```   1 snoRNA```  
+    ```   6 pseudogene```  
+    ```   9 pseudogenic_transcript```  
+    ```  22 ncRNA_gene```  
+    ```  28 ncRNA```  
+    ```  79 gene```  
+    ``` 264 three_prime_UTR```  
+    ``` 290 five_prime_UTR```  
+    ``` 295 mRNA```  
+    ```1798 CDS```  
+    ```2181 exon```  
 
 ### Genes/CDSs only
 
