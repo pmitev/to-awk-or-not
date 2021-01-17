@@ -102,7 +102,7 @@ $ file filename
 filename: ASCII text
 ```
 
-Let's first tabulate the *NCBI Taxonomy Database* in more convenient format for us - getting the relevant information on single line, replace some spaces with underscore symbol `_`, remove the extra blanks in fron and after the names, etc.
+Let's first tabulate the *NCBI Taxonomy Database* in more convenient format for us - getting the relevant information on single line, replace some spaces with underscore symbol `_`, remove the extra blanks in front and after the names, etc.
 
 !!! example "names.tab"
     ```
