@@ -39,10 +39,10 @@ Identify the steps you need to do and what each step does. Open the hints if you
 ### Chromosome 4
 
 ??? "_Hint_, what do we need?"
-    #### Extract chr4 from the vcf and the gff and make new files
+    Extract chr4 from the vcf and the gff and make new files
 
 ??? "_Hint_"
-    #### All lines from chromosome 4 start with a *4*
+    All lines from chromosome 4 start with a *4*
 
 ??? "_Solution_"
     `awk '/^4/{print $0}' Drosophila_melanogaster.BDGP6.28.101.chr.gff3 > Drosophila_melanogaster.chr4.gff3`
@@ -53,7 +53,9 @@ Identify the steps you need to do and what each step does. Open the hints if you
 
 ??? "__Task result example__"
 ``` html
+
 <pre>
+
    1 chromosome
    1 snoRNA
    2 pre_miRNA
@@ -67,22 +69,24 @@ Identify the steps you need to do and what each step does. Open the hints if you
  571 five_prime_UTR
 2740 CDS
 3155 exon
+
 </pre>
+
 ```
 
 ### SNPs and INDELs
 
 ??? "_Hint_, which output do we want?"
-    #### Get distribution of variants and list them in two separate files. For a bonus plot of the lengths of the INDELS, get the length of all INDELS into a third file
+    Get distribution of variants and list them in two separate files. For a bonus plot of the lengths of the INDELS, get the length of all INDELS into a third file
 
 ??? "_Hint_"
-    #### Remove lines beginning with \# (grep)
+    Remove lines beginning with \# (grep)
 
 ??? "_Hint_"
-    #### If columns 4 and 5 have different length, it's an INDEL. Otherwise it's a SNP.
+    If columns 4 and 5 have different length, it's an INDEL. Otherwise it's a SNP.
 
 ??? "_Hint_"
-    #### You want the output to be a file with columns 1, 2, 4 and 5, a classifier (SNP or INDEL) and finally the length of the INDEL (put "-" for the SNPs)
+    You want the output to be a file with columns 1, 2, 4 and 5, a classifier (SNP or INDEL) and finally the length of the INDEL (put "-" for the SNPs)
 
 ??? "_Solution_"
     `cat dgrp2_chr4.vcf | grep -v "#" | awk '{if (length($4)>1||length($5)>1){a="INDEL";b=length($4)-length($5);cnt[b]+=1;} else {a="SNP";b="-";} printf("%s\t%s\t%s\t%s\t%s\t%s\n", $1, $2, a, b, $4, $5) > "indels_Drosophila_chr4";}END{for (x in cnt){print x,cnt[x] > "distr_Drosophila_chr4"}}'`
@@ -108,13 +112,13 @@ Identify the steps you need to do and what each step does. Open the hints if you
 ### Genes with variants
 
 ??? "_Hint_, how do we get those?"
-    #### Compare back and separate the annotation into features that do and don’t have variants. For a bonus, also record the number of variants in each feature
+    Compare back and separate the annotation into features that do and don’t have variants. For a bonus, also record the number of variants in each feature
 
 ??? "_Hint_"
-    #### Make an index using the previous output to identify positions of variants
+    Make an index using the previous output to identify positions of variants
 
 ??? "_Hint_"
-    #### For each feature in the gff, check all position it covers to see if they are in your index, if so print to one file. If not, print to another.
+    For each feature in the gff, check all position it covers to see if they are in your index, if so print to one file. If not, print to another.
 
 ??? "_Solution_"
     `awk 'FNR==NR{a[$1,$2]="T"; next}{ hits=0; for(N=$4; N<=$5; N++) { if (a[$1,N] == "T") {hits+=1}} if (hits>0) {print hits "\t" $0 > "haveSNPINDEL_Drosophila_chr4.gff"} else {print $0 > "noSNPINDEL_Drosophila_chr4.gff"}}' indels_Drosophila_chr4 Drosophila_melanogaster.chr4.gff3`
@@ -142,10 +146,10 @@ Identify the steps you need to do and what each step does. Open the hints if you
 ### Genes/CDSs only
 
 ??? "_Hint_, what features do we look for?"
-    #### Filter for genes and CDSs before doing the analysis.
+    Filter for genes and CDSs before doing the analysis.
 
 ??? "_Hint_"
-    #### Only genes and CDSs are interesting to us. Make a gff without the rest of the features.
+    Only genes and CDSs are interesting to us. Make a gff without the rest of the features.
 
 ??? "_Solution_"
     `awk '{if ($3=="gene" || $3=="CDS") print $0}' Drosophila_melanogaster.chr4.gff3 > Drosophila_melanogaster.chr4_genesCDSs.gff3`
@@ -154,13 +158,13 @@ Identify the steps you need to do and what each step does. Open the hints if you
 ### Final list of variants
 
 ??? "_Hint_, how do we classify the variants?"
-    #### Repeat step 3 for the SNPs/INDELs themselves, to see which are actually located inside genes
+    Repeat step 3 for the SNPs/INDELs themselves, to see which are actually located inside genes
 
 ??? "_Hint_"
-    #### Make an index of all genes/CDSs (from your gff), where start and stop are paired
+    Make an index of all genes/CDSs (from your gff), where start and stop are paired
 
 ??? "_Hint_"
-    #### For each feature from your step 2 file, check the position agains the index and print whether or not the variant is inside a gene.
+    For each feature from your step 2 file, check the position agains the index and print whether or not the variant is inside a gene.
 
 ??? "_Solution_"
     `awk 'FNR==NR{ingene[$1,$4]=$5; next}{state="Not in gene";for (pair in ingene) {split(pair, t, SUBSEP); if ($1==t[1] && $2>=t[2] && $2<=ingene[t[1],t[2]]) {state=(t[1] " " t[2] " " ingene[t[1],t[2]])}} print $0, " ", state }' Drosophila_melanogaster.chr4_genesCDSs.gff3 indels_Drosophila_chr4 > SNPsInGenes_Drosophila_ch4`
