@@ -38,7 +38,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
 
 ### Chromosome 4
 
-???"_Hint_, what do we need?"
+??? "_Hint_, what do we need?"
 <p>
     
 #### Extract chr4 from the vcf and the gff and make new files
@@ -46,7 +46,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
 
 
 
-???"_Hint_"
+??? "_Hint_"
 <p>
 
 #### All lines from chromosome 4 start with a *4*
@@ -54,7 +54,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
 
 
 
-???"_Solution_"
+??? "_Solution_"
 <p>
     
 `awk '/^4/{print $0}' Drosophila_melanogaster.BDGP6.28.101.chr.gff3 > Drosophila_melanogaster.chr4.gff3`
@@ -65,7 +65,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
 
 
 ##### *Follow-up task:* Count and sort the different genomic features in chromosome 4 by number.
-???"__Task result example__"
+??? "__Task result example__"
 <pre>
    1 chromosome
    1 snoRNA
@@ -86,28 +86,28 @@ Identify the steps you need to do and what each step does. Open the hints if you
 
 ### SNPs and INDELs
 
-???"_Hint_, which output do we want?"
+??? "_Hint_, which output do we want?"
 <p>
     
 #### Get distribution of variants and list them in two separate files. For a bonus plot of the lengths of the INDELS, get the length of all INDELS into a third file
 </p>
 
 
-???"_Hint_"
+??? "_Hint_"
 <p>
 
 #### Remove lines beginning with \# (grep)
 </p>
 
 
-???"_Hint_"
+??? "_Hint_"
 <p>
 
 #### If columns 4 and 5 have different length, it's an INDEL. Otherwise it's a SNP.
 </p>
 
 
-???"_Hint_"
+??? "_Hint_"
 <p>
 
 #### You want the output to be a file with columns 1, 2, 4 and 5, a classifier (SNP or INDEL) and finally the length of the INDEL (put "-" for the SNPs)
@@ -115,7 +115,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
 
 
 
-???"_Solution_"
+??? "_Solution_"
 <p>
         
 `cat dgrp2_chr4.vcf | grep -v "#" | awk '{if (length($4)>1||length($5)>1){a="INDEL";b=length($4)-length($5);cnt[b]+=1;} else {a="SNP";b="-";} printf("%s\t%s\t%s\t%s\t%s\t%s\n", $1, $2, a, b, $4, $5) > "indels_Drosophila_chr4";}END{for (x in cnt){print x,cnt[x] > "distr_Drosophila_chr4"}}'`
@@ -124,7 +124,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
 
 
 ##### *Follow-up task:* Print nucleotide substitution that these SNPs introduce sorted by number. Remember the coins...
-???"_Task result example_"
+??? "_Task result example_"
 <pre>
 1182 C->T
 1133 G->A
@@ -144,28 +144,28 @@ Identify the steps you need to do and what each step does. Open the hints if you
 
 ### Genes with variants
 
-???"_Hint_, how do we get those?"
+??? "_Hint_, how do we get those?"
 <p>
     
 #### Compare back and separate the annotation into features that do and don’t have variants. For a bonus, also record the number of variants in each feature
 </p>
 
 
-???"_Hint_"
+??? "_Hint_"
 <p>
 
 #### Make an index using the previous output to identify positions of variants
 </p>
 
 
-???"_Hint_"
+??? "_Hint_"
 <p>
 
 #### For each feature in the gff, check all position it covers to see if they are in your index, if so print to one file. If not, print to another.
 </p>
 
 
-???"_Solution_"
+??? "_Solution_"
 <p>
     
 `awk 'FNR==NR{a[$1,$2]="T"; next}{ hits=0; for(N=$4; N<=$5; N++) { if (a[$1,N] == "T") {hits+=1}} if (hits>0) {print hits "\t" $0 > "haveSNPINDEL_Drosophila_chr4.gff"} else {print $0 > "noSNPINDEL_Drosophila_chr4.gff"}}' indels_Drosophila_chr4 Drosophila_melanogaster.chr4.gff3`
@@ -174,7 +174,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
 
 
 ##### *Follow-up task:* Count and sort the SNPs (not INDELs) in your output and compare to the output from the first step.
-???"_Task result example_"
+??? "_Task result example_"
 <pre>
    1 chromosome
    1 pre_miRNA
@@ -194,21 +194,21 @@ Identify the steps you need to do and what each step does. Open the hints if you
 
 
 ### Genes/CDSs only
-???"_Hint_, what features do we look for?"
+??? "_Hint_, what features do we look for?"
 <p>
     
 #### Filter for genes and CDSs before doing the analysis.
 </p>
 
 
-???"_Hint_"
+??? "_Hint_"
 <p>
 
 #### Only genes and CDSs are interesting to us. Make a gff without the rest of the features.
 </p>
 
 
-???"_Solution_"
+??? "_Solution_"
 <p>
 
 `awk '{if ($3=="gene" || $3=="CDS") print $0}' Drosophila_melanogaster.chr4.gff3 > Drosophila_melanogaster.chr4_genesCDSs.gff3`
@@ -218,21 +218,21 @@ Identify the steps you need to do and what each step does. Open the hints if you
 
 
 ### Final list of variants
-???"_Hint_, how do we classify the variants?"
+??? "_Hint_, how do we classify the variants?"
 <p>
 
 #### Repeat step 3 for the SNPs/INDELs themselves, to see which are actually located inside genes
 </p>
 
 
-???"_Hint_"
+??? "_Hint_"
 <p>
 
 #### Make an index of all genes/CDSs (from your gff), where start and stop are paired
 </p>
 
 
-???"_Hint_"
+??? "_Hint_"
 <p>
 
 #### For each feature from your step 2 file, check the position agains the index and print whether or not the variant is inside a gene.
@@ -240,7 +240,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
 
 
 
-???"_Solution_"
+??? "_Solution_"
 <p>
     
 `awk 'FNR==NR{ingene[$1,$4]=$5; next}{state="Not in gene";for (pair in ingene) {split(pair, t, SUBSEP); if ($1==t[1] && $2>=t[2] && $2<=ingene[t[1],t[2]]) {state=(t[1] " " t[2] " " ingene[t[1],t[2]])}} print $0, " ", state }' Drosophila_melanogaster.chr4_genesCDSs.gff3 indels_Drosophila_chr4 > SNPsInGenes_Drosophila_ch4`
@@ -255,7 +255,7 @@ Here we can see all SNPs and INDELs which are inside a relevant region. We have 
 Re-do the files but this time include the gene ID (i.e. FBtr0089178 from column nine) and translate that into the full gene name found in this [file](http://ftp.flybase.org/releases/FB2020_06/precomputed_files/genes/fbgn_fbtr_fbpp_expanded_fb_2020_06.tsv.gz).
 
 
-???"__Solution__"  
+??? "__Solution__"  
 <p>
     
 `awk 'FNR==1{++fileidx} fileidx==1{split($9,a,";|:");ingene[$1,$4,$5]=a[2]; next} fileidx==2{FS="\t";name[$3]=$5} fileidx==3{state="Not in gene";for (trip in ingene) {split(trip, t, SUBSEP); if ($1==t[1] && $2>=t[2] && $2<=t[3]) {state=(t[1] "\t" t[2] "\t" t[3] "\t" name[ingene[t[1],t[2],t[3]]])}} print $0, "\t", state }' Drosophila_melanogaster.chr4_genesCDSs.gff3 fbgn_fbtr_fbpp_expanded_fb_2020_06.tsv indels_Drosophila_chr4 > SNPsInNamedGenes_Drosophila_ch4`
