@@ -52,7 +52,8 @@ Identify the steps you need to do and what each step does. Open the hints if you
 #### *Follow-up task:* Count and sort the different genomic features in chromosome 4 by number.
 
 ??? "__Task result example__"
-    ```
+``` html
+<pre>
    1 chromosome
    1 snoRNA
    2 pre_miRNA
@@ -66,7 +67,9 @@ Identify the steps you need to do and what each step does. Open the hints if you
  571 five_prime_UTR
 2740 CDS
 3155 exon
-    ```
+</pre>
+```
+
 ### SNPs and INDELs
 
 ??? "_Hint_, which output do we want?"
