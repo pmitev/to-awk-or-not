@@ -51,23 +51,19 @@ Identify the steps you need to do and what each step does. Open the hints if you
 
 #### *Follow-up task:* Count and sort the different genomic features in chromosome 4 by number.
 ??? "__Task result example__"
-<pre>
-   1 chromosome
-   1 snoRNA
-   2 pre_miRNA
-   7 pseudogene
-  11 pseudogenic_transcript
-  26 ncRNA_gene
-  31 ncRNA
-  79 gene
- 295 mRNA
- 338 three_prime_UTR
- 571 five_prime_UTR
-2740 CDS
-3155 exon
-</pre>
-
-
+       1 chromosome
+       1 snoRNA
+       2 pre_miRNA
+       7 pseudogene
+      11 pseudogenic_transcript
+      26 ncRNA_gene
+      31 ncRNA
+      79 gene
+     295 mRNA
+     338 three_prime_UTR
+     571 five_prime_UTR
+    2740 CDS
+    3155 exon
 
 ### SNPs and INDELs
 
@@ -89,20 +85,18 @@ Identify the steps you need to do and what each step does. Open the hints if you
 #### *Follow-up task:* Print nucleotide substitution that these SNPs introduce sorted by number. Remember the coins...
 
 ??? "_Task result example_"
-<pre>
-1182 C->T
-1133 G->A
- 932 A->G
- 929 A->T
- 892 T->A
- 880 T->C
- 639 G->T
- 621 C->A
- 436 A->C
- 396 T->G
- 372 G->C
- 357 C->G
-</pre>
+    1182 C->T
+    1133 G->A
+     932 A->G
+     929 A->T
+     892 T->A
+     880 T->C
+     639 G->T
+     621 C->A
+     436 A->C
+     396 T->G
+     372 G->C
+     357 C->G
 
 ### Genes with variants
 
