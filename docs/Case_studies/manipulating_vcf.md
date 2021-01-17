@@ -52,7 +52,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
 #### *Follow-up task:* Count and sort the different genomic features in chromosome 4 by number.
 
 ??? "__Task result example__"
-```
+    ```
    1 chromosome
    1 snoRNA
    2 pre_miRNA
@@ -66,7 +66,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
  571 five_prime_UTR
 2740 CDS
 3155 exon
-```
+    ```
 
 
 
@@ -90,7 +90,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
 #### *Follow-up task:* Print nucleotide substitution that these SNPs introduce sorted by number. Remember the coins...
 
 ??? "_Task result example_"
-```
+    ```
 1182 C->T
 1133 G->A
  932 A->G
@@ -103,7 +103,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
  396 T->G
  372 G->C
  357 C->G
-```
+    ```
 
 ### Genes with variants
 
@@ -123,7 +123,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
 #### *Follow-up task:* Count and sort the SNPs (not INDELs) in your output and compare to the output from the first step.
 
 ??? "_Task result example_"
-```
+    ```
    1 chromosome
    1 pre_miRNA
    1 snoRNA
@@ -137,7 +137,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
  295 mRNA
 1798 CDS
 2181 exon
-```
+    ```
 
 ### Genes/CDSs only
 ??? "_Hint_, what features do we look for?"
