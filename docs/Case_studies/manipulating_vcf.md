@@ -88,18 +88,18 @@ Count and sort the different genomic features in chromosome 4 by number.
 Print nucleotide substitution that these SNPs introduce sorted by number. Remember the coins...
 
 ??? "_Task result example_"
-    1182 C->T
-    1133 G->A
-     932 A->G
-     929 A->T
-     892 T->A
-     880 T->C
-     639 G->T
-     621 C->A
-     436 A->C
-     396 T->G
-     372 G->C
-     357 C->G
+    `1182 C->T`
+    `1133 G->A`
+    ` 932 A->G`
+    ` 929 A->T`
+    ` 892 T->A`
+    ` 880 T->C`
+    ` 639 G->T`
+    ` 621 C->A`
+    ` 436 A->C`
+    ` 396 T->G`
+    ` 372 G->C`
+    ` 357 C->G`
 
 ### Genes with variants
 
@@ -120,21 +120,19 @@ Print nucleotide substitution that these SNPs introduce sorted by number. Rememb
 Count and sort the SNPs (not INDELs) in your output and compare to the output from the first step.
 
 ??? "_Task result example_"
-    <pre>
-   1 chromosome
-   1 pre_miRNA
-   1 snoRNA
-   6 pseudogene
-   9 pseudogenic_transcript
-  22 ncRNA_gene
-  28 ncRNA
-  79 gene
- 264 three_prime_UTR
- 290 five_prime_UTR
- 295 mRNA
-1798 CDS
-2181 exon
-    </pre>
+`   1 chromosome`
+`   1 pre_miRNA`
+`   1 snoRNA`
+`   6 pseudogene`
+`   9 pseudogenic_transcript`
+`  22 ncRNA_gene`
+`  28 ncRNA`
+`  79 gene`
+` 264 three_prime_UTR`
+` 290 five_prime_UTR`
+` 295 mRNA`
+`1798 CDS`
+`2181 exon`
 
 ### Genes/CDSs only
 
