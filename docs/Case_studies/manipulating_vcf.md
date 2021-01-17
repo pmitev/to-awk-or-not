@@ -50,6 +50,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
     `awk '/^4/{print $0}' dgrp2_trimmed.vcf > dgrp2_chr4.vcf`
 
 #### *Follow-up task:* Count and sort the different genomic features in chromosome 4 by number.
+
 ??? "__Task result example__"
 ```
    1 chromosome
@@ -120,6 +121,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
     
 
 #### *Follow-up task:* Count and sort the SNPs (not INDELs) in your output and compare to the output from the first step.
+
 ??? "_Task result example_"
 ```
    1 chromosome
