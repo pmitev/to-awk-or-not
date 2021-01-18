@@ -1,4 +1,8 @@
 # Manipulating the output from a genome analysis - vcf and gff
+
+> Problem formulated an presented at the workshop by [**Jonas Söderberg**](https://katalog.uu.se/profile/?id=N2-1277),  
+Department of Cell and Molecular Biology, _Molecular Evolution_
+
 We have a comparison between a number of different fly cell lines. These are found in a huge vcf file (dgrp2.vcf). We also have the annotations in a gff3 file (Drosophila_melanogaster.BDGP6.28.101.chr.gff3) and the genome itself in a fasta file.
 
 ## Getting the RAW files

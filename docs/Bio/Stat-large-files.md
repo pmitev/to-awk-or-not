@@ -1,5 +1,7 @@
 # Statistics on very large columns of values
 
+> Problem formulated an presented at the workshop by [**Voichita Marinescu**](https://katalog.uu.se/empinfo/?id=N12-828), Department of Medical Biochemistry and Microbiology, _Comparative genetics and functional genomics_ 
+
 When analyzing variables with large numbers of values, one needs to generate descriptive statistics (e.g. mean, median, std, quartiles, etc.) in order to set thresholds for further analyses.  This could easily be done in R if the vector or values could be loaded. But sometimes the number of values is prohibitively large for R, and even `pandas` in Python may fail.
 
 One such example is provided by the conservation scores for each nucleotide position of the MultiZ alignment of 99 vertebrate genomes against the human genome ([UCSC 100way alignment](https://genome.ucsc.edu/cgi-bin/hgTrackUi?db=hg19&g=cons100way)). You visualized the phylogenetic tree for the species in this alignment in the previous exercise.  Using the program [phyloP (phylogenetic P-values)](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.84.6412&rep=rep1&type=pdf) from the [PHAST package](http://compgen.bscb.cornell.edu/phast), a conservation score is computed for each position in the human genome resulting in 3 billion values. To identify the most conserved positions (the ones with the highest phyloP scores) one would need to generate descriptive statistics for the score distribution and set thresholds accordingly.

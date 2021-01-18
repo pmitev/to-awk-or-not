@@ -132,3 +132,36 @@ Leave the extra blanks for the first attempt. We will use this problem (cleaning
 !!! hint
     Using `FILENAME` might come handy.
 
+??? "Possible solution"
+    ``` awk
+    #!/usr/bin/awk -f
+    BEGIN{ FS="|" }
+    
+    {
+      id[$1]= 1;
+      data[$1][FILENAME]= $2
+    }
+    
+    END {
+      for (i in id) print trim(i)"|"trim(data[i]["scientific"])"|"trim(data[i]["genbank"])
+    }
+    
+    function trim (x) {
+      sub(/^[ \t]*/,"",x);
+      sub(/[ \t]*$/,"",x);
+      return x
+    }
+    ```
+
+??? "Solution usung join uggested by Amrei Binzer-Panchal, 2021.01.18" 
+    ``` bash
+    $ join -a1 -a2  -j 1 -o 0,1.2,2.2 -e "NULL" -t "|"  <(sort scientific)  <(sort genbank)
+
+    139     |       Borreliella burgdorferi |       Lyme disease spirochete 
+    161     |       Treponema pallidum subsp. pallidum      |       syphilis treponeme      
+    168     |       Treponema pallidum subsp. pertenue      |       yaws treponeme  
+    2       |       Bacteria        |       eubacteria      
+    29      |       Myxococcales    |       fruiting gliding bacteria       
+    356     |       Rhizobiales     |       rhizobacteria   
+    638     |       Arsenophonus nasoniae   |       son-killer infecting Nasonia vitripennis 
+    ```

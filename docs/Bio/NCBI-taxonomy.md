@@ -1,5 +1,7 @@
 # Substitute scientific with common species names in a phylogenetic tree file
 
+> Problem formulated an presented at the workshop by [**Voichita Marinescu**](https://katalog.uu.se/empinfo/?id=N12-828), Department of Medical Biochemistry and Microbiology, _Comparative genetics and functional genomics_
+
 ### Step 1 - Generate a table with the scientific-common name correspondence
 
 We need the correspondence between the scientific and common species names as described in the [NCBI Taxonomy Database](https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi?mode=Info&id=10090&lvl=2&p=has_linkout&p=blast_url&p=genome_blast&lin=f&keep=1&srchmode=1&unlock).
