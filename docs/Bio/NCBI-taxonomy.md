@@ -171,6 +171,39 @@ $ ./01.tabulate-names.awk <(bzcat names.dmp.bz2) | bzip2 -c > names.tab.bz2
     function Cap (string) { return toupper(substr(string,0,1))substr(string,2) }
     ```
 
+Note that this script will keep the last information for the corresponding match for each ID. To prevent this we need to take care that any subsequent match is ignored
+
+
+??? note "01.tabulate-names-first.awk"
+    ``` awk
+    #!/usr/bin/awk -f
+    BEGIN{
+      FS="|"
+    #  print "#taxonID scientific_name        common_name     genbank_common_name"
+    }
+    
+    $4 ~ "scientific name"     { if (! sciname[$1*1] ) sciname[$1*1]=  unds(Clean($2)); next}
+    
+    $4 ~ "common name"         { if (! com_name[$1*1]) com_name[$1*1]= Cap(Clean($2));  next}
+    
+    $4 ~ "genbank common name" { if (! genbank[$1*1] ) genbank[$1*1]=  unds(Clean($2)); next}
+    
+    END{
+      for(i in sciname) print i"|"sciname[i]"|"com_name[i]"|"genbank[i]
+    }
+    
+    function Clean (string){
+      sub(/^[ \t]+/, "",string)
+      sub(/[ \t]+$/, "",string)
+      return string
+    }
+    
+    function unds(string) { gsub(" ","_",string); return string}
+    
+    function Cap (string) { return toupper(substr(string,0,1))substr(string,2) }
+    ```
+
+
 ---
 
 ### Step 2
