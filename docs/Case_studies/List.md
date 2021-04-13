@@ -12,6 +12,9 @@ Here is a collection of mine and contributed awk scripts.
   _awk collects data from multiple files but picks only the necessary data to save on memory_
 * **[Multiple output files](Multiple_output_files.md)**  
   _MUST KNOW feature - covered during the workshop_
+* **[Color output with custom keywords](colors.md)**  
+  _use simple awk script to highlight keywords in your output_
+
 
 ## Bioinformatics oriented
 * **[bioawk](../Bio/bioawk.md)**  
