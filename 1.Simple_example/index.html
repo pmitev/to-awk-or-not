@@ -1,0 +1,1095 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="canonical" href="https://pmitev.github.io/to-awk-or-not/1.Simple_example/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.1.1">
+    
+    
+      
+        <title>1.Simple examples - To awk or not</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.9299cb39.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ef6f36e2.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-175317500-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){var e;this.value&&(e=document.location.pathname,ga("send","pageview",e+"?q="+this.value))}),"undefined"!=typeof location$&&location$.subscribe(function(e){ga("send","pageview",e.pathname)})})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1simple-examples" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="To awk or not" class="md-header__button md-logo" aria-label="To awk or not" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            To awk or not
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1.Simple examples
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        
+<a href="https://github.com/pmitev/to-awk-or-not/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="To awk or not" class="md-nav__button md-logo" aria-label="To awk or not" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    To awk or not
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/pmitev/to-awk-or-not/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          1.Simple examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        1.Simple examples
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lets-begin-simple" class="md-nav__link">
+    Let's begin simple
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-about-some-math-can-i-manipulate-or-analyze-the-data" class="md-nav__link">
+    What about some math? Can I manipulate or analyze the data?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awk-command-line-syntax" class="md-nav__link">
+    Awk command-line syntax:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simple-output-examples" class="md-nav__link">
+    Simple output examples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computing-and-printing" class="md-nav__link">
+    Computing and Printing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-text-in-the-output" class="md-nav__link">
+    Putting Text in the Output
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.Teasing_with_grep/" class="md-nav__link">
+        2.Teasing with grep
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.Shell_we_awk/" class="md-nav__link">
+        3.Shell we awk
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.Brief_commands/" class="md-nav__link">
+        4.Brief commands
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../5.String_manipulation/" class="md-nav__link">
+        5.String manipulation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../6.One_line_programs/" class="md-nav__link">
+        6.One line programs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Python_vs_awk/" class="md-nav__link">
+        Python vs. awk
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      <label class="md-nav__link" for="__nav_9">
+        Exercises
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="Exercises" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Exercises
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Exercises/Exercises/" class="md-nav__link">
+        Warming up
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Exercises/01.Simple_arithmetic/" class="md-nav__link">
+        01.Simple arithmetic *
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Exercises/02.Data_extraction/" class="md-nav__link">
+        02.Data extraction *
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Exercises/03.Data_extraction/" class="md-nav__link">
+        03.Data extraction **
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Exercises/04.Data_manipulation/" class="md-nav__link">
+        04.Data manipulation **
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Exercises/05.Easy_tricks/" class="md-nav__link">
+        05.Easy tricks *
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Exercises/06.Bioinformaticians_corner/" class="md-nav__link">
+        06.Bioinformaticians corner *
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Exercises/Advanced_data_analysis/" class="md-nav__link">
+        Advanced data analysis ****
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Exercises/Carpool/" class="md-nav__link">
+        Carpool ***
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Exercises/Dificult_data/" class="md-nav__link">
+        Difficult to extract data ****
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Exercises/Scrubbing/" class="md-nav__link">
+        Scrubbing a web page **
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Exercises/String_manipulation/" class="md-nav__link">
+        String manipulation **
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Exercises/awk-json/" class="md-nav__link">
+        Awk and json **
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Exercises/Linear_regression/" class="md-nav__link">
+        Simple linear regresion ***
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Case_studies/List/" class="md-nav__link">
+        = Case Studies =
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_11" type="checkbox" id="__nav_11" >
+      
+      <label class="md-nav__link" for="__nav_11">
+        More with awk
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+      <nav class="md-nav" aria-label="More with awk" data-md-level="1">
+        <label class="md-nav__title" for="__nav_11">
+          <span class="md-nav__icon md-icon"></span>
+          More with awk
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../More_awk/User_defined_functions/" class="md-nav__link">
+        User defined functions
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../More_awk/Command_params/" class="md-nav__link">
+        Parameters on the command line
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../More_awk/Input_output/" class="md-nav__link">
+        Input/Output to external program
+      </a>
+    </li>
+  
+
+          
+            
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../More_awk/Running_average/" class="md-nav__link">
+        Running averages
+      </a>
+    </li>
+  
+
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Other/Fixed_size_fields/" class="md-nav__link">
+        Fixed size fields
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Other/Backreferences/" class="md-nav__link">
+        Backreferences
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://www.gnu.org/software/gawk/manual/html_node/Multiple-Line.html" class="md-nav__link">
+        Multi-Line records
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../arrays/" class="md-nav__link">
+        Awk arrays
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../awk_bash/" class="md-nav__link">
+        Awk or Bash
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Other/Localization/" class="md-nav__link">
+        Localization problems
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="http://www.thegeekstuff.com/2011/06/awk-nawk-gawk/" class="md-nav__link">
+        Awk vs. nawk vs. gawk
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Other/Binder/" class="md-nav__link">
+        GitHub & Binder
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../handy/" class="md-nav__link">
+        Handy to have
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tinyutils/" class="md-nav__link">
+        tinyutils
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Links/" class="md-nav__link">
+        Links
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../About/" class="md-nav__link">
+        About
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lets-begin-simple" class="md-nav__link">
+    Let's begin simple
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-about-some-math-can-i-manipulate-or-analyze-the-data" class="md-nav__link">
+    What about some math? Can I manipulate or analyze the data?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awk-command-line-syntax" class="md-nav__link">
+    Awk command-line syntax:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simple-output-examples" class="md-nav__link">
+    Simple output examples
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#computing-and-printing" class="md-nav__link">
+    Computing and Printing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-text-in-the-output" class="md-nav__link">
+    Putting Text in the Output
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/pmitev/to-awk-or-not/edit/master/docs/1.Simple_example.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="1simple-examples">1.Simple examples</h1>
+<h2 id="lets-begin-simple">Let's begin simple</h2>
+<hr />
+<p>It is quite easy to use Awk from the command line to perform simple operations on text files. Suppose we have a file named "coins.txt" that describes a coin collection.  <br />
+Each line in the file contains the following information:</p>
+<blockquote>
+<p>metal weight in ounces date minted country of origin description</p>
+</blockquote>
+<p>The file has the contents:
+<div class="highlight"><pre><span></span><code>gold     1    1986  USA                 American Eagle
+gold     1    1908  Austria-Hungary     Franz Josef 100 Korona
+silver  10    1981  USA                 ingot
+gold     1    1984  Switzerland         ingot
+gold     1    1979  RSA                 Krugerrand
+gold     0.5  1981  RSA                 Krugerrand
+gold     0.1  1986  PRC                 Panda
+silver   1    1986  USA                 Liberty dollar
+gold     0.25 1986  USA                 Liberty 5-dollar piece
+silver   0.5  1986  USA                 Liberty 50-cent piece
+silver   1    1987  USA                 Constitution dollar
+gold     0.25 1987  USA                 Constitution 5-dollar piece
+gold     1    1988  Canada              Maple Leaf
+</code></pre></div></p>
+<p>The command bellow will search through the file for lines of text that contain the string "gold", and print them out.</p>
+<div class="highlight"><pre><span></span><code><span class="hll"><span class="o">$</span> <span class="nx">awk</span> <span class="s1">&#39;/gold/&#39;</span> <span class="nx">coins</span><span class="p">.</span><span class="nx">txt</span>
+</span><span class="nx">gold</span>     <span class="mi">1</span>    <span class="mi">1986</span>  <span class="nx">USA</span>                 <span class="nx">American</span> <span class="nx">Eagle</span>
+<span class="nx">gold</span>     <span class="mi">1</span>    <span class="mi">1908</span>  <span class="nx">Austria</span><span class="o">-</span><span class="nx">Hungary</span>     <span class="nx">Franz</span> <span class="nx">Josef</span> <span class="mi">100</span> <span class="nx">Korona</span>
+<span class="nx">gold</span>     <span class="mi">1</span>    <span class="mi">1984</span>  <span class="nx">Switzerland</span>         <span class="nx">ingot</span>
+<span class="nx">gold</span>     <span class="mi">1</span>    <span class="mi">1979</span>  <span class="nx">RSA</span>                 <span class="nx">Krugerrand</span>
+<span class="nx">gold</span>     <span class="mf">0.5</span>  <span class="mi">1981</span>  <span class="nx">RSA</span>                 <span class="nx">Krugerrand</span>
+<span class="nx">gold</span>     <span class="mf">0.1</span>  <span class="mi">1986</span>  <span class="nx">PRC</span>                 <span class="nx">Panda</span>
+<span class="nx">gold</span>     <span class="mf">0.25</span> <span class="mi">1986</span>  <span class="nx">USA</span>                 <span class="nx">Liberty</span> <span class="mi">5</span><span class="o">-</span><span class="nx">dollar</span> <span class="nx">piece</span>
+<span class="nx">gold</span>     <span class="mf">0.25</span> <span class="mi">1987</span>  <span class="nx">USA</span>                 <span class="nx">Constitution</span> <span class="mi">5</span><span class="o">-</span><span class="nx">dollar</span> <span class="nx">piece</span>
+<span class="nx">gold</span>     <span class="mi">1</span>    <span class="mi">1988</span>  <span class="nx">Canada</span>              <span class="nx">Maple</span> <span class="nx">Leaf</span>
+</code></pre></div>
+<p><code class="highlight"><span class="sr">/gold/</span></code> defines a matching criteria that will be used on every line of the file. If no command is specified, the default action is to print the matche
+d lines.</p>
+<p>This mimics the use of <strong>grep</strong> or <strong>sed</strong>, so why would one possibly need awk?</p>
+<p><strong>Now, suppose we want to list all the coins that were minted before 1980</strong>. We invoke Awk as follows:</p>
+<p><div class="highlight"><pre><span></span><code><span class="hll"><span class="o">$</span> <span class="nx">awk</span> <span class="s1">&#39;$3 &lt; 1980 {print $3, &quot;    &quot;,$5,$6,$7,$8}&#39;</span> <span class="nx">coins</span><span class="p">.</span><span class="nx">txt</span>
+</span><span class="mi">1908</span>      <span class="nx">Franz</span> <span class="nx">Josef</span> <span class="mi">100</span> <span class="nx">Korona</span>
+<span class="mi">1979</span>      <span class="nx">Krugerrand</span>
+</code></pre></div>
+In the example above, we defined a matching criteria <code class="highlight"><span class="o">$</span><span class="mi">3</span> <span class="o">&lt;</span> <span class="mi">1980</span></code>, so the  commands enclosed in the <code class="highlight"><span class="p">{</span><span class="kr">print</span> <span class="o">$</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span><span class="o">$</span><span class="mi">5</span><span class="p">,</span><span class="o">$</span><span class="mi">6</span><span class="p">,</span><span class="o">$</span><span class="mi">7</span><span class="p">,</span><span class="o">$</span><span class="mi">8</span><span class="p">}</span></code> block <strong>will be execut
+ed only when the criteria is met</strong> - i.e. awk will print the values of columns 3,"    ",5,6,7, and 8. The columns are separated (defined) by white space (o
+ne ore more consecutive blanks) and addressed by the <code class="highlight"><span class="o">$</span></code> sign i.e. <code class="highlight"><span class="o">$</span><span class="mi">1</span></code> is the value of the first column, <code class="highlight"><span class="o">$</span><span class="mi">2</span></code> - second etc. <code class="highlight"><span class="o">$</span><span class="mi">0</span></code> contains the whol
+e line including the white spaces.</p>
+<h2 id="what-about-some-math-can-i-manipulate-or-analyze-the-data">What about some math? Can I manipulate or analyze the data?</h2>
+<hr />
+<p>Let's use the following simple file that contains 3 lines with numbers and some text, just to make our life more difficult (or maybe not?)</p>
+<p><div class="highlight"><pre><span></span><code>1 2 3
+4 5 6
+7 8 9 10 text
+</code></pre></div>
+Let's try to make some calculations with the data in this file - summation and multiplication in this case.</p>
+<p><div class="highlight"><pre><span></span><code><span class="hll"><span class="o">$</span> <span class="nx">awk</span> <span class="s1">&#39;       {print $1+$2*$3}&#39;</span> <span class="nx">data</span>
+</span><span class="mi">7</span>
+<span class="mi">34</span>
+<span class="mi">79</span>
+</code></pre></div>
+Again, we did not provide any matching criteria, so the commands will be executed on every line. Try to run the command. What do you think? Does awk provid
+e the right answer? I am serious! ;-)
+Let's do the math only if the value in the first column is greater than 4.</p>
+<p><div class="highlight"><pre><span></span><code><span class="hll"><span class="o">$</span> <span class="nx">awk</span> <span class="s1">&#39;$1 &gt; 4 {print $1+$2*$3}&#39;</span> <span class="nx">data</span>
+</span><span class="mi">79</span>
+</code></pre></div>
+Now, <code class="highlight"><span class="o">$</span><span class="mi">1</span> <span class="o">&gt;</span> <span class="mi">4</span></code> is our criteria on when to execute the command block <code class="highlight"><span class="p">{</span><span class="kr">print</span> <span class="o">$</span><span class="mi">1</span><span class="o">+$</span><span class="mi">2</span><span class="o">*$</span><span class="mi">3</span><span class="p">}</span></code>. Notice that the criteria is outside the <code class="highlight"><span class="p">{}</span></code> block.</p>
+<h2 id="awk-command-line-syntax">Awk command-line syntax:</h2>
+<hr />
+<div class="highlight"><pre><span></span><code><span class="o">$</span> <span class="nx">awk</span> <span class="s1">&#39; /pattern/ {action} &#39;</span> <span class="nx">file1</span> <span class="nx">file2</span> <span class="p">...</span> <span class="nx">fileN</span>
+</code></pre></div>
+<ul>
+<li><strong>action</strong> is performed on every line that matches <strong>pattern</strong>.</li>
+<li>If <strong>pattern</strong> is not provided, action is performed on every line.</li>
+<li>If <strong>action</strong> is not provided, then all matching lines are simply sent to standard output.</li>
+<li>Since <strong>patterns</strong> and <strong>actions</strong> are optional, actions must be enclosed in braces to distinguish them from pattern.</li>
+<li>The statements in an awk program may be indented and formatted using spaces, tabs, and new lines.</li>
+<li>Two special patterns: <code class="highlight"><span class="nb">BEGIN</span></code> (execute an action before first input line) and <code class="highlight"><span class="nb">END</span></code> ( ... after all lines are read.)</li>
+</ul>
+<h2 id="simple-output-examples">Simple output examples</h2>
+<hr />
+<p><code class="highlight"><span class="p">{</span> <span class="kr">print</span> <span class="p">}</span></code> - will print the whole line to standard out</p>
+<p><code class="highlight"><span class="p">{</span> <span class="kr">print</span> <span class="o">$</span><span class="mi">0</span> <span class="p">}</span></code> - will do the same thing</p>
+<p><code class="highlight"><span class="p">{</span> <span class="kr">print</span> <span class="o">$</span><span class="mi">1</span><span class="p">,</span> <span class="o">$</span><span class="mi">3</span> <span class="p">}</span></code> - expressions separated by a comma are, by default, separated by a single space when output</p>
+<p><code class="highlight"><span class="p">{</span> <span class="kr">print</span> <span class="nb">NF</span><span class="p">,</span> <span class="o">$</span><span class="mi">1</span><span class="p">,</span> <span class="o">$</span><span class="nb">NF</span> <span class="p">}</span></code> - will print the number of fields, the first field, and the last field in the current record</p>
+<p><code class="highlight"><span class="p">{</span> <span class="kr">print</span> <span class="o">$</span><span class="p">(</span><span class="nb">NF</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="p">}</span></code> prints the third to last field</p>
+<h2 id="computing-and-printing">Computing and Printing</h2>
+<hr />
+<p><code class="highlight"><span class="p">{</span> <span class="kr">print</span> <span class="o">$</span><span class="mi">1</span><span class="p">,</span> <span class="o">$</span><span class="mi">2</span> <span class="o">*</span> <span class="o">$</span><span class="mi">3</span> <span class="p">}</span></code> You can also do computations on the field values and include the results in your output</p>
+<p><code class="highlight"><span class="p">{</span> <span class="kr">print</span> <span class="nb">NR</span><span class="p">,</span> <span class="o">$</span><span class="mi">0</span> <span class="p">}</span></code> - will print each line prefixed with its line number</p>
+<h2 id="putting-text-in-the-output">Putting Text in the Output</h2>
+<hr />
+<p><code class="highlight"><span class="p">{</span> <span class="kr">print</span> <span class="s2">&quot;total pay for&quot;</span><span class="p">,</span> <span class="o">$</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">,</span> <span class="o">$</span><span class="mi">2</span> <span class="o">*</span> <span class="o">$</span><span class="mi">3</span> <span class="p">}</span></code> you can also add other text to the output besides what is in the current record. Note that the inserted
+text needs to be surrounded by double quotes.</p>
+<p><code class="highlight"><span class="p">{</span> <span class="kr">printf</span><span class="p">(</span><span class="s2">&quot;total pay for %s is $%.2f\n&quot;</span><span class="p">,</span> <span class="o">$</span><span class="mi">1</span><span class="p">,</span> <span class="o">$</span><span class="mi">2</span> <span class="o">*</span> <span class="o">$</span><span class="mi">3</span><span class="p">)</span> <span class="p">}</span></code> when using printf, formatting is under your control, so no automatic spaces or newlines are pr
+ovided by awk. You have to insert them yourself.</p>
+<p><code class="highlight"><span class="p">{</span> <span class="kr">printf</span><span class="p">(</span><span class="s2">&quot;%-8s %6.2f\n&quot;</span><span class="p">,</span> <span class="o">$</span><span class="mi">1</span><span class="p">,</span> <span class="o">$</span><span class="mi">2</span> <span class="o">*</span> <span class="o">$</span><span class="mi">3</span> <span class="p">)</span> <span class="p">}</span></code> - well, this escalated too fast...</p>
+<p>More on format modifers: <a href="https://https://www.gnu.org/software/gawk/manual/html_node/Format-Modifiers.html#Format-Modifiers">gawk documentation</a></p>
+<div class="admonition example">
+<p class="admonition-title">Files</p>
+<ul>
+<li><a href="../data/coins.txt">coins.txt</a></li>
+</ul>
+</div>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      <a href="https://uppmax.uu.se/" target="_blank" rel="noopener"><img align="right" alt="Uppsala" src="https://pmitev.github.io/to-awk-or-not/images/Uppsala.png" /> </a>
+      <a href="https://snic.se/" target="_blank" rel="noopener"><img align="right" alt="SNIC" src="https://pmitev.github.io/to-awk-or-not/images/SNIC.png" /> </a>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../assets/javascripts/workers/search.fe42c31b.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.7353b375.min.js"></script>
+      
+        <script src="../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
