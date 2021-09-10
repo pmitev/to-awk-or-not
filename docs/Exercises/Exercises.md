@@ -38,7 +38,7 @@ Copy/paste the numbers in a file for convenience.
     9
     ```
     
-    1.d) Possible solution (notice that the first number is the value of the first column):
+    1.d) Possible solution (note that the first number is the value of the first column):
     ``` awk
     $ awk '{print $1-prev;prev=$1}' num.dat
     2

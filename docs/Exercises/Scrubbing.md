@@ -1,17 +1,19 @@
 # Scrubbing a web page **
 !!! warning
+    2021.09.10: The new link is active, if for some reason it is changed or it is not working again, please use the webarchived version bellow.  
+
     Unfortunately, the web engine is changing quite often and even the address might not be correct, so it might not be possible to solve the problem as described...
     To make it work, please use a copy of the page at [https://web.archive.org/](https://web.archive.org/)  
     https://web.archive.org/web/20190323025902/http://www.kemi.uu.se/about-us/people-angstrom/ 
 
 Here is another example when awk comes handy. You can get some information on a web page which is more or less well structured and you want to make some statistics from the numbers you can extract. Disclaimer: there are better tools to this but honestly they come with their own overhead...
 
-For instance, on the following web address http://www.kemi.uu.se/about-us/people-angstrom/ one can find list of the people employed at the department of chemistry with their positions. Try to make a simple awk script which will count how many people are employed on different positions.
+For instance, on the following web address https://kemi.uu.se/angstrom/about-us/staff one can find list of the people employed at the department of chemistry with their positions. Try to make a simple awk script which will count how many people are employed on different positions.
 
 To make the example as general as possible let's work with the HTML source code of the web page (do not worry if you are not familiar with HTML). There are many ways to get the web page from the command line but let's consider  two standard tools curl or wget. The commands below will produce identical output with a lot of irrelevant HTML code.
 ``` bash
-$ curl -s http://www.kemi.uu.se/about-us/people-angstrom/
-$ wget -O - http://www.kemi.uu.se/about-us/people-angstrom/
+$ curl -s https://kemi.uu.se/angstrom/about-us/staff
+$ wget -O - https://kemi.uu.se/angstrom/about-us/staff
 ```
 
 ``` html
@@ -31,7 +33,7 @@ Luckily, all employee titles are on a new line after a line with the following c
 Let's `grep` for this string and print the line bellow as well with the `-A 1` option.
 
 ``` bash hl_lines="1"
-curl -s http://www.kemi.uu.se/about-us/people-angstrom/ | grep -A 1 "emp-title" | head
+curl -s https://kemi.uu.se/angstrom/about-us/staff | grep -A 1 "emp-title" | head
 <span class="emp-title">
 visiting researcher
 --
@@ -48,6 +50,8 @@ Can you come with a solution (awk is a good choice) on how to count how many peo
 
 ??? "Possible solution"
     ``` awk
+    curl -s https://kemi.uu.se/angstrom/about-us/staff | awk ' /emp-title/{getline;title[$0]++} END{for (i in title) print title[i],i}'
+    # or from the WebArchive
     curl -s https://web.archive.org/web/20190323025902/http://www.kemi.uu.se/about-us/people-angstrom/ | awk ' /emp-title/{getline;title[$0]++} END{for (i in title) print title[i],i}'
     ```
     ```

@@ -23,7 +23,9 @@ O103.H461  O103.H462
     or 
     just by removing the problematic characters...
     ``` awk
-    awk '{gsub(","," ",$0); gsub("\\["," ",$0); gsub("\\]"," ",$0); printf("O%03d.H%03d  O%03d.H%03d\n",$2,$3,$2,$4)}' data 
+    awk '{gsub(","," ",$0); gsub("\\["," ",$0); gsub("\\]"," ",$0); printf("O%03d.H%03d  O%03d.H%03d\n",$2,$3,$2,$4)}' data
+    # or with single gsub command
+    awk '{gsub(",\\|\\]\\|\\["," ",$0); printf("O%03d.H%03d  O%03d.H%03d\n",$2,$3,$2,$4)}' data
     ``` 
     
     Credits to Jonas Söderberg for the solution bellow:
