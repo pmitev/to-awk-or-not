@@ -12,7 +12,7 @@ We want to output the total number of values (count) and the mean, median, std, 
 ## Input
 The complete file in bigwig format is 5.5GB in size.
 
-- **Do not download** file the file `hg38.phastCons100way.bw` from
+- **Do not download** the file `hg38.phastCons100way.bw` from
 http://hgdownload.soe.ucsc.edu/goldenPath/hg38/phastCons100way/
 - The bigwig format can be converted to wig format using bigWigToWig
            https://www.encodeproject.org/software/bigwigtowig/

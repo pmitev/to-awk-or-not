@@ -88,7 +88,7 @@ BEGIN{
     ci= ARGV[i]+0 # color index
     m= ARGV[i]    # match string
     sub(ci,"",m)  # remove color index
-    gsub(m, c[ci]"&"cn)  # inser color codes
+    gsub(m, c[ci]"&"cn)  # insert color codes
   }
   print $0
 }
