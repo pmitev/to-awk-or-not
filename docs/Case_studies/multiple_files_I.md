@@ -35,13 +35,12 @@ Below, it is just one possible way to do it. First we need to have a list of all
     ``` awk
     #!/usr/bin/awk -f
 
-    {
-      names[$1]= 1;
+    { 
       data[$1][ARGIND]= $2
     }
     
     END {
-      for (i in names) print i"\t\t"data[i][1]"\t\t"data[i][2]
+      for (i in data) print i"\t"data[i][1]"\t"data[i][2]
     }
     ```
 
@@ -138,12 +137,11 @@ Leave the extra blanks for the first attempt. We will use this problem (cleaning
     BEGIN{ FS="|" }
     
     {
-      id[$1]= 1;
       data[$1][FILENAME]= $2
     }
     
     END {
-      for (i in id) print trim(i)"|"trim(data[i]["scientific"])"|"trim(data[i]["genbank"])
+      for (i in data) print trim(i)"|"trim(data[i]["scientific"])"|"trim(data[i]["genbank"])
     }
     
     function trim (x) {
@@ -153,7 +151,7 @@ Leave the extra blanks for the first attempt. We will use this problem (cleaning
     }
     ```
 
-??? "Solution usung join uggested by Amrei Binzer-Panchal, 2021.01.18" 
+??? "Solution usung join suggested by Amrei Binzer-Panchal, 2021.01.18" 
     ``` bash
     $ join -a1 -a2  -j 1 -o 0,1.2,2.2 -e "NULL" -t "|"  <(sort scientific)  <(sort genbank)
 

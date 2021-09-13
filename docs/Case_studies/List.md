@@ -35,7 +35,7 @@ Here is a collection of mine and contributed awk scripts.
 * **[Gaussian smearing](Gaussian_smearing.md)**  
   _trivial task done with awk - example how to use functions_
 * **[Linear interpolation](Linear_interpolation.md)**  
-  _use linear interpolation to resample your date on different grid_
+  _use linear interpolation to resample your data on different grid_
 
 ## Physics oriented
 * **[Dipole moment example](Dipole_moment.md)**  

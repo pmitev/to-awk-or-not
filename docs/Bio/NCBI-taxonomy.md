@@ -137,7 +137,7 @@ Might not be the best solution but it is easy to read and modify, for now. Note,
 $ ./01.tabulate-names.awk names.dmp | sort -g -k 1 > names.tab
 
 # Or with bzip2 compression "on the fly"
-$ ./01.tabulate-names.awk <(bzcat names.dmp.bz2) | bzip2 -c > names.tab.bz2
+$ ./01.tabulate-names.awk <(bzcat names.dmp.bz2) | sort -g -k 1 | bzip2 -c  > names.tab.bz2
 ```
 
 ??? note "01.tabulate-names.awk"
@@ -150,9 +150,9 @@ $ ./01.tabulate-names.awk <(bzcat names.dmp.bz2) | bzip2 -c > names.tab.bz2
     
     $4 ~ "scientific name"     { sciname[$1*1]=  unds(Clean($2)); next}
     
-    $4 ~ "common name"         { com_name[$1*1]= Cap(Clean($2));  next}
-    
+    # Order is important, since the second case will match lines that match the first case. 
     $4 ~ "genbank common name" { genbank[$1*1]=  unds(Clean($2)); next}
+    $4 ~ "common name"         { com_name[$1*1]= Cap(Clean($2));  next}
     
     END{
       for(i in sciname) print i"|"sciname[i]"|"com_name[i]"|"genbank[i]
@@ -171,8 +171,12 @@ $ ./01.tabulate-names.awk <(bzcat names.dmp.bz2) | bzip2 -c > names.tab.bz2
     function Cap (string) { return toupper(substr(string,0,1))substr(string,2) }
     ```
 
-Note that this script will keep the last information for the corresponding match for each ID. To prevent this we need to take care that any subsequent match is ignored
+Note that this script will keep the last values for any match of the same ID. It appers that the database have repeated lines that does not contain complete information and the tabulated data get destroyed. To prevent this, we need to take care that any subsequent match will be ignored.
 
+
+``` bash
+$ ./01.tabulate-names-first.awk names.dmp | sort -g -k 1 > names-first.tab
+```
 
 ??? note "01.tabulate-names-first.awk"
     ``` awk
@@ -184,9 +188,10 @@ Note that this script will keep the last information for the corresponding match
     
     $4 ~ "scientific name"     { if (! sciname[$1*1] ) sciname[$1*1]=  unds(Clean($2)); next}
     
+    # Order is important, since the second case will match lines that match the first case. 
+    $4 ~ "genbank common name" { if (! genbank[$1*1] ) genbank[$1*1]=  unds(Clean($2)); next}
     $4 ~ "common name"         { if (! com_name[$1*1]) com_name[$1*1]= Cap(Clean($2));  next}
     
-    $4 ~ "genbank common name" { if (! genbank[$1*1] ) genbank[$1*1]=  unds(Clean($2)); next}
     
     END{
       for(i in sciname) print i"|"sciname[i]"|"com_name[i]"|"genbank[i]
@@ -228,16 +233,9 @@ Now we can use the tabulated data in `names.tab` and perform the replacement in 
 Again, this might not be the best way but it works. The suggested solutions could be easily merged into a single script. I would prefer to have them in steps, so I can make sure that the first step has completed successfully (*it takes some time*) before I continue. Also I can filter the unnecessary data in the newly tabulated file and use only relevant data or alter further if I need. 
 
 ``` bash
-$ ./02.substitute.awk  names.tab  hg38.100way.scientificNames.nh > NEW.g38.100way.scientificNames.nh
-
-# Or with bzip2 compression "on the fly"
-$ ./02.substitute.awk <(bzcat names.tab.bz2) hg38.100way.scientificNames.nh > NEW.g38.100way.scientificNames.nh
+$ ./02.substitute.awk  names-first.tab  hg38.100way.scientificNames.nh > NEW.g38.100way.scientificNames.nh
 ```
 
-
-``` bash
-$ ./02.substitute.awk names.tab hg38.100way.scientificNames.nh
-```
 ??? note "02.substitute.awk"
     ``` awk linenums="1"
     #!/usr/bin/awk -f
