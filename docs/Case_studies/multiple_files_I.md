@@ -47,7 +47,7 @@ Below, it is just one possible way to do it. First we need to have a list of all
 Run the script like this:
 
 ``` bash
-./script.awk 1.dat 2.dat`
+./script.awk 1.dat 2.dat
 ```
 
 The script runs over the two files in a row and on each line it uses associative arrays to collect the names from the first column in `#!awk names[$1]`.
