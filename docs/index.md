@@ -1,6 +1,6 @@
 <div style="text-align: right"> <font color="red"><strong>
 Next scheduled workshop</br> 
-10 and 13 September 2021, via Zoom</strong></font></br>
+17(+18) January 2022, via Zoom</strong></font></br>
 <a href="https://hackmd.io/@pmitev/Awk-workshop" target="_blank" rel="nofollow">course information</a>
 </div>
 
