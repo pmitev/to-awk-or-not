@@ -50,7 +50,7 @@ Run the script like this:
 ./script.awk 1.dat 2.dat
 ```
 
-The script runs over the two files in a row and on each line it uses associative arrays to collect the names from the first column in `#!awk names[$1]`.
+The script runs over the two files in a row and on each line it uses associative arrays to collect the names from the first column in `#!awk data[$1][ARGIND]`.
 `#!awk data[$1][ARGIND]` is two dimensional array with indexes [name][ number of current file/argument]. At the end we will have elements like this:
 
 ``` awk
@@ -94,8 +94,7 @@ Sven 56 Sunday
 
 Copy/paste the text in to two files with the suggested names
 
-`scientific`
-```
+``` title="scientific"
 2       |       Bacteria        |       Bacteria <bacteria>     |       scientific name |
 29      |       Myxococcales    |               |       scientific name |
 139     |       Borreliella burgdorferi |               |       scientific name |
@@ -105,8 +104,8 @@ Copy/paste the text in to two files with the suggested names
 638     |       Arsenophonus nasoniae   |               |       scientific name |
 ```
 
-`genbank`
-```
+
+``` title="genbank"
 2       |       eubacteria      |               |       genbank common name     |
 29      |       fruiting gliding bacteria       |               |       genbank common name     |
 139     |       Lyme disease spirochete |               |       genbank common name     |

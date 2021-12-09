@@ -63,8 +63,9 @@ theme:
         name: Switch to light mode  
   name: material
   custom_dir: overrides
-#  features:
-#    - search.highlight
+  features:
+    - search.highlight
+    - content.code.annotate
 #plugins:
 #  - search:
 markdown_extensions:
