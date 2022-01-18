@@ -165,7 +165,7 @@ Count and sort the SNPs (not INDELs) in your output and compare to the output fr
     Make an index of all genes/CDSs (from your gff), where start and stop are paired
 
 ??? "_Hint_"
-    For each feature from your step 2 file, check the position agains the index and print whether or not the variant is inside a gene.
+    For each feature from your step 2 file, check the position against the index and print whether or not the variant is inside a gene.
 
 ??? "_Solution_"
     `awk 'FNR==NR{ingene[$1,$4]=$5; next}{state="Not in gene";for (pair in ingene) {split(pair, t, SUBSEP); if ($1==t[1] && $2>=t[2] && $2<=ingene[t[1],t[2]]) {state=(t[1] " " t[2] " " ingene[t[1],t[2]])}} print $0, " ", state }' Drosophila_melanogaster.chr4_genesCDSs.gff3 indels_Drosophila_chr4 > SNPsInGenes_Drosophila_ch4`
