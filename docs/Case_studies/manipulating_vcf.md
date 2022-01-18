@@ -20,7 +20,7 @@ Finally, [here](http://dgrp2.gnets.ncsu.edu/data.html "dgrp2.vcf") is the VCF fi
 Let's say we want to find out all genes that contains a variant and all variants that are located within a gene. What do we want to do first? Take a look at the vcf file. That is the one that contains all the variants. Then look at the gff file, which contains the genes and other annotations. Finally, take a look at the DNA sequence. You will need to combine all three to answer the question. Also, to make this faster, lets just look at **chromosome 4**, which means we have to extract that data as well.
 
 ### What do we need to get
-* Fles containing only chromosome 4
+* Files containing only chromosome 4
 * Positions for SNPs and INDELs
 * Positions for genes and CDSs
 * Separation of variants (SNPs and INDELs) into two groups, inside and outside genes (and CDSs)
@@ -49,7 +49,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
     All lines from chromosome 4 start with a *4*
 
 ??? "_Solution_"
-    `awk '/^4/{print $0}' Drosophila_melanogaster.BDGP6.28.101.chr.gff3 > Drosophila_melanogaster.chr4.gff3`
+    `awk '/^4/{print $0}' Drosophila_melanogaster.BDGP6.28.101.gff3 > Drosophila_melanogaster.chr4.gff3`
    
     `awk '/^4/{print $0}' dgrp2_trimmed.vcf > dgrp2_chr4.vcf`
 
