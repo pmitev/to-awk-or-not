@@ -23,33 +23,28 @@ Have a look at the [script](./Case_studies/awk_gnuplot.md) that I wrote some 100
 Something that awk is really good at is handling of multiple files, as bash does, but combined with all the tools that comes with the language. Look at this Case study [Multiple files - first approach](./Case_studies/multiple_files_I.md) to get an idea why awk could be a better choice in such situation.
 
 ## Awk inside bash script
-Perhaps, a better idea is to add transparently an awk code into your bash script. Here is a simple example that illustrates three different ways to do it.
+Perhaps, a better idea is to add transparently an awk code into your bash script. Here are simple examples that illustrates two different ways to do it.
 
 ``` bash
 #!/bin/bash
-
-echo "==================================="
-
-awk -f - <<-EOF /etc/issue
-  BEGIN {print "Hi"}
-  {print}
-EOF
-
-echo "==================================="
-
-
-sh <<-EOF
-  awk '
-    BEGIN {print "Hi 2"}
-    {print}
-  ' /etc/issue
-EOF
-
-echo "==================================="
 
 awk '
   BEGIN {print "Hi 3"}
   {print}
 ' /etc/issue
+
+echo "==================================="
+```
+Note that with the `<< EOF ... EOF` implementation needs the `$` sign needs to be escaped, otherwise bash will replace it with the content of the shell variable it refers to. This allows you to mix bash and awk in somewhat dengerous way...
+
+``` bash
+#!/bin/bash
+
+awk -f - << EOF /etc/os-release
+  BEGIN {print "Hi"}
+  {print \$0}
+EOF
+
+echo "==================================="
 ```
 
