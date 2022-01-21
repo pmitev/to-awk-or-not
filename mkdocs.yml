@@ -20,6 +20,7 @@ nav:
     - Advanced data analysis ****: Exercises/Advanced_data_analysis.md
     - Carpool ***: Exercises/Carpool.md
     - Difficult to extract data ****: Exercises/Difficult_data.md
+    - Mail merge ****: Exercises/mail-merge.md
     - Scrubbing a web page **: Exercises/Scrubbing.md
     - String manipulation **: Exercises/String_manipulation.md
     - Awk and json **: Exercises/awk-json.md  
