@@ -65,8 +65,8 @@ if __name__ == "__main__":
 A large amount of the code deals with declarations of functions, reading and finding the data.
 
 Here is how this problem could be solved with awk:
-```awk
-#!/bin/awk -f
+```awk title="extract-freq.awk"
+#!/usr/bin/awk -f
 
 /Frequencies/ { for (i=3;i<=NF; i++) { im++; freq[im ]=$i } }
 /Frc consts/  { for (i=NF;i>=4; i--)     fc[im-(NF-i)]=$i   }
@@ -76,5 +76,16 @@ END { for (i=1;i<=im;i++) print freq[i],fc[i],ir[i] }
 ```
 Somehow, I think this is much more readable and easier to modify...
 
+??? "python challenge"
+    If you think that this could be done **significaanly** easier in `python` than the python solution above, here is a [link to a smaller](data/H2O.log) file on which you can try your code. I will be glad to share the solution on this page.
+    ```
+    ./extract-freq.awk H2O.log
 
+    1600.7808 1.6363 87.1321
+    3806.5315 8.9139 5.0653
+    3928.9605 9.8505 53.6136
+    1600.7808 1.6363 87.1321
+    3806.5315 8.9139 5.0653
+    3928.9605 9.8505 53.6136
+    ```
 
