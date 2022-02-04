@@ -76,9 +76,9 @@ Here is the strategy I would like to propose.
     #!/usr/bin/awk -f
     BEGIN {
       FS=","
-      if (ARGC <=3 ) exit # not enaugh arguments provided
+      if (ARGC <=3 ) exit # exit if not enough arguments provided
       #print ARGC,ARGV[3] # for debugging purposes
-      argc= ARGC;  ARGC=3 # Do not read after the second file
+      argc= ARGC;  ARGC=3 # do not read after the second file
     }
     
     NR==1 {

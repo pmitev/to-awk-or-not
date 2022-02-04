@@ -4,7 +4,7 @@ To begin with, awk is not strong at dealing with json or csv. Having said that, 
 
 Here is a small piece from the stream of json formatted data coming from different sensors.
 
-!!! note "rtl_433a.log"
+!!! note "rtl_433a.json"
     ``` json
     {"time" : "2020-12-19 08:50:39", "model" : "Fineoffset-TelldusProove", "id" : 183, "temperature_C" : 21.800, "humidity" : 45, "mic" : "CRC"}
     {"time" : "2020-12-19 08:50:40", "model" : "Fineoffset-WH5", "id" : 200, "temperature_C" : -31.900, "humidity" : 74, "mic" : "CRC"}
@@ -88,7 +88,7 @@ We are interested only from the temperature values for `Fineoffset-TelldusProove
 
 ??? "Possible solution"
     ``` bash
-    awk '/"Fineoffset-TelldusProove", "id" : 183/ {gsub(",|\"",""); print $3"T"$4,$13}' rtl_433a.log
+    awk '/"Fineoffset-TelldusProove", "id" : 183/ {gsub(",|\"",""); print $3"T"$4,$13}' rtl_433a.json
     ```
 
 ## Task 2 
@@ -117,9 +117,9 @@ We want to filter the stream and print the original line for sensors with value 
 
 ??? "Possible solution"
     ``` bash
-    awk -F '"battery" :' '/battery/{if ($2+0<=50) print $0 }' rtl_433a.log
+    awk -F '"battery" :' '/battery/{if ($2+0<=50) print $0 }' rtl_433a.json
 
     # Same result using proper tool (something like advanced grep or basic awk for json)
     # https://stedolan.github.io/jq/
-    jq -r -c  'select(.battery > 0 and .battery <= 20)' rtl_433a.log
+    jq -r -c  'select(.battery > 0 and .battery <= 20)' rtl_433a.json
     ```
