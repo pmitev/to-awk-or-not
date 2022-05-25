@@ -1,7 +1,7 @@
 # About
 ## A few lines about me:
 ---
-My name is Pavlin Mitev and I work as a researcher at the Department of Chemistry, Uppsala University within the area of computational Chemistry. I use commercial and open source software in my work, on a daily basis. Quite often I need to program, but a large number of the problems I need to solve include preparation of inputs (_in some cases 1100 different inputs_), collection of results from different programs, analysis or modification of the data before further use etc..
+My name is Pavlin Mitev and I work as an Application Expert (Software Engineer) at Uppsala Multidisciplinary Center for Advanced Computational Science ([UPPMAX](https://www.uppmax.uu.se)), [Uppsala University](https://www.uu.se). I use commercial and open source software in my work, on a daily basis. Quite often I need to program, but a large number of the problems I need to solve include preparation of inputs (_in some cases 1100 different inputs_), collection of results from different programs, analysis or modification of the data before further use etc..
 
 Most of the time my data is buried in text readable outputs containing many different parameters, which makes the direct access to the numbers a bit problematic. All programs, more or less, use different formats for their inputs and in some cases there are available suites that are very helpful for this transitions. Unfortunately, quite often they just can't do what you want or it is not yet implemented, or ...
 
@@ -10,7 +10,7 @@ Here is how I found myself using awk. Initially, as a middle-ware between progra
 
 The purpose of the page is to illustrate some particularly strong sides of the language for text parsing, simple data collection, analysis, and much more. It is inspired by multiple simple solutions, often applied in mine and my colleagues' research work.
 
-This side also serves as an auxiliary material to an awk course/seminar given by [UPPMAX](https://uppmax.uu.se/), Uppsala University.
+This site also serves as an auxiliary material to an awk course/seminar given by [UPPMAX](https://uppmax.uu.se/), Uppsala University.
 
 <div style="text-align: right">pavlin.mitev @ uppmax.uu.se</div>
 

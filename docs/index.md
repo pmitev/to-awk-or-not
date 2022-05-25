@@ -1,7 +1,7 @@
 <div style="text-align: right"> <font color="red"><strong>
 Next scheduled workshop</br> 
-17(+18) January 2022, via Zoom</strong></font></br>
-<a href="https://hackmd.io/@pmitev/Awk-workshop" target="_blank" rel="nofollow">course information</a>
+29-30 August 2022, hybrid: Zoom + on campus</strong></font></br>
+<a href="https://uppmax.uu.se/support-sv/courses-and-workshops/awk-workshop" target="_blank" rel="nofollow">course information</a>
 </div>
 
 # Why awk?
