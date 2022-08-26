@@ -229,21 +229,21 @@ Count and sort the SNPs (not INDELs) in your output and compare to the output fr
     `awk -f varlist.awk Drosophila_melanogaster.chr4_genesCDSs.gff3 indels_Drosophila_chr4 > SNPsInGenes_Drosophila_ch4`
     
     ??? "_varlist.awk_"
-    ```
-    {
-        if (FNR==NR){
-            ingene[$1,$4]=$5; 
-            next
-        }
-        state="Not in gene";
-        for (pair in ingene) {
-            split(pair, t, SUBSEP); 
-            if ($1==t[1] && $2>=t[2] && $2<=ingene[t[1],t[2]]) {
-                state=(t[1] " " t[2] " " ingene[t[1],t[2]])}} print $0, " ", state 
+        ```
+        {
+            if (FNR==NR){
+                ingene[$1,$4]=$5; 
+                next
+            }
+            state="Not in gene";
+            for (pair in ingene) {
+                split(pair, t, SUBSEP); 
+                if ($1==t[1] && $2>=t[2] && $2<=ingene[t[1],t[2]]) {
+                    state=(t[1] " " t[2] " " ingene[t[1],t[2]])}} print $0, " ", state 
+                }
             }
         }
-    }
-    ```
+        ```
 
 ### Final result
 Here we can see all SNPs and INDELs which are inside a relevant region. We have successfully made two gff:s containing all gene positions for genes with variants and genes without. Along the way we also got a list of all genes that contain variants too.
