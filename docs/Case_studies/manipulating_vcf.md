@@ -94,27 +94,27 @@ Count and sort the different genomic features in chromosome 4 by number.
     <br>
     `cat dgrp2_chr4.vcf | grep -v "#" | awk -f indels.awk`
     
-??? "_indels.awk_"
-    ```
-    {
-        if (length($4)>1||length($5)>1){
-            a="INDEL";
-            b=length($4)-length($5);
-            cnt[b]+=1;
+    ??? "_indels.awk_"
+        ```
+        {
+            if (length($4)>1||length($5)>1){
+                a="INDEL";
+                b=length($4)-length($5);
+                cnt[b]+=1;
+            }
+            else{
+                a="SNP";
+                b="-";
+            }
+        printf("%s\t%s\t%s\t%s\t%s\t%s\n", $1, $2, a, b, $4, $5) > "indels_Drosophila_chr4";
         }
-        else{
-            a="SNP";
-            b="-";
-        }
-    printf("%s\t%s\t%s\t%s\t%s\t%s\n", $1, $2, a, b, $4, $5) > "indels_Drosophila_chr4";
-    }
 
-    END{
-        for (x in cnt){
-            print x,cnt[x] > "distr_Drosophila_chr4"
+        END{
+            for (x in cnt){
+                print x,cnt[x] > "distr_Drosophila_chr4"
+            }
         }
-    }
-    ```
+        ```
 
 
 #### *Follow-up task:* 
@@ -154,27 +154,27 @@ Print nucleotide substitution that these SNPs introduce sorted by number. Rememb
     <br>
     `awk -f genes_var.awk indels_Drosophila_chr4 Drosophila_melanogaster.chr4.gff3`
     
-??? "_genes_var.awk_"
-    ```
-    {
-        if (FNR==NR){
-           a[$1,$2]="T";
-            next
-        } 
-        hits=0; 
-        for(N=$4; N<=$5; N++) {
-            if (a[$1,N] == "T") {
-                hits+=1
+    ??? "_genes_var.awk_"
+        ```
+        {
+            if (FNR==NR){
+                a[$1,$2]="T";
+                next
+            } 
+            hits=0; 
+            for(N=$4; N<=$5; N++) {
+                if (a[$1,N] == "T") {
+                    hits+=1
+                }
+            } 
+            if (hits>0) {
+                print hits "\t" $0 > "haveSNPINDEL_Drosophila_chr4.gff"
+            } 
+            else {
+                print $0 > "noSNPINDEL_Drosophila_chr4.gff"
             }
-        } 
-        if (hits>0) {
-            print hits "\t" $0 > "haveSNPINDEL_Drosophila_chr4.gff"
-        } 
-        else {
-            print $0 > "noSNPINDEL_Drosophila_chr4.gff"
         }
-    }
-    ```
+        ```
 
     
 
@@ -239,9 +239,10 @@ Count and sort the SNPs (not INDELs) in your output and compare to the output fr
             for (pair in ingene) {
                 split(pair, t, SUBSEP); 
                 if ($1==t[1] && $2>=t[2] && $2<=ingene[t[1],t[2]]) {
-                    state=(t[1] " " t[2] " " ingene[t[1],t[2]])}} print $0, " ", state 
+                    state=(t[1] " " t[2] " " ingene[t[1],t[2]])
                 }
-            }
+            } 
+            print $0, " ", state 
         }
         ```
 
