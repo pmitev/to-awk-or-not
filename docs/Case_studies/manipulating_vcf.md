@@ -253,6 +253,36 @@ Re-do the files but this time include the gene ID (i.e. FBtr0089178 from column 
 
 ??? "__Solution__"  
     `awk 'FNR==1{++fileidx} fileidx==1{split($9,a,";|:");ingene[$1,$4,$5]=a[2]} fileidx==2{FS="\t";name[$3]=$5} fileidx==3{state="Not in gene";for (trip in ingene) {split(trip, t, SUBSEP); if ($1==t[1] && $2>=t[2] && $2<=t[3]) {state=(t[1] "\t" t[2] "\t" t[3] "\t" name[ingene[t[1],t[2],t[3]]])}} print $0, "\t", state }' Drosophila_melanogaster.chr4_genesCDSs.gff3 fbgn_fbtr_fbpp_expanded_fb_2020_06.tsv indels_Drosophila_chr4 > SNPsInNamedGenes_Drosophila_ch4`
+    <br>
+    or
+    <br>
+    `awk -f in_named.awk Drosophila_melanogaster.chr4_genesCDSs.gff3 fbgn_fbtr_fbpp_expanded_fb_2020_06.tsv indels_Drosophila_chr4 > SNPsInNamedGenes_Drosophila_ch4`
+    ??? "__in_named.awk__"
+        ```
+        {
+            if (FNR==1){
+                ++fileidx
+            } 
+            if (fileidx==1){
+                split($9,a,";|:");
+                ingene[$1,$4,$5]=a[2]
+            } 
+            if (fileidx==2){
+                FS="\t";
+                name[$3]=$5
+            } 
+            if (fileidx==3){
+                state="Not in gene";
+                for (trip in ingene) {
+                    split(trip, t, SUBSEP); 
+                    if ($1==t[1] && $2>=t[2] && $2<=t[3]) {
+                        state=(t[1] "\t" t[2] "\t" t[3] "\t" name[ingene[t[1],t[2],t[3]]])
+                    }
+                } 
+                print $0, "\t", state 
+            }
+        }
+        ```
 
     Look at the distribution of genes:
 
