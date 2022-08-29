@@ -92,10 +92,11 @@ Count and sort the different genomic features in chromosome 4 by number.
     <br>
     or
     <br>
-    `cat dgrp2_chr4.vcf | grep -v "#" | awk -f indels.awk`
+    `cat dgrp2_chr4.vcf | grep -v "#" | ./indels.awk`
     
     ??? "_indels.awk_"
         ```
+        #!/usr/bin/awk -f
         {
             if (length($4)>1||length($5)>1){
                 a="INDEL";
@@ -152,10 +153,11 @@ Print nucleotide substitution that these SNPs introduce sorted by number. Rememb
     <br>
     or
     <br>
-    `awk -f genes_var.awk indels_Drosophila_chr4 Drosophila_melanogaster.chr4.gff3`
+    `./genes_var.awk indels_Drosophila_chr4 Drosophila_melanogaster.chr4.gff3`
     
     ??? "_genes_var.awk_"
         ```
+        #!/usr/bin/awk -f
         {
             if (FNR==NR){
                 a[$1,$2]="T";
@@ -226,10 +228,11 @@ Count and sort the SNPs (not INDELs) in your output and compare to the output fr
     <br>
     or
     <br>
-    `awk -f varlist.awk Drosophila_melanogaster.chr4_genesCDSs.gff3 indels_Drosophila_chr4 > SNPsInGenes_Drosophila_ch4`
+    `./varlist.awk Drosophila_melanogaster.chr4_genesCDSs.gff3 indels_Drosophila_chr4 > SNPsInGenes_Drosophila_ch4`
     
     ??? "_varlist.awk_"
         ```
+        #!/usr/bin/awk -f
         {
             if (FNR==NR){
                 ingene[$1,$4]=$5; 
@@ -257,9 +260,10 @@ Re-do the files but this time include the gene ID (i.e. FBtr0089178 from column 
     <br>
     or
     <br>
-    `awk -f in_named.awk Drosophila_melanogaster.chr4_genesCDSs.gff3 fbgn_fbtr_fbpp_expanded_fb_2020_06.tsv indels_Drosophila_chr4 > SNPsInNamedGenes_Drosophila_ch4`
+    `./in_named.awk Drosophila_melanogaster.chr4_genesCDSs.gff3 fbgn_fbtr_fbpp_expanded_fb_2020_06.tsv indels_Drosophila_chr4 > SNPsInNamedGenes_Drosophila_ch4`
     ??? "__in_named.awk__"
         ```
+        #!/usr/bin/awk -f
         {
             if (FNR==1){
                 ++fileidx
