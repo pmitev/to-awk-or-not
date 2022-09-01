@@ -117,6 +117,8 @@ Count and sort the different genomic features in chromosome 4 by number.
         }
         ```
 
+    ??? "_Solution_ proposed by Loïs Rancilhac - 2022.08.30"
+        `awk '/_SNP/ {SNP++; print $0 > "chr4_SNPs.vcf"} /_DEL/ {DEL++; print $0 > "chr4_DEL.vcf"; LENGTH=length($4)-length($5); print LENGTH > "Deletions_lengths.txt"} /_INS/ {INS++; print $0 > "chr4_INS.vcf"; LENGTH=length($5)-length($4); print LENGTH > "Insertions_lengths.txt"} END{print "SNPs: "SNP"\nInsertions: "INS"\nDeletions: "DEL}' chr4.vcf`
 
 #### *Follow-up task:* 
 Print nucleotide substitution that these SNPs introduce sorted by number. Remember the coins...
