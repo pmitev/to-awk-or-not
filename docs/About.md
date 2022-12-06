@@ -12,7 +12,10 @@ The purpose of the page is to illustrate some particularly strong sides of the l
 
 This site also serves as an auxiliary material to an awk course/seminar given by [UPPMAX](https://uppmax.uu.se/), Uppsala University.
 
+Seminars are organized on a demand-base and currently follows the schedule for the "Introductory Linux course" at UPPMAX. Please, visit the [UPPMAX course/seminar page](http://www.uppmax.uu.se/support/courses-and-workshops/) for detailed information - venue, schedule, registration etc.
+
 <div style="text-align: right">pavlin.mitev @ uppmax.uu.se</div>
 
-Seminars are organized on a demand-base and currently follows the schedule for the "Introductory Linux course" at UPPMAX. Please, visit the [UPPMAX course/seminar page](http://www.uppmax.uu.se/support/courses-and-workshops/) for detailed information - venue, schedule, registration etc.
+!!! quote "Acknowledgment"
+    This page is supported by [UPPMAX](https://uppmax.uu.se/) and [SNIC](https://www.snic.se/) (2012-2022)
 ![UPPMAX](images/uppmax.jpg){ align=right }
