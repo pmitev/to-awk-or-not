@@ -1,6 +1,6 @@
 <div style="text-align: right"> <font color="red"><strong>
 Next scheduled workshop</br> 
-16-17 January, on campus, BMC, Navet, Uppsala</strong></font></br>
+16-17 January, on campus, Angstrom Laboratory, Uppsala</strong></font></br>
 <a href="https://uppmax.uu.se/support-sv/courses-and-workshops/awk-workshop" target="_blank" rel="nofollow">course information</a>
 </div>
 
