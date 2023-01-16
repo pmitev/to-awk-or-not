@@ -8,10 +8,10 @@ We have a comparison between a number of different fly cell lines. These are fou
 ## Getting the RAW files
 
 ### The annotation of the fly genome:
-Find the GFF3 [here](https://ftp.ensembl.org/pub/release-101/gff3/drosophila_melanogaster/Drosophila_melanogaster.BDGP6.28.101.chr.gff3 "Drosophila_melanogaster.BDGP6.28.101.chr.gff3").
+Find the GFF3 [here](https://ftp.ensembl.org/pub/release-101/gff3/drosophila_melanogaster/Drosophila_melanogaster.BDGP6.28.101.chr.gff3.gz "Drosophila_melanogaster.BDGP6.28.101.chr.gff3").
 
 ### The genome sequence used in this project:
-The genome is located [here](https://ftp.ensemblgenomes.org/pub/metazoa/release-48/fasta/drosophila_melanogaster/dna/Drosophila_melanogaster.BDGP6.28.dna.toplevel.fa "Drosophila_melanogaster.BDGP6.28.dna.toplevel.fa").
+The genome is located [here](https://ftp.ensemblgenomes.org/pub/metazoa/release-48/fasta/drosophila_melanogaster/dna/Drosophila_melanogaster.BDGP6.28.dna.toplevel.fa.gz "Drosophila_melanogaster.BDGP6.28.dna.toplevel.fa").
 
 ### The comparison of all the variants in the cell lines in the freeze project
 Finally, [here](http://dgrp2.gnets.ncsu.edu/data.html "dgrp2.vcf") is the VCF file.
