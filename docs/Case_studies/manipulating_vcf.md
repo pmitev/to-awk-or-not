@@ -160,20 +160,21 @@ Print nucleotide substitution that these SNPs introduce sorted by number. Rememb
     ??? "_genes_var.awk_"
         ```
         #!/usr/bin/awk -f
+
+        FNR==NR{
+            a[$1,$2]="T";
+            next
+        }
         {
-            if (FNR==NR){
-                a[$1,$2]="T";
-                next
-            } 
-            hits=0; 
+            hits=0;
             for(N=$4; N<=$5; N++) {
                 if (a[$1,N] == "T") {
-                    hits+=1
+                 hits+=1
                 }
-            } 
+            }
             if (hits>0) {
                 print hits "\t" $0 > "haveSNPINDEL_Drosophila_chr4.gff"
-            } 
+            }
             else {
                 print $0 > "noSNPINDEL_Drosophila_chr4.gff"
             }
