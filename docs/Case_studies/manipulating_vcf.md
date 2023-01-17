@@ -184,7 +184,7 @@ Print nucleotide substitution that these SNPs introduce sorted by number. Rememb
     
 
 #### *Follow-up task:* 
-Count and sort the SNPs (not INDELs) in your output and compare to the output from the first step.
+Count and sort the SNPs and INDELs in your output and compare to the output from the first step. (If you want to separate the results for the SNPs and the INDELs, how would you modify your code?)
 
 ??? "_Task result example_"
     ```
