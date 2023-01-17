@@ -268,7 +268,7 @@ Re-do the files but this time include the gene ID (i.e. FBtr0089178 from column 
     ??? "__in_named.awk__"
         ```
         #!/usr/bin/awk -f
-        FNR==1){
+        FNR==1{
             ++fileidx
         }
         {
