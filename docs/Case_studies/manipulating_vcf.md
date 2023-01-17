@@ -236,11 +236,12 @@ Count and sort the SNPs and INDELs in your output and compare to the output from
     ??? "_varlist.awk_"
         ```
         #!/usr/bin/awk -f
+        
+        FNR==NR{
+            ingene[$1,$4]=$5; 
+            next
+        }
         {
-            if (FNR==NR){
-                ingene[$1,$4]=$5; 
-                next
-            }
             state="Not in gene";
             for (pair in ingene) {
                 split(pair, t, SUBSEP); 
