@@ -268,10 +268,10 @@ Re-do the files but this time include the gene ID (i.e. FBtr0089178 from column 
     ??? "__in_named.awk__"
         ```
         #!/usr/bin/awk -f
+        FNR==1){
+            ++fileidx
+        }
         {
-            if (FNR==1){
-                ++fileidx
-            } 
             if (fileidx==1){
                 split($9,a,";|:");
                 ingene[$1,$4,$5]=a[2]
