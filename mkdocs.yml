@@ -67,6 +67,7 @@ theme:
   features:
     - search.highlight
     - content.code.annotate
+    - content.code.copy  
 #plugins:
 #  - search:
 markdown_extensions:
