@@ -108,3 +108,17 @@ Somehow, I think this is much more readable and easier to modify...
     3858.7550 9.3463 39.0654
     3858.9545 9.3474 21.1611
     ```
+    
+    - 2023.03.23 - Solution by [ryan-duve](https://github.com/pmitev/to-awk-or-not/issues/3#issue-1637700669)
+    ```python
+    data = {"Frequencies":[], "Frc consts":[], "IR Inten":[]}
+
+    with open("H2O.log") as f:
+        for line in f.readlines():
+            for label in data:
+                if label in line:
+                    data[label].extend(line.split()[-3:])
+
+    for line in zip(*data.values()):
+        print(" ".join(line))    
+    ```
