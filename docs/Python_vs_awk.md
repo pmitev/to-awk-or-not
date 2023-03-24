@@ -122,3 +122,18 @@ Somehow, I think this is much more readable and easier to modify...
     for line in zip(*data.values()):
         print(" ".join(line))    
     ```
+
+    - 2023.03.24 - Solution by Neil Fitzgerald
+    ```python
+    from sys import stdin
+
+    for line in stdin:
+        if 'Frequencies' in line:
+            mat = []
+            for i in range(3):
+                mat.append(line.split()[-3:])
+                line = next(stdin)
+                if i == 0: line = next(stdin)
+            for row in zip(*mat):
+                print('\t'.join(row))
+    ```
