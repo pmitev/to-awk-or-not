@@ -1,0 +1,62 @@
+# Check if the build works
+name: Check build
+
+on:
+  push:
+  pull_request:
+  schedule:
+  - cron: "0 0 1 * *"
+
+
+jobs:
+  check_build:
+
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '8'
+          check-latest: true
+
+      - run: ./clone_repo.sh
+
+      - run: ./build_nft.sh
+
+      # 'false' means an exit code 0
+      - run: ./has_build_failed.sh
+
+      - name: Clone needed repos
+        run: |
+          cd ..
+          git clone https://github.com/richelbilderbeek/launch_nft_locally_in_singularity_from_dockerfile
+          git clone https://github.com/richelbilderbeek/nextflow_troubleshooting
+          cd -
+
+      - name: Run NFT for a max time
+        run: timeout 10m ./run_nft.sh
+
+
+      #- uses: r-lib/actions/setup-r@v2
+
+      #- name: Install dependencies
+      #  run: |
+      #    install.packages(c("remotes", "rcmdcheck", "stringr", "testthat"))
+      #  shell: Rscript {0}
+
+      #- run: ./2_update_gradle.sh
+
+      #- run: ./3_update_gradle_build.sh
+
+      #- run: ./4_update_backend_dockerfile.sh
+
+      #- run: ./997_build.sh
+
+      #- run: sudo docker image ls
+
+      # - run: ./998_run.sh
