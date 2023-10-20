@@ -31,5 +31,5 @@ Seminars are organized on a demand-base and currently follows the schedule for t
     This page is supported by
 
     - [UPPMAX](https://uppmax.uu.se/) and [SNIC](https://www.snic.se/) (2012 - 2022)
-    - [UPPMAX](https://uppmax.uu.se/) and [NBIS](https://nbis.se/) (2023 - )
+    - [UPPMAX](https://uppmax.uu.se/) (2023 - )
 ![UPPMAX](images/uppmax.jpg){ align=right }
