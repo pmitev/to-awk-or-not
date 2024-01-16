@@ -212,7 +212,7 @@ Count and sort the SNPs and INDELs in your output and compare to the output from
     Only genes and CDSs are interesting to us. Make a gff without the rest of the features.
 
 ??? "_Solution_"
-    `awk '{if ($3=="gene" || $3=="CDS") print $0}' Drosophila_melanogaster.chr4.gff3 > Drosophila_melanogaster.chr4_genesCDSs.gff3`
+    `awk '$3 ~ /gene|CDS/' Drosophila_melanogaster.chr4.gff3 > Drosophila_melanogaster.chr4_genesCDSs.gff3`
     
 
 ### Final list of variants

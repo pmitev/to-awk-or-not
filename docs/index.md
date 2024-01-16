@@ -1,6 +1,6 @@
 <div style="text-align: right"> <font color="red"><strong>
 Next scheduled workshop</br> 
-25 and 28 August, 2023, on campus, EBC, Uppsala</strong></font></br>
+22 and 23 January, 2024, via Zoom</strong></font></br>
 <a href="https://uppmax.uu.se/support-sv/courses-and-workshops/awk-workshop" target="_blank" rel="nofollow">course information</a>
 </div>
 
