@@ -1,1 +1,15 @@
-Richel
+ARGC
+argc
+ARGV
+awk
+Awk
+ci
+Croicu
+dat
+FS
+github
+https
+io
+Mihai
+pmitev
+usr
