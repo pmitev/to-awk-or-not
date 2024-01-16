@@ -13,3 +13,17 @@ io
 Mihai
 pmitev
 usr
+csv
+displaystyle
+firstname
+frac
+gnuplot
+lastname
+opensource
+overline
+pc
+txt
+varepsilon
+wikipage
+xy
+
