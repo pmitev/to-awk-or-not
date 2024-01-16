@@ -24,7 +24,7 @@ Next scheduled workshop</br>
 * The purpose of this site is to give an overview of the capabilities of the awk language and **to underline** some particular **strengths or disadvantages
 **.
 * The page aims to promote this tool for use in every-days research work and urges you to find solutions yourself rather than expecting ready-made ones.
-* The material assumes that you are somewhat familiar with **grep**, **sed** and have some **basic** programing experience.
+* The material assumes that you are somewhat familiar with **grep**, **sed** and have some **basic** programming experience.
 
 ## What is awk?
 ---
