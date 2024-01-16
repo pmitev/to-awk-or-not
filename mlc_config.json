@@ -11,7 +11,7 @@
         "pattern": "^http://www.ark-genomics.org/events-online-training-eu-training-course/linux-and-bioinformatics$"
     },
     {
-        "pattern": "^https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.84.6412&rep=rep1&type=pdf$"
+        "pattern": "^https://citeseerx.ist.psu.edu/viewdoc/download"
     }
   ]
 }
