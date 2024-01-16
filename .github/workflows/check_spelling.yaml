@@ -1,3 +1,4 @@
+# Check that there is correct spelling in all files
 name: Check spelling
 
 on:
@@ -17,5 +18,11 @@ jobs:
 
       - name: Set up Git repository
         uses: actions/checkout@v2
+
+      - name: Remove folders that do not care about spelling
+        run: |
+          rm -rf development_design
+          rm -rf projects
+          rm -rf feedback
 
       - uses: igsekor/pyspelling-any@v0.0.2
