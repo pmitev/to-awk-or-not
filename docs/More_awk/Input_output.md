@@ -1,7 +1,7 @@
 # Input/Output to an external program from within awk
 
 ## Reading output from external program
-Awk has a way to read output from external programs. Here is an example where we will use onle the BEGIN block in order to simplify the discussion.
+Awk has a way to read output from external programs. Here is an example where we will use only the BEGIN block in order to simplify the discussion.
 
 !!! example "read_ext1.awk"
     ``` awk

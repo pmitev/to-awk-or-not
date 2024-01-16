@@ -16,7 +16,7 @@ O103.H461  O103.H462
 ![input](../images/pdata2.png)
 
 
-??? "Posible solutions:"
+??? "Possible solutions:"
     ``` awk
     awk -F '[][,]' '{printf("O%03d.H%03d  O%03d.H%03d\n",$2,$3,$2,$4)}' data
     ``` 

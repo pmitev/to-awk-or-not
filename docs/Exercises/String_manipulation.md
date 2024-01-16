@@ -25,7 +25,7 @@ Ali       -17.200
 Peter       6.000
 ```
 
-??? "Posible solution"
+??? "Possible solution"
     ``` awk
     $ awk '{printf("%-10s%7.3f\n",$1,$2) }' strfunc.dat
     ```
@@ -41,7 +41,7 @@ Ali      -17.200
 Peter     6.000
 ```
 
-??? "Posible solution"
+??? "Possible solution"
     ``` awk
     $ awk '{printf("%-7s  % .3f\n",$1,$2) }' strfunc.dat
     ```
@@ -57,7 +57,7 @@ Can you modify the script so you get this form which preserves the original data
   Peter  6
 ```
 
-??? "Posible solution"
+??? "Possible solution"
     ``` awk
     $ awk '{printf("%7s  %-7s\n",$1,$2) }' strfunc.dat
     ```
@@ -73,7 +73,7 @@ Ali-17.200
 Pet+6.000
 ```
 
-??? "Posible solution"
+??? "Possible solution"
     ``` awk
     $ awk '{printf("%.3s%+.3f\n",$1,$2) }' strfunc.dat
     ```

@@ -171,7 +171,7 @@ $ ./01.tabulate-names.awk <(bzcat names.dmp.bz2) | sort -g -k 1 | bzip2 -c  > na
     function Cap (string) { return toupper(substr(string,0,1))substr(string,2) }
     ```
 
-Note that this script will keep the last values for any match of the same ID. It appers that the database have repeated lines that does not contain complete information and the tabulated data get destroyed. To prevent this, we need to take care that any subsequent match will be ignored.
+Note that this script will keep the last values for any match of the same ID. It appears that the database have repeated lines that does not contain complete information and the tabulated data get destroyed. To prevent this, we need to take care that any subsequent match will be ignored.
 
 
 ``` bash
