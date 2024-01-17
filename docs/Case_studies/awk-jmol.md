@@ -10,7 +10,10 @@ draw ID vector (atomno=1) {x,y,z}
 For larger molecules this quickly becomes quite a tedious work to type all this commands... so let awk write it for us.  
 The output is printed to the screen and saved in file `vectors.spt` that will later run in Jmol.
 
-``` awk hl_lines="1"
+<!-- Original: -->
+<!-- awk hl_lines="1" -->
+<!-- However, this crashes the page generators -->
+```
 $ awk '{i++;printf ("draw v%i vector (atomno=%i) {%f,%f,%f}\n",i,i,$1,$2,$3)}' vectors.dat | tee vectors.spt
 
 draw v1 vector (atomno=1) {-0.500000,0.700000,0.700000}
