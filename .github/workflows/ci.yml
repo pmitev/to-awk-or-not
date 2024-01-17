@@ -13,6 +13,9 @@ jobs:
           python-version: 3.x
       - run: pip install mkdocs-material
 
+      - name: replace hard-coded owner
+        run: find . -type f -exec sed -i 's/pmitev/${{ github.repository_owner }}/' {} \;
+
       # If this fails with:
       #
       # remote: Permission to richelbilderbeek/to-awk-or-not.git denied to github-actions[bot].
