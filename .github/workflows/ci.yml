@@ -14,7 +14,7 @@ jobs:
       - run: pip install mkdocs-material
 
       - name: replace hard-coded owner
-        run: find . -type f -exec sed -i 's/pmitev/${{ github.repository_owner }}/' {} \;
+        run: find . -type f -exec sed -i 's/pmitev/${{ github.repository_owner }}/g' {} \;
 
       # If this fails with:
       #
