@@ -37,9 +37,3 @@ AWK has a limited intended application domain, and was especially **designed to 
 It is a **standard feature of most Unix-like** operating systems.
 
 *source:* [Wikipedia](https://www.wikipedia.org/)
-
-
-```mermaid
-flowchart TD
-    awk[Awk]
-```
