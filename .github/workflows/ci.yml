@@ -13,12 +13,6 @@ jobs:
           python-version: 3.x
       - run: pip install mkdocs-material
 
-      - name: replace hardcoded owner to match this repo
-        run: find . -type f -exec sed -i 's/pmitev/${{ github.repository_owner }}/g' {} \;
-
-      - name: show owner is matching this repo
-        run: cat README.md
-
       # If this fails with:
       #
       # remote: Permission to richelbilderbeek/to-awk-or-not.git denied to github-actions[bot].
