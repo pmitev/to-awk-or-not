@@ -18,13 +18,44 @@ Next scheduled workshop</br>
     
     *source: [(some years ago)](http://web.archive.org/web/20160324050308/http://awk.info/?whygawk "Way back to 2016") http://awk.info/?whygawk
 
+```mermaid
+flowchart TD
+
+  can_use_script[Can use a script?]
+  can_use_sed[Can use sed?]
+  can_use_grep[Can use grep?]
+
+  awk[Use Awk]
+  c[Use C]
+  sed[Use sed]
+  grep[Use grep]
+
+  compiled_language[Compiled language]
+  scripting_language[Scripting language]
+
+  stream_editor[Stream editor]
+  work_with_regular_expressions[Work with regular expressions]
+
+  awk --> |is a| scripting_language
+  c --> |is a| compiled_language
+  sed --> |is a| stream_editor
+  grep --> |allows to| work_with_regular_expressions
+
+  can_use_script --> |no| c
+  can_use_script --> |yes| can_use_sed
+  can_use_sed --> |no| awk
+  can_use_sed --> |yes| can_use_grep
+  can_use_grep --> |no| sed
+  can_use_grep --> |yes| grep
+```
+
 ## Objectives
 ---
 * The material on this site **is not a complete** guide or awk manual.
 * The purpose of this site is to give an overview of the capabilities of the awk language and **to underline** some particular **strengths or disadvantages
 **.
 * The page aims to promote this tool for use in every-days research work and urges you to find solutions yourself rather than expecting ready-made ones.
-* The material assumes that you are somewhat familiar with **grep**, **sed** and have some **basic** programing experience.
+* The material assumes that you are somewhat familiar with **grep**, **sed** and have some **basic** programming experience.
 
 ## What is awk?
 ---

@@ -12,4 +12,15 @@ jobs:
         with:
           python-version: 3.x
       - run: pip install mkdocs-material
+
+      # If this fails with:
+      #
+      # remote: Permission to richelbilderbeek/to-awk-or-not.git denied to github-actions[bot].
+      #
+      # (or a later, less usefull error message:)
+      #
+      # subprocess.CalledProcessError: Command '['git', 'push', 'origin', 'gh-pages', '--force']' returned non-zero exit status 128
+      #
+      # See the answer at https://stackoverflow.com/a/75175628/3364162
       - run: mkdocs gh-deploy --force
+

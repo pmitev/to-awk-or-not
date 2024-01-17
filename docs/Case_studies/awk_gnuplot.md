@@ -4,7 +4,7 @@
 
 I have written this script a long time ago, before Gnuplot had the options to print its own variables on the plot. Nowadays, it is possible to make the fit entirely from Gnuplot, although it will be still tricky to make some decisions if you want to align some labels.
 
-Perhaps the most valueable part is the demonstartion of simultaneous output/input to external program (Gnuplot in this case) `#!awk while ((gnu |& getline) > 0)` and for future reference.
+Perhaps the most valueable part is the demonstration of simultaneous output/input to external program (Gnuplot in this case) `#!awk while ((gnu |& getline) > 0)` and for future reference.
 
 ``` awk
 #!/usr/bin/awk -f

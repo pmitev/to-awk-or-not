@@ -22,9 +22,9 @@ Here is a collection of mine and contributed awk scripts.
 * **[Fasta file format tips](Fasta_tips.md)**  
   _worth to know if working often with files in multi-fasta format_
 * **[Multiline fasta to single line fasta](Multi2single_fasta.md)**  
-  _single cryptic-looking line that will decriphered during the workshop_
+  _single cryptic-looking line that will decyphered during the workshop_
 * **[Sequence clustering with awk](Sequence_clustering.md)**  
-  _apllication of the multiple files approach - contribution by Martín González Buitrón_
+  _application of the multiple files approach - contribution by Martín González Buitrón_
 * **[Substitute scientific with common species names in a phylogenetic tree file](../Bio/NCBI-taxonomy.md)**
 * **[Statistics on very large columns of values](../Bio/Stat-large-files.md)**
 * **[Manipulating and getting statistics for .vcf and .gff files](manipulating_vcf.md)**
@@ -39,11 +39,11 @@ Here is a collection of mine and contributed awk scripts.
 
 ## Physics oriented
 * **[Dipole moment example](Dipole_moment.md)**  
-  _simple calulations should not be difficult to code - here is an example_
+  _simple calculations should not be difficult to code - here is an example_
 * **[Multiple files - VASP CHGCAR difference](CHGCAR_diff.md)**  
   _an simplified example on how to read multiple files (bzip-ed) line-by-line simultaneously to save memory_ 
 * **[POSCAR: reorder atom types](POSCAR_reorder.md)**  
-  _simple task creates programing nightmare_
+  _simple task creates programming nightmare_
 
 ## Primarily used as reference
 * **[Awk and Gnuplot](awk_gnuplot.md)**  

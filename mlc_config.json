@@ -1,0 +1,17 @@
+{
+  "aliveStatusCodes": [200, 403, 418, 503],
+  "ignorePatterns": [
+    {
+      "pattern": "^http://130.238.141.28/inet_obs.htm$"
+    },
+    {
+        "pattern": "^http://cms.mpi.univie.ac.at/vasp/vasp/CHGCAR_file.html$"
+    },
+    {
+        "pattern": "^http://www.ark-genomics.org/events-online-training-eu-training-course/linux-and-bioinformatics$"
+    },
+    {
+        "pattern": "^https://citeseerx.ist.psu.edu/viewdoc/download"
+    }
+  ]
+}

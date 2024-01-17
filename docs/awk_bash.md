@@ -35,7 +35,7 @@ awk '
 
 echo "==================================="
 ```
-Note that with the `<< EOF ... EOF` implementation needs the `$` sign needs to be escaped, otherwise bash will replace it with the content of the shell variable it refers to. This allows you to mix bash and awk in somewhat dengerous way...
+Note that with the `<< EOF ... EOF` implementation needs the `$` sign needs to be escaped, otherwise bash will replace it with the content of the shell variable it refers to. This allows you to mix bash and awk in somewhat dangerous way...
 
 ``` bash
 #!/bin/bash

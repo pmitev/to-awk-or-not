@@ -1,4 +1,4 @@
-# Trick to pass paramters on the command line
+# Trick to pass parameters on the command line
 
 The common way to pass options and parameters to an Awk script is via the awk option `-v varname=value` 
 
