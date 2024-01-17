@@ -59,3 +59,34 @@ In teaching cycles:
 
 - What is Awk?
 
+
+```mermaid
+flowchart TD
+
+  can_use_script[Can use a script?]
+  can_use_sed[Can use sed?]
+  can_use_grep[Can use grep?]
+
+  awk[Use Awk]
+  c[Use C]
+  sed[Use sed]
+  grep[Use grep]
+
+  compiled_language[Compiled language]
+  scripting_language[Scripting language]
+
+  stream_editor[Stream editor]
+  work_with_regular_expressions[Work with regular expressions]
+
+  awk --> |is a| scripting_language
+  c --> |is a| compiled_language
+  sed --> |is a| stream_editor
+  grep --> |allows to| work_with_regular_expressions
+
+  can_use_script --> |no| c
+  can_use_script --> |yes| can_use_sed
+  can_use_sed --> |no| awk
+  can_use_sed --> |yes| can_use_grep
+  can_use_grep --> |no| sed
+  can_use_grep --> |yes| grep
+```
