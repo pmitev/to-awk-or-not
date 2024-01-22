@@ -1,6 +1,7 @@
 <div style="text-align: right"> <font color="red"><strong>
 Next scheduled workshop</br> 
 22 and 23 January, 2024, via Zoom</strong></font></br>
+<a href="https://richelbilderbeek.github.io/awk_course/" target="_blank" rel="nofollow">course material we use first</a></br>
 <a href="https://uppmax.uu.se/support-sv/courses-and-workshops/awk-workshop" target="_blank" rel="nofollow">course information</a>
 </div>
 
