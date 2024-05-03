@@ -36,7 +36,7 @@ plot [:2000] "temp.dat" w l, \
 
 This easily "filters out" the oscillations and showing the averages for the selected size... Even more the not-so-easy to see drift is clearly visible now (_green line_).
 
-Essentially, the program makes an average over selected size range of the previous data at each point. What is particularly smart wit this solution is that the average is done by updating the sum from numbers kept in an  array of size `size`. At every line, the new value is added to the sum and one is subtracted - the one that falls now outside the range for averaging. The position of the element is derived by the reminder computed by the [modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) `#!awk mod= NR%size` [^1].  
+Essentially, the program makes an average over selected size range of the previous data at each point. What is particularly smart with this solution is that the average is done by updating the sum from numbers kept in an  array of size `size`. At every line, the new value is added to the sum and one is subtracted - the one that falls now outside the range for averaging. The position of the element is derived by the reminder computed by the [modulo operation](https://en.wikipedia.org/wiki/Modulo_operation) `#!awk mod= NR%size` [^1].  
 In principle, the code is only two lines, but the rest is taking care of the initial region where the data is not enough to make an average over the specified `size`.
 
 This is a smart realization of [FIFO](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)) (first in first out) manipulation of data structure implemented on few lines in this script. Compare this to the code referred in the [wikipage](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)#Code).
