@@ -42,7 +42,7 @@ In principle, the code is only two lines, but the rest is taking care of the ini
 This is a smart realization of [FIFO](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)) (first in first out) manipulation of data structure implemented on few lines in this script. Compare this to the code referred in the [wikipage](https://en.wikipedia.org/wiki/FIFO_(computing_and_electronics)#Code).
 
 !!! note
-    I have used to pass different parameters `size=100` adn `size=500` directly in the gnuplot command instead of a filename (_not all programs allow you to make such neat substitutions_) but this is one example where awk gets handy - just write you one line script between `"< "`.
+    I have used to pass different parameters `size=100` and `size=500` directly in the gnuplot command instead of a filename (_not all programs allow you to make such neat substitutions_) but this is one example where awk gets handy - just write you one line script between `"< "`.
 
 > The value of such programs is that it makes it easy to add or modify small bits, since there is not much of a code anyway. 
 
