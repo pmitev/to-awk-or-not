@@ -1,7 +1,7 @@
 <div style="text-align: right"> <font color="red"><strong>
 Next scheduled workshop</br> 
-22 and 23 January, 2024, via Zoom</strong></font></br>
-<a href="https://richelbilderbeek.github.io/awk_course/" target="_blank" rel="nofollow">course material of the first day</a></br>
+22 and 23 August, 2024, on campus, Uppsala</strong></font></br>
+<a href="https://richelbilderbeek.github.io/awk_course/" target="_blank" rel="nofollow">DIY course material of the first day</a></br>
 <a href="https://www.uu.se/en/centre/uppmax/study/courses-and-workshops/awk-workshop" target="_blank" rel="nofollow">course information</a>
 </div>
 
