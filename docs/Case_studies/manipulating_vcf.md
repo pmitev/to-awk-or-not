@@ -35,7 +35,7 @@ Finally, full gene names and functions found in this [file](https://ftp.flybase.
 
 #### Chromosome 4
 
-??? "_Hint_, what do we need?"
+??? "_Hint, what do we need?_"
     Extract chr4 from the vcf and the gff and make new files
 
 ??? "_Hint_"
@@ -46,10 +46,34 @@ Finally, full gene names and functions found in this [file](https://ftp.flybase.
    
     `awk '/^4/{print $0}' dgrp2_trimmed.vcf > dgrp2_chr4.vcf`
 
-##### *bonus result* 
+
+#### Making awking the data easier
+Start by splitting the task into sub-tasks. This makes it easier to see what happens and you might get interesting intermediary results. 
+
+??? "_Hint, Example_"
+    Let's say we want to find out all genes that contains a variant and all variants that are located within a gene. What do we want to do first? Take a look at the vcf file. That is the one that contains all the variants. Then look at the gff file, which contains the genes and other annotations. Finally, take a look at the DNA sequence. You will need to combine all three to answer the question. 
+    
+??? "_Hint, Example, what do we need to get?_"
+    * Positions for SNPs and INDELs
+    * Positions for genes and CDSs
+    * Separation of variants (SNPs and INDELs) into two groups, inside and outside genes (and CDSs)
+    * Separation of genes/CDSs into those with and without variants (and maybe how many there are per gene)
+
+### The exercise
+Identify the steps you need to do and what each step does. Open the hints if you get stuck.
+
+#### *bonus result* 
 A table with counted and sorted different genomic features in chromosome 4.
 
-??? "__example__"
+#### *bonus result* 
+SNPs sorted by number. Just like the coins on day one.
+
+
+
+
+
+## Hints
+??? "_bonus result example_ *A table with counted and sorted different genomic features in chromosome 4.*"
     ```
        1 chromosome
        1 snoRNA
@@ -66,30 +90,7 @@ A table with counted and sorted different genomic features in chromosome 4.
     3155 exon
     ```
 
-
-#### Making awking the data easier
-Start by splitting the task into sub-tasks. This makes it easier to see what happens and you might get interesting intermediary results. 
-
-??? "_Hint_, Example"
-    Let's say we want to find out all genes that contains a variant and all variants that are located within a gene. What do we want to do first? Take a look at the vcf file. That is the one that contains all the variants. Then look at the gff file, which contains the genes and other annotations. Finally, take a look at the DNA sequence. You will need to combine all three to answer the question. 
-    
-??? "_Hint_, Example, what do we need to get?"
-    * Positions for SNPs and INDELs
-    * Positions for genes and CDSs
-    * Separation of variants (SNPs and INDELs) into two groups, inside and outside genes (and CDSs)
-    * Separation of genes/CDSs into those with and without variants (and maybe how many there are per gene)
-
-### The exercise
-Identify the steps you need to do and what each step does. Open the hints if you get stuck.
-
-
-
-
-
-
-## Hints
-
-### SNPs and INDELs
+### Variants
 
 ??? "_Hint_, which output do we want?"
     Get distribution of variants and list them in two separate files. For a bonus plot of the lengths of the INDELS, get the length of all INDELS into a third file
@@ -136,10 +137,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
     ??? "_Solution_ proposed by Loïs Rancilhac - 2022.08.30"
         `awk '/_SNP/ {SNP++; print $0 > "chr4_SNPs.vcf"} /_DEL/ {DEL++; print $0 > "chr4_DEL.vcf"; LENGTH=length($4)-length($5); print LENGTH > "Deletions_lengths.txt"} /_INS/ {INS++; print $0 > "chr4_INS.vcf"; LENGTH=length($5)-length($4); print LENGTH > "Insertions_lengths.txt"} END{print "SNPs: "SNP"\nInsertions: "INS"\nDeletions: "DEL}' chr4.vcf`
 
-#### *bonus result:* 
-SNPs introduce sorted by number. Remember the coins...
-
-??? "_bonus result example_"
+??? "_bonus result example_ *SNPs sorted by number*"
     ```
     1182 C->T  
     1133 G->A  
@@ -197,28 +195,6 @@ SNPs introduce sorted by number. Remember the coins...
         }
         ```
 
-    
-
-#### *Follow-up task:* 
-Count and sort the SNPs and INDELs in your output and compare to the output from the first step. (If you want to separate the results for the SNPs and the INDELs, how would you modify your code?)
-
-??? "_Task result example_"
-    ```
-       1 chromosome
-       1 pre_miRNA
-       1 snoRNA
-       6 pseudogene
-       9 pseudogenic_transcript
-      22 ncRNA_gene
-      28 ncRNA
-      79 gene
-     264 three_prime_UTR
-     290 five_prime_UTR
-     295 mRNA
-    1798 CDS
-    2181 exon
-    ```
-
 ### Genes/CDSs only
 
 ??? "_Hint_, what features do we look for?"
@@ -231,7 +207,7 @@ Count and sort the SNPs and INDELs in your output and compare to the output from
     `awk '$3 ~ /gene|CDS/' Drosophila_melanogaster.chr4.gff3 > Drosophila_melanogaster.chr4_genesCDSs.gff3`
     
 
-### Final list of variants
+### List of variants
 
 ??? "_Hint_, how do we classify the variants?"
     Repeat step 3 for the SNPs/INDELs themselves, to see which are actually located inside genes
@@ -269,12 +245,15 @@ Count and sort the SNPs and INDELs in your output and compare to the output from
         }
         ```
 
-### Final result
-Here we can see all SNPs and INDELs which are inside a relevant region. We have successfully made two gff:s containing all gene positions for genes with variants and genes without. Along the way we also got a list of all genes that contain variants too.
+??? "_Hint, finding the names"
+    Find a common field
 
-### Extra task
-Re-do the files but this time include the gene ID (i.e. FBtr0089178 from column nine) and translate that into the full gene name found in this [file](https://ftp.flybase.org/releases/FB2020_06/precomputed_files/genes/fbgn_fbtr_fbpp_expanded_fb_2020_06.tsv.gz).
-
+??? "_Hint, which field"
+    gene ID
+    
+??? "_Hint, where is that?"
+    column nine, not awk!
+    
 ??? "__Solution__"  
     `awk 'FNR==1{++fileidx} fileidx==1{split($9,a,";|:");ingene[$1,$4,$5]=a[2]} fileidx==2{FS="\t";name[$3]=$5} fileidx==3{state="Not in gene";for (trip in ingene) {split(trip, t, SUBSEP); if ($1==t[1] && $2>=t[2] && $2<=t[3]) {state=(t[1] "\t" t[2] "\t" t[3] "\t" name[ingene[t[1],t[2],t[3]]])}} print $0, "\t", state }' Drosophila_melanogaster.chr4_genesCDSs.gff3 fbgn_fbtr_fbpp_expanded_fb_2020_06.tsv indels_Drosophila_chr4 > SNPsInNamedGenes_Drosophila_ch4`
     <br>
