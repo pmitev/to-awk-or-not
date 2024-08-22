@@ -3,9 +3,11 @@
 > Problem formulated and presented at the workshop by [**Jonas Söderberg**](https://katalog.uu.se/profile/?id=N2-1277),  
 Department of Cell and Molecular Biology, _Molecular Evolution_
 
-We have a comparison between a number of different fly cell lines. These are found in a huge vcf file (dgrp2.vcf). We also have the annotations in a gff3 file (Drosophila_melanogaster.BDGP6.28.101.chr.gff3) and the genome itself in a fasta file.
+## Task at hand
+We have a bunch of files that describes a standard fly, the genes of the fly and also where our new non-standard flies differ from the standard fly (the reference). These differences are called variants and are divided ito three categories; SNPs (Singular Nucleotide Polymorphisms), Insertions (Some DNA is inserted in our variant in comparison to the reference) and Deletions (Some DNA is deleted from our variant in comparison to the reference). We want to find out where and in what way the new flies have variants, if those variants are inside genes or not and finally what the genes (in which those variants are located) actually do.
 
 ## Getting the RAW files
+We have a comparison between a number of different new fly cell lines. These are found in a huge vcf file (dgrp2.vcf). We also have the annotations in a gff3 file (Drosophila_melanogaster.BDGP6.28.101.chr.gff3) and the genome itself in a fasta file.
 
 ### The annotation of the fly genome:
 Find the GFF3 [here](https://ftp.ensembl.org/pub/release-101/gff3/drosophila_melanogaster/Drosophila_melanogaster.BDGP6.28.101.chr.gff3.gz "Drosophila_melanogaster.BDGP6.28.101.chr.gff3").
@@ -14,19 +16,12 @@ Find the GFF3 [here](https://ftp.ensembl.org/pub/release-101/gff3/drosophila_mel
 The genome is located [here](https://ftp.ensemblgenomes.org/pub/metazoa/release-48/fasta/drosophila_melanogaster/dna/Drosophila_melanogaster.BDGP6.28.dna.toplevel.fa.gz "Drosophila_melanogaster.BDGP6.28.dna.toplevel.fa").
 
 ### The comparison of all the variants in the cell lines in the freeze project
-Finally, [here](http://dgrp2.gnets.ncsu.edu/data.html "dgrp2.vcf") is the VCF file.
+[Here](http://dgrp2.gnets.ncsu.edu/data.html "dgrp2.vcf") is the VCF file with the variants.
 
-### Starting to work with the data
-Let's say we want to find out all genes that contains a variant and all variants that are located within a gene. What do we want to do first? Take a look at the vcf file. That is the one that contains all the variants. Then look at the gff file, which contains the genes and other annotations. Finally, take a look at the DNA sequence. You will need to combine all three to answer the question. Also, to make this faster, lets just look at **chromosome 4**, which means we have to extract that data as well.
+### Common names and functions
+Finally, full gene names and functions found in this [file](https://ftp.flybase.org/releases/FB2020_06/precomputed_files/genes/fbgn_fbtr_fbpp_expanded_fb_2020_06.tsv.gz).
 
-### What do we need to get
-* Files containing only chromosome 4
-* Positions for SNPs and INDELs
-* Positions for genes and CDSs
-* Separation of variants (SNPs and INDELs) into two groups, inside and outside genes (and CDSs)
-* Separation of genes/CDSs into those with and without variants (and maybe how many there are per gene)
-
-#### Tips before starting
+### Tips before starting
 * For readability of the vcf file:
 
 `awk '{print $1"\t"$2"\t"$3"\t"$4"\t"$5"\t"$6"\t"$7"\t"$8"\t"$9}' dgrp2.vcf > dgrp2_trimmed.vcf &`
@@ -36,11 +31,9 @@ Let's say we want to find out all genes that contains a variant and all variants
 * *SNPs* and *INDELs* are collectively named **variants**
 * *Genes* and *CoDing Sequences (CDSs)* are sometimes just collectively called **genes**
 
-### The exercise
-Identify the steps you need to do and what each step does. Open the hints if you get stuck.
+* For shorter run times, extract chromosome 4 and look only at that.
 
-
-### Chromosome 4
+#### Chromosome 4
 
 ??? "_Hint_, what do we need?"
     Extract chr4 from the vcf and the gff and make new files
@@ -53,10 +46,10 @@ Identify the steps you need to do and what each step does. Open the hints if you
    
     `awk '/^4/{print $0}' dgrp2_trimmed.vcf > dgrp2_chr4.vcf`
 
-#### *Follow-up task:* 
-Count and sort the different genomic features in chromosome 4 by number.
+##### *bonus result* 
+A table with counted and sorted different genomic features in chromosome 4.
 
-??? "__Task result example__"
+??? "__example__"
     ```
        1 chromosome
        1 snoRNA
@@ -72,6 +65,22 @@ Count and sort the different genomic features in chromosome 4 by number.
     2740 CDS
     3155 exon
     ```
+
+
+#### Making awking the data easier
+Start by splitting the task into sub-tasks. This makes it easier to see what happens and you might get interesting intermediary results. 
+
+??? "_Hint_, Example"
+Let's say we want to find out all genes that contains a variant and all variants that are located within a gene. What do we want to do first? Take a look at the vcf file. That is the one that contains all the variants. Then look at the gff file, which contains the genes and other annotations. Finally, take a look at the DNA sequence. You will need to combine all three to answer the question. 
+
+??? "_Hint_, Example, what do we need to get?"
+* Positions for SNPs and INDELs
+* Positions for genes and CDSs
+* Separation of variants (SNPs and INDELs) into two groups, inside and outside genes (and CDSs)
+* Separation of genes/CDSs into those with and without variants (and maybe how many there are per gene)
+
+### The exercise
+Identify the steps you need to do and what each step does. Open the hints if you get stuck.
 
 ### SNPs and INDELs
 
