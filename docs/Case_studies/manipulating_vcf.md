@@ -76,10 +76,10 @@ Start by splitting the task into sub-tasks. This makes it easier to see what hap
     ```
 ??? "_Hint_, Example, what do we need to get?"
     ```
-* Positions for SNPs and INDELs
-* Positions for genes and CDSs
-* Separation of variants (SNPs and INDELs) into two groups, inside and outside genes (and CDSs)
-* Separation of genes/CDSs into those with and without variants (and maybe how many there are per gene)
+    * Positions for SNPs and INDELs
+    * Positions for genes and CDSs
+    * Separation of variants (SNPs and INDELs) into two groups, inside and outside genes (and CDSs)
+    * Separation of genes/CDSs into those with and without variants (and maybe how many there are per gene)
     ```
 ### The exercise
 Identify the steps you need to do and what each step does. Open the hints if you get stuck.
