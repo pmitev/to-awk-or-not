@@ -35,7 +35,7 @@ Finally, full gene names and functions found in this [file](https://ftp.flybase.
 
 #### Chromosome 4
 
-??? "_Hint, what do we need?_"
+??? "_Hint_ **What do we need?**"
     Extract chr4 from the vcf and the gff and make new files
 
 ??? "_Hint_"
@@ -50,10 +50,10 @@ Finally, full gene names and functions found in this [file](https://ftp.flybase.
 #### Making awking the data easier
 Start by splitting the task into sub-tasks. This makes it easier to see what happens and you might get interesting intermediary results. 
 
-??? "_Hint, Example_"
+??? "_Hint_ **Example**"
     Let's say we want to find out all genes that contains a variant and all variants that are located within a gene. What do we want to do first? Take a look at the vcf file. That is the one that contains all the variants. Then look at the gff file, which contains the genes and other annotations. Finally, take a look at the DNA sequence. You will need to combine all three to answer the question. 
     
-??? "_Hint, Example, what do we need to get?_"
+??? "_Hint_ **Example, what do we need to get?**"
     * Positions for SNPs and INDELs
     * Positions for genes and CDSs
     * Separation of variants (SNPs and INDELs) into two groups, inside and outside genes (and CDSs)
@@ -68,12 +68,19 @@ A table with counted and sorted different genomic features in chromosome 4.
 #### *bonus result* 
 SNPs sorted by number. Just like the coins on day one.
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 
+## Hints, don't use unless necessary.
 
-## Hints
-??? "_bonus result example_ *A table with counted and sorted different genomic features in chromosome 4.*"
+
+??? "_bonus result example_ **A table with counted and sorted different genomic features in chromosome 4.**"
     ```
        1 chromosome
        1 snoRNA
