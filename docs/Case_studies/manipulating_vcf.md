@@ -139,7 +139,7 @@ Identify the steps you need to do and what each step does. Open the hints if you
 #### *bonus result:* 
 SNPs introduce sorted by number. Remember the coins...
 
-??? "_Task result example_"
+??? "_bonus result example_"
     ```
     1182 C->T  
     1133 G->A  
