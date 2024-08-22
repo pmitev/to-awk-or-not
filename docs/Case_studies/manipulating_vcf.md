@@ -55,7 +55,7 @@ Identify the steps you need and use awk to do those. Open the hints if you get s
 
 
 
-## Hints, ordered by subject. Don't use them unless necessary.
+## Hints, ordered by subject. Don't use them unless necessary. They are not good code examples.
 
 ### Overall, an example of things to look for
 
