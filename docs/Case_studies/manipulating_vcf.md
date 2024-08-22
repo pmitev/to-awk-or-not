@@ -252,13 +252,13 @@ SNPs sorted by number. Just like the coins on day one.
         }
         ```
 
-??? "_Hint, finding the names"
+??? "_Hint_ **Finding the names**"
     Find a common field
 
-??? "_Hint, which field"
+??? "_Hint_ **Which field?**"
     gene ID
     
-??? "_Hint, where is that?"
+??? "_Hint_ **Where is that?**"
     column nine, not awk!
     
 ??? "_Solution_"  
