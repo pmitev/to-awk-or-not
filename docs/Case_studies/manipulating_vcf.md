@@ -84,6 +84,13 @@ Start by splitting the task into sub-tasks. This makes it easier to see what hap
 ### The exercise
 Identify the steps you need to do and what each step does. Open the hints if you get stuck.
 
+
+
+
+
+
+## Hints
+
 ### SNPs and INDELs
 
 ??? "_Hint_, which output do we want?"
@@ -131,8 +138,8 @@ Identify the steps you need to do and what each step does. Open the hints if you
     ??? "_Solution_ proposed by Loïs Rancilhac - 2022.08.30"
         `awk '/_SNP/ {SNP++; print $0 > "chr4_SNPs.vcf"} /_DEL/ {DEL++; print $0 > "chr4_DEL.vcf"; LENGTH=length($4)-length($5); print LENGTH > "Deletions_lengths.txt"} /_INS/ {INS++; print $0 > "chr4_INS.vcf"; LENGTH=length($5)-length($4); print LENGTH > "Insertions_lengths.txt"} END{print "SNPs: "SNP"\nInsertions: "INS"\nDeletions: "DEL}' chr4.vcf`
 
-#### *Follow-up task:* 
-Print nucleotide substitution that these SNPs introduce sorted by number. Remember the coins...
+#### *bonus result:* 
+SNPs introduce sorted by number. Remember the coins...
 
 ??? "_Task result example_"
     ```
