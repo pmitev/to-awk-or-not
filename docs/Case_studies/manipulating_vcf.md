@@ -92,7 +92,7 @@ SNPs sorted by number. Just like the coins on day one.
 
 ### Variants
 
-??? "_Hint_, which output do we want?"
+??? "_Hint_ **Which output do we want?**"
     Get distribution of variants and list them in two separate files. For a bonus plot of the lengths of the INDELS, get the length of all INDELS into a third file
 
 ??? "_Hint_"
@@ -137,7 +137,7 @@ SNPs sorted by number. Just like the coins on day one.
     ??? "_Solution_ proposed by Loïs Rancilhac - 2022.08.30"
         `awk '/_SNP/ {SNP++; print $0 > "chr4_SNPs.vcf"} /_DEL/ {DEL++; print $0 > "chr4_DEL.vcf"; LENGTH=length($4)-length($5); print LENGTH > "Deletions_lengths.txt"} /_INS/ {INS++; print $0 > "chr4_INS.vcf"; LENGTH=length($5)-length($4); print LENGTH > "Insertions_lengths.txt"} END{print "SNPs: "SNP"\nInsertions: "INS"\nDeletions: "DEL}' chr4.vcf`
 
-??? "_bonus result example_ *SNPs sorted by number*"
+??? "_bonus result example_ **SNPs sorted by number**"
     ```
     1182 C->T  
     1133 G->A  
@@ -155,7 +155,7 @@ SNPs sorted by number. Just like the coins on day one.
 
 ### Genes with variants
 
-??? "_Hint_, how do we get those?"
+??? "_Hint_ **How do we get those?**"
     Compare back and separate the annotation into features that do and don’t have variants. For a bonus, also record the number of variants in each feature
 
 ??? "_Hint_"
@@ -197,7 +197,7 @@ SNPs sorted by number. Just like the coins on day one.
 
 ### Genes/CDSs only
 
-??? "_Hint_, what features do we look for?"
+??? "_Hint_ **What features do we look for?**"
     Filter for genes and CDSs before doing the analysis.
 
 ??? "_Hint_"
@@ -209,7 +209,7 @@ SNPs sorted by number. Just like the coins on day one.
 
 ### List of variants
 
-??? "_Hint_, how do we classify the variants?"
+??? "_Hint_ **How do we classify the variants?**"
     Repeat step 3 for the SNPs/INDELs themselves, to see which are actually located inside genes
 
 ??? "_Hint_"
@@ -254,7 +254,7 @@ SNPs sorted by number. Just like the coins on day one.
 ??? "_Hint, where is that?"
     column nine, not awk!
     
-??? "__Solution__"  
+??? "_Solution_"  
     `awk 'FNR==1{++fileidx} fileidx==1{split($9,a,";|:");ingene[$1,$4,$5]=a[2]} fileidx==2{FS="\t";name[$3]=$5} fileidx==3{state="Not in gene";for (trip in ingene) {split(trip, t, SUBSEP); if ($1==t[1] && $2>=t[2] && $2<=t[3]) {state=(t[1] "\t" t[2] "\t" t[3] "\t" name[ingene[t[1],t[2],t[3]]])}} print $0, "\t", state }' Drosophila_melanogaster.chr4_genesCDSs.gff3 fbgn_fbtr_fbpp_expanded_fb_2020_06.tsv indels_Drosophila_chr4 > SNPsInNamedGenes_Drosophila_ch4`
     <br>
     or
