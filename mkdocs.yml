@@ -6,6 +6,7 @@ nav:
   - 2.Teasing with grep: 2.Teasing_with_grep.md
   - 3.Shell we awk: 3.Shell_we_awk.md
   - 4.Brief commands: 4.Brief_commands.md
+  - 4.a Awk arrays: arrays.md
   - 5.String manipulation: 5.String_manipulation.md
   - 6.One line programs: 6.One_line_programs.md
   - Python vs. awk: Python_vs_awk.md
@@ -34,7 +35,6 @@ nav:
   - Fixed size fields: Other/Fixed_size_fields.md
   - Backreferences: Other/Backreferences.md
   - Multi-Line records: https://www.gnu.org/software/gawk/manual/html_node/Multiple-Line.html
-  - Awk arrays: arrays.md
   - Awk or Bash: awk_bash.md
   - Localization problems: Other/Localization.md
   - Awk vs. nawk vs. gawk: http://www.thegeekstuff.com/2011/06/awk-nawk-gawk/
