@@ -6,7 +6,8 @@ nav:
   - 2.Teasing with grep: 2.Teasing_with_grep.md
   - 3.Shell we awk: 3.Shell_we_awk.md
   - 4.Brief commands: 4.Brief_commands.md
-  - 4.a Awk arrays: arrays.md
+  - "&nbsp;&nbsp;a) Multiple files": multiple_files.md
+  - "&nbsp;&nbsp;b) Awk arrays": arrays.md
   - 5.String manipulation: 5.String_manipulation.md
   - 6.One line programs: 6.One_line_programs.md
   - Python vs. awk: Python_vs_awk.md
