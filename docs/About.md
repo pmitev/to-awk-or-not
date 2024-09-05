@@ -17,7 +17,7 @@ Seminars are organized on a demand-base and currently follows the schedule for t
 <div style="text-align: right">pavlin.mitev @ uppmax.uu.se</div>
 
 ??? "Feedback from past workshops"
-    - [2024.xx] | [2024.01](https://docs.google.com/forms/d/1eGzI8FxBlhP6SV8iPQPTfQn7CWJyBf4ZaCmvJ2srxDk/viewanalytics)
+    - [2024.08](https://docs.google.com/forms/d/1GRELoVvXo975c4lQkx9a8k-93mxXe-WqQaZg_Zk5HeA/viewanalytics) | [2024.01](https://docs.google.com/forms/d/1eGzI8FxBlhP6SV8iPQPTfQn7CWJyBf4ZaCmvJ2srxDk/viewanalytics)
     - [2023.09](https://docs.google.com/forms/d/16xCpKhhHqhcQpN-tD7yiFxoIhN3_7fp5-IpsUUOAgxM/viewanalytics) | 2023.01 (not enough data to be anonymous)
     - [2022.09](https://docs.google.com/forms/d/1UUZP97qXq3rwxY7VGJsu1w-4QWfRCzEmO1xZWva-CVM/viewanalytics) | [2022.01](https://docs.google.com/forms/d/1mIboAG1nudj1yPN07-HZbQ6L9ghlZxrCLTFbAMJpARg/viewanalytics)
     ​- [2021.09](https://docs.google.com/forms/d/1GILWudpKGoZSkyfkyBR-kRGTYieoXC1yPOz0Jn0UrcI/viewanalytics) | [2021.01](https://docs.google.com/forms/d/1be529TgFwsaNnsH_YQ-6qJWFNV15NTl510dWqrqzu1A/viewanalytics)
