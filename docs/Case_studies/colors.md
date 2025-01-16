@@ -69,7 +69,7 @@ $ cat freq-dvr.out | color.awk 2H2O_H-bonded 1NOT_H-bonded 3CO2_H-bonded
 ``` awk title="color.awk"
 #!/usr/bin/awk -f
 BEGIN{
-  ARGC= ARGC; ARGC=1 # Trick the command line to ignore the files and use them as options
+  nARGC= ARGC; ARGC=1 # Trick the command line to ignore the files and use them as options
 
   c[0]= "\033[97;41m" # white-red
   c[1]= "\033[31;1m"  # red
