@@ -36,7 +36,7 @@ BEGIN {
   D["b","A"]="bA"     
                        
   for (i in D){        # loop over the first index
-    print i" : "DD[i]
+    print i" : "D[i]
     print "--------"   
   }                    
 }
