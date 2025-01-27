@@ -18,9 +18,9 @@ Seminars are organized on a demand-base and currently follows the schedule for t
 
 ??? "Feedback from past workshops"
     - [2024.08](https://docs.google.com/forms/d/1GRELoVvXo975c4lQkx9a8k-93mxXe-WqQaZg_Zk5HeA/viewanalytics) | [2024.01](https://docs.google.com/forms/d/1eGzI8FxBlhP6SV8iPQPTfQn7CWJyBf4ZaCmvJ2srxDk/viewanalytics)
-    - [2023.09](https://docs.google.com/forms/d/16xCpKhhHqhcQpN-tD7yiFxoIhN3_7fp5-IpsUUOAgxM/viewanalytics) | 2023.01 (not enough data to be anonymous)
+    - [2023.09](https://docs.google.com/forms/d/16xCpKhhHqhcQpN-tD7yiFxoIhN3_7fp5-IpsUUOAgxM/viewanalytics) | 2023.01 *
     - [2022.09](https://docs.google.com/forms/d/1UUZP97qXq3rwxY7VGJsu1w-4QWfRCzEmO1xZWva-CVM/viewanalytics) | [2022.01](https://docs.google.com/forms/d/1mIboAG1nudj1yPN07-HZbQ6L9ghlZxrCLTFbAMJpARg/viewanalytics)
-    ​- [2021.09](https://docs.google.com/forms/d/1GILWudpKGoZSkyfkyBR-kRGTYieoXC1yPOz0Jn0UrcI/viewanalytics) | [2021.01](https://docs.google.com/forms/d/1be529TgFwsaNnsH_YQ-6qJWFNV15NTl510dWqrqzu1A/viewanalytics)
+    - [2021.09](https://docs.google.com/forms/d/1GILWudpKGoZSkyfkyBR-kRGTYieoXC1yPOz0Jn0UrcI/viewanalytics) | [2021.01](https://docs.google.com/forms/d/1be529TgFwsaNnsH_YQ-6qJWFNV15NTl510dWqrqzu1A/viewanalytics)
     - [2020.08](https://docs.google.com/forms/d/1I6tMA-mXy5kIMEy5H1Nt2fbKcuMZpvxE_WYpJPkAJ5Q/viewanalytics) | [2020.01](https://docs.google.com/forms/d/1Wa9lCwxp0Pes38KFziilNbdcvYfHwxBiou9j3c3hNO0/viewanalytics)
     - [2019.08](https://docs.google.com/forms/d/1-wha3xg_jkcZ03ljF6HmPnTFQGzGe08Jun5c0IAFfEU/viewanalytics) | [2019.01](https://docs.google.com/forms/d/1O1v8i3f1UDavfmntbEZ9cvm8_U-5Mj5P6GTEHUWyuuk/viewanalytics)
     - [2018.08](https://docs.google.com/forms/d/1PG8dt0LSOdp9gv1rFCjEe1kiapx3a-SiSJkvl2MOlyA/viewanalytics) | [2018.01](https://docs.google.com/forms/d/1d85npGj6O5xuQEF9drBRhneqYKjW0yAZJOnTiI1QP0c/viewanalytics)
@@ -28,9 +28,15 @@ Seminars are organized on a demand-base and currently follows the schedule for t
     - [2016.08](https://docs.google.com/forms/d/1PXdyRsABx60Uq6mDwepKv8-0ztur8z9dEkoUOmmfqjg/viewanalytics) | [2016.01](https://docs.google.com/forms/d/11q4-HAOSy7LB8mla0EkP0PhkfuBVdyIpOKb9pSqCkb0/viewanalytics)
     - [2015.10](https://docs.google.com/forms/d/1KSab3x3IlXdgtTScXPfHbFR81FrEpZ8j__hOgV8P5wU/viewanalytics)
 
+    \* can not be anonymised or violates GDPR
+
+
 !!! quote "Acknowledgment"
     This page is supported by
 
-    - [UPPMAX](https://uppmax.uu.se/) and [SNIC](https://www.snic.se/) (2012 - 2022)
-    - [UPPMAX](https://uppmax.uu.se/) (2023 - )
-![UPPMAX](images/uppmax.jpg){ align=right }
+    - [NAISS](https://www.naiss.se/) (2024 - )
+    - [UPPMAX](https://www.uu.se/en/centre/uppmax) (2012 - )
+    - [SNIC](https://www.snic.se/) (2012 - 2022)
+    
+    
+
