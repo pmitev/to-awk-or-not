@@ -17,7 +17,7 @@ The genome is located [here](https://ftp.ensemblgenomes.org/pub/metazoa/release-
 
 ### The comparison of all the variants in the cell lines in the freeze project
 [Here](http://dgrp2.gnets.ncsu.edu/data.html "dgrp2.vcf") is the VCF file with the variants.
-(That page seems to be lost, so [here](https://resources.aertslab.org/DGRP2/NCSU/final/dm6/DGRP2.source_NCSU.dm6.final.vcf.gz) is a very similar, although no identical file)
+(That page seems to be lost, so [here](https://resources.aertslab.org/DGRP2/NCSU/final/dm6/DGRP2.source_NCSU.dm6.final.vcf.gz) is a very similar, although not identical file)
 
 ### Common names and functions
 Finally, full gene names and functions found in this [file](https://ftp.flybase.org/releases/FB2020_06/precomputed_files/genes/fbgn_fbtr_fbpp_expanded_fb_2020_06.tsv.gz).
