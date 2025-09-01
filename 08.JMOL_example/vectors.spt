@@ -1,3 +1,0 @@
-draw v1 vector (atomno=1) {-0.500000,0.700000,0.700000}
-draw v2 vector (atomno=2) {0.500000,-1.000000,0.900000}
-draw v3 vector (atomno=3) {0.500000,-0.500000,0.900000}
