@@ -1,8 +1,6 @@
 <div style="text-align: right"> <font color="red"><strong>
-Next scheduled workshop</br> 
-16 and 17 January, 2025, on zoom</strong></font></br>
-<a href="https://richelbilderbeek.github.io/awk_course/" target="_blank" rel="nofollow">DIY course material of the first day</a></br>
-<a href="https://www.uu.se/en/centre/uppmax/study/courses-and-workshops/awk-workshop" target="_blank" rel="nofollow">course information</a>
+<a href="https://docs.uppmax.uu.se/courses_workshops/awk" target="_blank" rel="nofollow">Course information</a></br>
+Course material moved <a href="https://uppmax.github.io/to-awk-or-not" rel="nofollow">here</strong></font>
 </div>
 
 # Why awk?
