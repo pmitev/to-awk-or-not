@@ -1,0 +1,1477 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://pmitev.github.io/to-awk-or-not/Case_studies/colors/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>Color output with custom keywords - To awk or not</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#color-output-with-custom-keywords" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="To awk or not" class="md-header__button md-logo" aria-label="To awk or not" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            To awk or not
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Color output with custom keywords
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/pmitev/to-awk-or-not" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="To awk or not" class="md-nav__button md-logo" aria-label="To awk or not" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    To awk or not
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/pmitev/to-awk-or-not" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.Simple_example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.Simple examples
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2.Teasing_with_grep/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.Teasing with grep
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.Shell_we_awk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3.Shell we awk
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.Brief_commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4.Brief commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multiple_files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    &nbsp;&nbsp;a) Multiple files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arrays/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    &nbsp;&nbsp;b) Awk arrays
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.String_manipulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5.String manipulation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.One_line_programs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6.One line programs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python_vs_awk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python vs. awk
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Exercises
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Exercises
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/Exercises/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Warming up
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/01.Simple_arithmetic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01.Simple arithmetic *
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/02.Data_extraction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02.Data extraction *
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/03.Data_extraction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03.Data extraction **
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/04.Data_manipulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04.Data manipulation **
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/05.Easy_tricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05.Easy tricks *
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/06.Bioinformaticians_corner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06.Bioinformaticians corner *
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/Advanced_data_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Advanced data analysis ****
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/Carpool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Carpool ***
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/Difficult_data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Difficult to extract data ****
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/mail-merge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mail merge ****
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/Scrubbing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Scrubbing a web page **
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/String_manipulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    String manipulation **
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/awk-json/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Awk and json **
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/Linear_regression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple linear regresion ***
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../List/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    = Case Studies =
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    More with awk
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            More with awk
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../More_awk/User_defined_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User defined functions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../More_awk/Command_params/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Parameters on the command line
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../More_awk/Input_output/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Input/Output to external program
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../More_awk/Running_average/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Running averages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Other/Fixed_size_fields/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fixed size fields
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Other/Backreferences/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backreferences
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://www.gnu.org/software/gawk/manual/html_node/Multiple-Line.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Multi-Line records
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../awk_bash/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Awk or Bash
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Other/Localization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Localization problems
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="http://www.thegeekstuff.com/2011/06/awk-nawk-gawk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Awk vs. nawk vs. gawk
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Other/Binder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GitHub & Binder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../handy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Handy to have
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tinyutils/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    tinyutils
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Links
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../About/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="color-output-with-custom-keywords">Color output with custom keywords</h1>
+<p>There are few tools to highlight different language syntax with colors and they are excellent tools for what they are designed. 
+Some time I would like to use my own keywords for highlighting and this always turns to be a difficult task.</p>
+<p>Here is a small script that highlights provided keywords (or simple regular expressions) on the fly.
+For convenience, I made it possible to choose between some predefined color schemes.</p>
+<details class="note">
+<summary>freq-dvr.out</summary>
+<div class="highlight"><pre><span></span><code>3300.42   H2O_H-bonded   DVR/snapshot-000100-281-59.xyz_H281-O279.dvr
+3436.45   H2O_H-bonded   DVR/snapshot-000150-280-59.xyz_H280-O279.dvr
+3382.03   H2O_H-bonded   DVR/snapshot-000200-280-59.xyz_H280-O279.dvr
+3360.05   H2O_H-bonded   DVR/snapshot-000350-280-59.xyz_H280-O279.dvr
+3709.4   NOT_H-bonded   DVR/snapshot-002850-181.xyz_H181-O180.dvr
+3647.54   NOT_H-bonded   DVR/snapshot-002900-181.xyz_H181-O180.dvr
+3683.93   NOT_H-bonded   DVR/snapshot-003100-191-181-199.xyz_H181-O180.dvr
+3703.93   NOT_H-bonded   DVR/snapshot-004100-224.xyz_H224-O222.dvr
+3670.12   NOT_H-bonded   DVR/snapshot-004150-224.xyz_H224-O222.dvr
+3654.3   NOT_H-bonded   DVR/snapshot-004200-224.xyz_H224-O222.dvr
+3710.58   NOT_H-bonded   DVR/snapshot-004250-224.xyz_H224-O222.dvr
+3643.06   CO2_H-bonded   DVR/snapshot-004350-134-199.xyz_H134-O132.dvr
+3535.59   H2O_H-bonded   DVR/snapshot-004500-133.xyz_H133-O132.dvr
+3668.44   NOT_H-bonded   DVR/snapshot-004600-134-199.xyz_H134-O132.dvr
+3638.55   NOT_H-bonded   DVR/snapshot-004650-118-134-199.xyz_H134-O132.dvr
+3576.47   H2O_H-bonded   DVR/snapshot-004750-233-133.xyz_H133-O132.dvr
+3735.93   NOT_H-bonded   DVR/snapshot-004750-233-133.xyz_H233-O231.dvr
+3625.43   H2O_H-bonded   DVR/snapshot-004800-233-133-118.xyz_H133-O132.dvr
+3740.8   NOT_H-bonded   DVR/snapshot-004800-233-133-118.xyz_H233-O231.dvr
+3673.06   H2O_H-bonded   DVR/snapshot-004850-233-199.xyz_H233-O231.dvr
+3723.15   NOT_H-bonded   DVR/snapshot-004900-233-199.xyz_H233-O231.dvr
+3703.71   NOT_H-bonded   DVR/snapshot-004950-200-233.xyz_H233-O231.dvr
+3682.4   CO2_H-bonded   DVR/snapshot-005000-200-233.xyz_H233-O231.dvr
+3693.42   NOT_H-bonded   DVR/snapshot-005050-233.xyz_H233-O231.dvr
+3551.17   H2O_H-bonded   DVR/snapshot-005950-233.xyz_H233-O231.dvr
+3704.16   NOT_H-bonded   DVR/snapshot-006350-200-62.xyz_H062-O060.dvr
+3732.31   NOT_H-bonded   DVR/snapshot-006400-200-62.xyz_H062-O060.dvr
+3705.08   NOT_H-bonded   DVR/snapshot-006450-62.xyz_H062-O060.dvr
+3724.14   NOT_H-bonded   DVR/snapshot-006500-62.xyz_H062-O060.dvr
+3658.92   NOT_H-bonded   DVR/snapshot-006550-62.xyz_H062-O060.dvr
+3700.88   H2O_H-bonded   DVR/snapshot-006600-62.xyz_H062-O060.dvr
+3707.23   H2O_H-bonded   DVR/snapshot-006650-62.xyz_H062-O060.dvr
+3645.98   H2O_H-bonded   DVR/snapshot-006700-200-62.xyz_H062-O060.dvr
+3709.66   NOT_H-bonded   DVR/snapshot-006750-200-62.xyz_H062-O060.dvr
+3681.21   NOT_H-bonded   DVR/snapshot-006800-200-62.xyz_H062-O060.dvr
+3682.88   NOT_H-bonded   DVR/snapshot-006850-200-62.xyz_H062-O060.dvr
+3704.9   H2O_H-bonded   DVR/snapshot-006900-200-62.xyz_H062-O060.dvr
+3600.96   NOT_H-bonded   DVR/snapshot-007250-272.xyz_H272-O270.dvr
+3663.54   NOT_H-bonded   DVR/snapshot-007350-62.xyz_H062-O060.dvr
+3710.52   NOT_H-bonded   DVR/snapshot-007400-200-62.xyz_H062-O060.dvr
+3708.11   NOT_H-bonded   DVR/snapshot-007450-62.xyz_H062-O060.dvr
+3717.28   NOT_H-bonded   DVR/snapshot-007500-62.xyz_H062-O060.dvr
+3751   NOT_H-bonded   DVR/snapshot-007550-62.xyz_H062-O060.dvr
+3722   NOT_H-bonded   DVR/snapshot-007900-223.xyz_H223-O222.dvr
+3703.76   CO2_H-bonded   DVR/snapshot-007950-223.xyz_H223-O222.dvr
+3805.29   CO2_H-bonded   DVR/snapshot-008000-223.xyz_H223-O222.dvr
+3651.37   CO2_H-bonded   DVR/snapshot-008050-223.xyz_H223-O222.dvr
+3766.86   CO2_H-bonded   DVR/snapshot-008100-223.xyz_H223-O222.dvr
+3698.48   CO2_H-bonded   DVR/snapshot-008150-223.xyz_H223-O222.dvr
+3692.41   CO2_H-bonded   DVR/snapshot-008200-223.xyz_H223-O222.dvr
+</code></pre></div>
+</details>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>freq-dvr.out<span class="w"> </span><span class="p">|</span><span class="w"> </span>color.awk<span class="w"> </span>2H2O_H-bonded<span class="w"> </span>1NOT_H-bonded<span class="w"> </span>3CO2_H-bonded
+</code></pre></div>
+<p><img alt="colors" src="../../images/freq-dvr.png" /></p>
+<div class="highlight"><span class="filename">color.awk</span><pre><span></span><code><span class="c1">#!/usr/bin/awk -f</span>
+<span class="nb">BEGIN</span><span class="p">{</span>
+  <span class="nx">nARGC</span><span class="o">=</span> <span class="nb">ARGC</span><span class="p">;</span> <span class="nb">ARGC</span><span class="o">=</span><span class="mi">1</span> <span class="c1"># Trick the command line to ignore the files and use them as options</span>
+
+  <span class="nx">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span> <span class="s2">&quot;\033[97;41m&quot;</span> <span class="c1"># white-red</span>
+  <span class="nx">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span> <span class="s2">&quot;\033[31;1m&quot;</span>  <span class="c1"># red</span>
+  <span class="nx">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span> <span class="s2">&quot;\033[32;1m&quot;</span>  <span class="c1"># green</span>
+  <span class="nx">c</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span> <span class="s2">&quot;\033[33;1m&quot;</span>  <span class="c1"># yellow</span>
+  <span class="nx">c</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">=</span> <span class="s2">&quot;\033[34;1m&quot;</span>  <span class="c1"># blue</span>
+  <span class="nx">c</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">=</span> <span class="s2">&quot;\033[35;1m&quot;</span>  <span class="c1"># magenta</span>
+  <span class="nx">c</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">=</span> <span class="s2">&quot;\033[36;1m&quot;</span>  <span class="c1"># cyan</span>
+  <span class="nx">c</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">=</span> <span class="s2">&quot;\033[93;41m&quot;</span> <span class="c1"># yellow-red</span>
+  <span class="nx">cn</span><span class="o">=</span>   <span class="s2">&quot;\033[0m&quot;</span>     <span class="c1"># reset</span>
+<span class="p">}</span>
+
+<span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="nx">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">&lt;</span> <span class="nx">nARGC</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">){</span>
+    <span class="nx">ci</span><span class="o">=</span> <span class="nb">ARGV</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="o">+</span><span class="mi">0</span> <span class="c1"># color index</span>
+    <span class="nx">m</span><span class="o">=</span> <span class="nb">ARGV</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>    <span class="c1"># match string</span>
+    <span class="kr">sub</span><span class="p">(</span><span class="nx">ci</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">,</span><span class="nx">m</span><span class="p">)</span>  <span class="c1"># remove color index</span>
+    <span class="kr">gsub</span><span class="p">(</span><span class="nx">m</span><span class="p">,</span> <span class="nx">c</span><span class="p">[</span><span class="nx">ci</span><span class="p">]</span><span class="s2">&quot;&amp;&quot;</span><span class="nx">cn</span><span class="p">)</span>  <span class="c1"># insert color codes</span>
+  <span class="p">}</span>
+  <span class="kr">print</span> <span class="o">$</span><span class="mi">0</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The color scheme is selected by number before the matching string, which limits a bit the functionality, but it keeps the script simple...</p>
+<p>Here is an alternative script that has some general keywords and matching criteria predefined. It is straight forward to add your own patterns or remove the unnecessary ones.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#!/usr/bin/awk -f</span>
+<span class="nb">BEGIN</span><span class="p">{</span>
+  <span class="nx">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span> <span class="s2">&quot;\033[97;41m&quot;</span> <span class="c1"># white-red</span>
+  <span class="nx">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span> <span class="s2">&quot;\033[31;1m&quot;</span>  <span class="c1"># red</span>
+  <span class="nx">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span> <span class="s2">&quot;\033[32;1m&quot;</span>  <span class="c1"># green</span>
+  <span class="nx">c</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span> <span class="s2">&quot;\033[33;1m&quot;</span>  <span class="c1"># yellow</span>
+  <span class="nx">c</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">=</span> <span class="s2">&quot;\033[34;1m&quot;</span>  <span class="c1"># blue</span>
+  <span class="nx">c</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">=</span> <span class="s2">&quot;\033[35;1m&quot;</span>  <span class="c1"># magenta</span>
+  <span class="nx">c</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">=</span> <span class="s2">&quot;\033[36;1m&quot;</span>  <span class="c1"># cyan</span>
+  <span class="nx">c</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">=</span> <span class="s2">&quot;\033[93;41m&quot;</span> <span class="c1"># yellow-red</span>
+  <span class="nx">cn</span><span class="o">=</span>   <span class="s2">&quot;\033[0m&quot;</span>     <span class="c1"># reset</span>
+<span class="p">}</span>
+
+<span class="p">{</span>
+  <span class="kr">gsub</span><span class="p">(</span><span class="sr">/WARNING|Warning|warning/</span><span class="p">,</span>                         <span class="nx">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="s2">&quot;&amp;&quot;</span><span class="nx">cn</span><span class="p">)</span>  <span class="c1"># Warning</span>
+  <span class="kr">gsub</span><span class="p">(</span><span class="sr">/ERROR|Error|error/</span><span class="p">,</span>                               <span class="nx">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="s2">&quot;&amp;&quot;</span><span class="nx">cn</span><span class="p">)</span>  <span class="c1"># Error</span>
+  <span class="kr">gsub</span><span class="p">(</span><span class="sr">/FAIL|Fail|fail|FAILED|Failed|failed/</span><span class="p">,</span>             <span class="nx">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="s2">&quot;&amp;&quot;</span><span class="nx">cn</span><span class="p">)</span>  <span class="c1"># Failed</span>
+  <span class="kr">gsub</span><span class="p">(</span><span class="sr">/([0-9]{1,3}\.){3}[0-9]{1,3}/</span><span class="p">,</span>                     <span class="nx">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="s2">&quot;&amp;&quot;</span><span class="nx">cn</span><span class="p">)</span>  <span class="c1"># IP4 address</span>
+  <span class="kr">gsub</span><span class="p">(</span><span class="sr">/([0-9a-fA-F]{2}[:-]){5}[0-9a-fA-F]{2}/</span><span class="p">,</span>           <span class="nx">c</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="s2">&quot;&amp;&quot;</span><span class="nx">cn</span><span class="p">)</span>  <span class="c1"># MAC</span>
+  <span class="kr">gsub</span><span class="p">(</span><span class="sr">/[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}/</span><span class="p">,</span> <span class="nx">c</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="s2">&quot;&amp;&quot;</span><span class="nx">cn</span><span class="p">)</span>  <span class="c1"># e-mail</span>
+  <span class="kr">gsub</span><span class="p">(</span><span class="sr">/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}([-a-zA-Z0-9()@:%_\+.~#?&amp;//=]*)/</span><span class="p">,</span> <span class="nx">c</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="s2">&quot;&amp;&quot;</span><span class="nx">cn</span><span class="p">)</span>  <span class="c1"># web address</span>
+
+  <span class="o">$</span><span class="mi">0</span><span class="o">=</span> <span class="kr">gensub</span><span class="p">(</span><span class="sr">/(^|[[ ]){1}(OK|Ok)([] ]|$){1}/</span><span class="p">,</span>           <span class="s2">&quot;\\1&quot;</span><span class="nx">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="s2">&quot;\\2&quot;</span><span class="nx">cn</span><span class="s2">&quot;\\3&quot;</span><span class="p">,</span>  <span class="s2">&quot;g&quot;</span><span class="p">)</span> <span class="c1"># OK - special case</span>
+
+  <span class="kr">gsub</span><span class="p">(</span><span class="sr">/[&amp;@][A-Za-z_]+/</span><span class="p">,</span>                                  <span class="nx">c</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="s2">&quot;&amp;&quot;</span><span class="nx">cn</span><span class="p">)</span>  <span class="c1"># @&amp; </span>
+  <span class="kr">gsub</span><span class="p">(</span><span class="sr">/^#SBATCH.*$/</span><span class="p">,</span>                                     <span class="nx">c</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="s2">&quot;&amp;&quot;</span><span class="nx">cn</span><span class="p">)</span>  <span class="c1"># SBATCH</span>
+  <span class="kr">gsub</span><span class="p">(</span><span class="sr">/^#.*$/</span><span class="p">,</span>                                           <span class="nx">c</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="s2">&quot;&amp;&quot;</span><span class="nx">cn</span><span class="p">)</span>  <span class="c1"># comment</span>
+
+  <span class="kr">print</span> <span class="o">$</span><span class="mi">0</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      <!-- <a href="https://uppmax.uu.se/" target="_blank" rel="noopener"><img align="right" alt="Uppsala" src="https://pmitev.github.io/to-awk-or-not/images/Uppsala.png" /> </a> -->
+      <!-- <a href="https://nbis.se/" target="_blank" rel="noopener"><img align="right" alt="NBIS" src="https://pmitev.github.io/to-awk-or-not/images/nbis.png" /> </a> -->
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["search.highlight", "content.code.annotate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

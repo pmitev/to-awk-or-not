@@ -1,0 +1,1850 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://pmitev.github.io/to-awk-or-not/Case_studies/manipulating_vcf/">
+      
+      
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>Manipulating the output from a genome analysis - vcf and gff - To awk or not</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#manipulating-the-output-from-a-genome-analysis-vcf-and-gff" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="To awk or not" class="md-header__button md-logo" aria-label="To awk or not" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            To awk or not
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Manipulating the output from a genome analysis - vcf and gff
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/pmitev/to-awk-or-not" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="To awk or not" class="md-nav__button md-logo" aria-label="To awk or not" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    To awk or not
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/pmitev/to-awk-or-not" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../1.Simple_example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.Simple examples
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../2.Teasing_with_grep/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2.Teasing with grep
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../3.Shell_we_awk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3.Shell we awk
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../4.Brief_commands/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    4.Brief commands
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../multiple_files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    &nbsp;&nbsp;a) Multiple files
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../arrays/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    &nbsp;&nbsp;b) Awk arrays
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../5.String_manipulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    5.String manipulation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../6.One_line_programs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    6.One line programs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Python_vs_awk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Python vs. awk
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Exercises
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            Exercises
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/Exercises/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Warming up
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/01.Simple_arithmetic/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    01.Simple arithmetic *
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/02.Data_extraction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    02.Data extraction *
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/03.Data_extraction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    03.Data extraction **
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/04.Data_manipulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    04.Data manipulation **
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/05.Easy_tricks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    05.Easy tricks *
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/06.Bioinformaticians_corner/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    06.Bioinformaticians corner *
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/Advanced_data_analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Advanced data analysis ****
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/Carpool/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Carpool ***
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/Difficult_data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Difficult to extract data ****
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/mail-merge/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Mail merge ****
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/Scrubbing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Scrubbing a web page **
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/String_manipulation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    String manipulation **
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/awk-json/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Awk and json **
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercises/Linear_regression/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Simple linear regresion ***
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../List/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    = Case Studies =
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    More with awk
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            More with awk
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../More_awk/User_defined_functions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    User defined functions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../More_awk/Command_params/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Parameters on the command line
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../More_awk/Input_output/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Input/Output to external program
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../More_awk/Running_average/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Running averages
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Other/Fixed_size_fields/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fixed size fields
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Other/Backreferences/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backreferences
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://www.gnu.org/software/gawk/manual/html_node/Multiple-Line.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Multi-Line records
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../awk_bash/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Awk or Bash
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Other/Localization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Localization problems
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="http://www.thegeekstuff.com/2011/06/awk-nawk-gawk/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Awk vs. nawk vs. gawk
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Other/Binder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GitHub & Binder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../handy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Handy to have
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tinyutils/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    tinyutils
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Links
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../About/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#task-at-hand" class="md-nav__link">
+    <span class="md-ellipsis">
+      Task at hand
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-the-raw-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Getting the RAW files
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting the RAW files">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-annotation-of-the-fly-genome" class="md-nav__link">
+    <span class="md-ellipsis">
+      The annotation of the fly genome:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-genome-sequence-used-in-this-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      The genome sequence used in this project:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-comparison-of-all-the-variants-in-the-cell-lines-in-the-freeze-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      The comparison of all the variants in the cell lines in the freeze project
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-names-and-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common names and functions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tips-before-starting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tips before starting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#making-awking-the-data-easier" class="md-nav__link">
+    <span class="md-ellipsis">
+      Making awking the data easier
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bonus-result" class="md-nav__link">
+    <span class="md-ellipsis">
+      bonus result
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bonus-result_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      bonus result
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-exercise" class="md-nav__link">
+    <span class="md-ellipsis">
+      The exercise
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hints-ordered-by-subject-dont-use-them-unless-necessary-they-are-not-good-code-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hints, ordered by subject. Don't use them unless necessary. They are not good code examples.
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hints, ordered by subject. Don&#39;t use them unless necessary. They are not good code examples.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#overall-an-example-of-things-to-look-for" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overall, an example of things to look for
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chromosome-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chromosome 4
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variants
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#genes-with-variants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Genes with variants
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#genescdss-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      Genes/CDSs only
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-of-variants" class="md-nav__link">
+    <span class="md-ellipsis">
+      List of variants
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="manipulating-the-output-from-a-genome-analysis-vcf-and-gff">Manipulating the output from a genome analysis - vcf and gff</h1>
+<blockquote>
+<p>Problem formulated and presented at the workshop by <a href="https://katalog.uu.se/profile/?id=N2-1277"><strong>Jonas Söderberg</strong></a>,<br />
+Department of Cell and Molecular Biology, <em>Molecular Evolution</em></p>
+</blockquote>
+<h2 id="task-at-hand">Task at hand</h2>
+<p>We have a bunch of files that describes a standard fly, the genes of the fly and also where our new non-standard flies differ from the standard fly (the reference). These differences are called variants and are divided ito three categories; SNPs (Singular Nucleotide Polymorphisms), Insertions (Some DNA is inserted in our variant in comparison to the reference) and Deletions (Some DNA is deleted from our variant in comparison to the reference). We want to find out where and in what way the new flies have variants, if those variants are inside genes or not and finally what the genes (in which those variants are located) actually do.</p>
+<h2 id="getting-the-raw-files">Getting the RAW files</h2>
+<p>We have a comparison between a number of different new fly cell lines. These are found in a huge vcf file (dgrp2.vcf). We also have the annotations in a gff3 file (Drosophila_melanogaster.BDGP6.28.101.chr.gff3) and the genome itself in a fasta file.</p>
+<h3 id="the-annotation-of-the-fly-genome">The annotation of the fly genome:</h3>
+<p>Find the GFF3 <a href="https://ftp.ensembl.org/pub/release-101/gff3/drosophila_melanogaster/Drosophila_melanogaster.BDGP6.28.101.chr.gff3.gz" title="Drosophila_melanogaster.BDGP6.28.101.chr.gff3">here</a>.</p>
+<h3 id="the-genome-sequence-used-in-this-project">The genome sequence used in this project:</h3>
+<p>The genome is located <a href="https://ftp.ensemblgenomes.org/pub/metazoa/release-48/fasta/drosophila_melanogaster/dna/Drosophila_melanogaster.BDGP6.28.dna.toplevel.fa.gz" title="Drosophila_melanogaster.BDGP6.28.dna.toplevel.fa">here</a>.</p>
+<h3 id="the-comparison-of-all-the-variants-in-the-cell-lines-in-the-freeze-project">The comparison of all the variants in the cell lines in the freeze project</h3>
+<p><a href="http://dgrp2.gnets.ncsu.edu/data.html" title="dgrp2.vcf">Here</a> is the VCF file with the variants.
+(That page seems to be lost, so <a href="https://resources.aertslab.org/DGRP2/NCSU/final/dm6/DGRP2.source_NCSU.dm6.final.vcf.gz">here</a> is a very similar, although not identical file)</p>
+<h3 id="common-names-and-functions">Common names and functions</h3>
+<p>Finally, full gene names and functions found in this <a href="https://ftp.flybase.org/releases/FB2020_06/precomputed_files/genes/fbgn_fbtr_fbpp_expanded_fb_2020_06.tsv.gz">file</a>.</p>
+<h3 id="tips-before-starting">Tips before starting</h3>
+<ul>
+<li>For readability of the vcf file:</li>
+</ul>
+<p><code>awk '{print $1"\t"$2"\t"$3"\t"$4"\t"$5"\t"$6"\t"$7"\t"$8"\t"$9}' dgrp2.vcf &gt; dgrp2_trimmed.vcf &amp;</code></p>
+<ul>
+<li>If your awk takes too long to run (10h or so) - Make sure you have the latest awk, and also you might want to think about parallelisation.</li>
+<li>My solutions also work for files with more than one chromosome, so in some cases they are longer than needed for your exercise. I left it so on purpose.</li>
+<li><em>SNPs</em> and <em>INDELs</em> are collectively named <strong>variants</strong></li>
+<li>
+<p><em>Genes</em> and <em>CoDing Sequences (CDSs)</em> are sometimes just collectively called <strong>genes</strong></p>
+</li>
+<li>
+<p>For shorter run times, extract chromosome 4 and look only at that.</p>
+</li>
+</ul>
+<h3 id="making-awking-the-data-easier">Making awking the data easier</h3>
+<p>Start by splitting the task into sub-tasks. This makes it easier to see what happens and you might get interesting intermediary results. </p>
+<h3 id="bonus-result"><em>bonus result</em></h3>
+<p>A table with counted and sorted different genomic features in chromosome 4.</p>
+<h3 id="bonus-result_1"><em>bonus result</em></h3>
+<p>SNPs sorted by number. Just like the coins on day one.</p>
+<h3 id="the-exercise">The exercise</h3>
+<p>Identify the steps you need and use awk to do those. Open the hints if you get stuck.</p>
+<p><br>
+<br>
+<br>
+<br>
+<br>
+<br></p>
+<h2 id="hints-ordered-by-subject-dont-use-them-unless-necessary-they-are-not-good-code-examples">Hints, ordered by subject. Don't use them unless necessary. They are not good code examples.</h2>
+<h3 id="overall-an-example-of-things-to-look-for">Overall, an example of things to look for</h3>
+<details>
+<summary><em>Hint</em> <strong>Example</strong></summary>
+<p>Let's say we want to find out all genes that contains a variant and all variants that are located within a gene. What do we want to do first? Take a look at the vcf file. That is the one that contains all the variants. Then look at the gff file, which contains the genes and other annotations. Finally, take a look at the DNA sequence. You will need to combine all three to answer the question. </p>
+</details>
+<details>
+<summary><em>Hint</em> <strong>Example, what do we need to get?</strong></summary>
+<ul>
+<li>Positions for SNPs and INDELs</li>
+<li>Positions for genes and CDSs</li>
+<li>Separation of variants (SNPs and INDELs) into two groups, inside and outside genes (and CDSs)</li>
+<li>Separation of genes/CDSs into those with and without variants (and maybe how many there are per gene)</li>
+</ul>
+</details>
+<h3 id="chromosome-4">Chromosome 4</h3>
+<details>
+<summary><em>Hint</em> <strong>What do we need?</strong></summary>
+<p>Extract chr4 from the vcf and the gff and make new files</p>
+</details>
+<details>
+<summary><em>Hint</em></summary>
+<p>All lines from chromosome 4 start with a <em>4</em></p>
+</details>
+<details>
+<summary><em>Solution</em></summary>
+<p><code>awk '/^4/{print $0}' Drosophila_melanogaster.BDGP6.28.101.gff3 &gt; Drosophila_melanogaster.chr4.gff3</code></p>
+<p><code>awk '/^4/{print $0}' dgrp2_trimmed.vcf &gt; dgrp2_chr4.vcf</code></p>
+</details>
+<details>
+<summary><em>bonus result example</em> <strong>A table with counted and sorted different genomic features in chromosome 4.</strong></summary>
+<div class="highlight"><pre><span></span><code>   1 chromosome
+   1 snoRNA
+   2 pre_miRNA
+   7 pseudogene
+  11 pseudogenic_transcript
+  26 ncRNA_gene
+  31 ncRNA
+  79 gene
+ 295 mRNA
+ 338 three_prime_UTR
+ 571 five_prime_UTR
+2740 CDS
+3155 exon
+</code></pre></div>
+</details>
+<h3 id="variants">Variants</h3>
+<details>
+<summary><em>Hint</em> <strong>Which output do we want?</strong></summary>
+<p>Get distribution of variants and list them in two separate files. For a bonus plot of the lengths of the INDELS, get the length of all INDELS into a third file</p>
+</details>
+<details>
+<summary><em>Hint</em></summary>
+<p>Remove lines beginning with # (grep)</p>
+</details>
+<details>
+<summary><em>Hint</em></summary>
+<p>If columns 4 and 5 have different length, it's an INDEL. Otherwise it's a SNP.</p>
+</details>
+<details>
+<summary><em>Hint</em></summary>
+<p>You want the output to be a file with columns 1, 2, 4 and 5, a classifier (SNP or INDEL) and finally the length of the INDEL (put "-" for the SNPs)</p>
+</details>
+<details>
+<summary><em>Solution</em></summary>
+<p><code>cat dgrp2_chr4.vcf | grep -v "#" | awk '{if (length($4)&gt;1||length($5)&gt;1){a="INDEL";b=length($4)-length($5);cnt[b]+=1;} else {a="SNP";b="-";} printf("%s\t%s\t%s\t%s\t%s\t%s\n", $1, $2, a, b, $4, $5) &gt; "indels_Drosophila_chr4";}END{for (x in cnt){print x,cnt[x] &gt; "distr_Drosophila_chr4"}}'</code>
+<br>
+or
+<br>
+<code>cat dgrp2_chr4.vcf | grep -v "#" | ./indels.awk</code></p>
+<details>
+<summary><em>indels.awk</em></summary>
+<div class="highlight"><pre><span></span><code>#!/usr/bin/awk -f
+{
+    if (length($4)&gt;1||length($5)&gt;1){
+        a=&quot;INDEL&quot;;
+        b=length($4)-length($5);
+        cnt[b]+=1;
+    }
+    else{
+        a=&quot;SNP&quot;;
+        b=&quot;-&quot;;
+    }
+printf(&quot;%s\t%s\t%s\t%s\t%s\t%s\n&quot;, $1, $2, a, b, $4, $5) &gt; &quot;indels_Drosophila_chr4&quot;;
+}
+
+END{
+    for (x in cnt){
+        print x,cnt[x] &gt; &quot;distr_Drosophila_chr4&quot;
+    }
+}
+</code></pre></div>
+</details>
+<details>
+<summary><em>Solution</em> proposed by Loïs Rancilhac - 2022.08.30</summary>
+<p><code>awk '/_SNP/ {SNP++; print $0 &gt; "chr4_SNPs.vcf"} /_DEL/ {DEL++; print $0 &gt; "chr4_DEL.vcf"; LENGTH=length($4)-length($5); print LENGTH &gt; "Deletions_lengths.txt"} /_INS/ {INS++; print $0 &gt; "chr4_INS.vcf"; LENGTH=length($5)-length($4); print LENGTH &gt; "Insertions_lengths.txt"} END{print "SNPs: "SNP"\nInsertions: "INS"\nDeletions: "DEL}' chr4.vcf</code></p>
+</details>
+</details>
+<details>
+<summary><em>bonus result example</em> <strong>SNPs sorted by number</strong></summary>
+<div class="highlight"><pre><span></span><code>1182 C-&gt;T  
+1133 G-&gt;A  
+ 932 A-&gt;G  
+ 929 A-&gt;T  
+ 892 T-&gt;A  
+ 880 T-&gt;C  
+ 639 G-&gt;T  
+ 621 C-&gt;A  
+ 436 A-&gt;C  
+ 396 T-&gt;G  
+ 372 G-&gt;C  
+ 357 C-&gt;G
+</code></pre></div>
+</details>
+<h3 id="genes-with-variants">Genes with variants</h3>
+<details>
+<summary><em>Hint</em> <strong>How do we get those?</strong></summary>
+<p>Compare back and separate the annotation into features that do and don’t have variants. For a bonus, also record the number of variants in each feature</p>
+</details>
+<details>
+<summary><em>Hint</em></summary>
+<p>Make an index using the previous output to identify positions of variants</p>
+</details>
+<details>
+<summary><em>Hint</em></summary>
+<p>For each feature in the gff, check all position it covers to see if they are in your index, if so print to one file. If not, print to another.</p>
+</details>
+<details>
+<summary><em>Solution</em></summary>
+<p><code>awk 'FNR==NR{a[$1,$2]="T"; next}{ hits=0; for(N=$4; N&lt;=$5; N++) { if (a[$1,N] == "T") {hits+=1}} if (hits&gt;0) {print hits "\t" $0 &gt; "haveSNPINDEL_Drosophila_chr4.gff"} else {print $0 &gt; "noSNPINDEL_Drosophila_chr4.gff"}}' indels_Drosophila_chr4 Drosophila_melanogaster.chr4.gff3</code>
+<br>
+or
+<br>
+<code>./genes_var.awk indels_Drosophila_chr4 Drosophila_melanogaster.chr4.gff3</code></p>
+<details>
+<summary><em>genes_var.awk</em></summary>
+<div class="highlight"><pre><span></span><code>#!/usr/bin/awk -f
+
+FNR==NR{
+    a[$1,$2]=&quot;T&quot;;
+    next
+}
+{
+    hits=0;
+    for(N=$4; N&lt;=$5; N++) {
+        if (a[$1,N] == &quot;T&quot;) {
+         hits+=1
+        }
+    }
+    if (hits&gt;0) {
+        print hits &quot;\t&quot; $0 &gt; &quot;haveSNPINDEL_Drosophila_chr4.gff&quot;
+    }
+    else {
+        print $0 &gt; &quot;noSNPINDEL_Drosophila_chr4.gff&quot;
+    }
+}
+</code></pre></div>
+</details>
+</details>
+<h3 id="genescdss-only">Genes/CDSs only</h3>
+<details>
+<summary><em>Hint</em> <strong>What features do we look for?</strong></summary>
+<p>Filter for genes and CDSs before doing the analysis.</p>
+</details>
+<details>
+<summary><em>Hint</em></summary>
+<p>Only genes and CDSs are interesting to us. Make a gff without the rest of the features.</p>
+</details>
+<details>
+<summary><em>Solution</em></summary>
+<p><code>awk '$3 ~ /gene|CDS/' Drosophila_melanogaster.chr4.gff3 &gt; Drosophila_melanogaster.chr4_genesCDSs.gff3</code></p>
+</details>
+<h3 id="list-of-variants">List of variants</h3>
+<details>
+<summary><em>Hint</em> <strong>How do we classify the variants?</strong></summary>
+<p>Repeat step 3 for the SNPs/INDELs themselves, to see which are actually located inside genes</p>
+</details>
+<details>
+<summary><em>Hint</em></summary>
+<p>Make an index of all genes/CDSs (from your gff), where start and stop are paired</p>
+</details>
+<details>
+<summary><em>Hint</em></summary>
+<p>For each feature from your step 2 file, check the position against the index and print whether or not the variant is inside a gene.</p>
+</details>
+<details>
+<summary><em>Solution</em></summary>
+<p><code>awk 'FNR==NR{ingene[$1,$4]=$5; next}{state="Not in gene";for (pair in ingene) {split(pair, t, SUBSEP); if ($1==t[1] &amp;&amp; $2&gt;=t[2] &amp;&amp; $2&lt;=ingene[t[1],t[2]]) {state=(t[1] " " t[2] " " ingene[t[1],t[2]])}} print $0, " ", state }' Drosophila_melanogaster.chr4_genesCDSs.gff3 indels_Drosophila_chr4 &gt; SNPsInGenes_Drosophila_ch4</code>
+<br>
+or
+<br>
+<code>./varlist.awk Drosophila_melanogaster.chr4_genesCDSs.gff3 indels_Drosophila_chr4 &gt; SNPsInGenes_Drosophila_ch4</code></p>
+<details>
+<summary><em>varlist.awk</em></summary>
+<div class="highlight"><pre><span></span><code>#!/usr/bin/awk -f
+
+FNR==NR{
+    ingene[$1,$4]=$5; 
+    next
+}
+{
+    state=&quot;Not in gene&quot;;
+    for (pair in ingene) {
+        split(pair, t, SUBSEP); 
+        if ($1==t[1] &amp;&amp; $2&gt;=t[2] &amp;&amp; $2&lt;=ingene[t[1],t[2]]) {
+            state=(t[1] &quot; &quot; t[2] &quot; &quot; ingene[t[1],t[2]])
+        }
+    } 
+    print $0, &quot; &quot;, state 
+}
+</code></pre></div>
+</details>
+</details>
+<details>
+<summary><em>Hint</em> <strong>Finding the names</strong></summary>
+<p>Find a common field</p>
+</details>
+<details>
+<summary><em>Hint</em> <strong>Which field?</strong></summary>
+<p>gene ID</p>
+</details>
+<details>
+<summary><em>Hint</em> <strong>Where is that?</strong></summary>
+<p>column nine, not awk!</p>
+</details>
+<details>
+<summary><em>Solution</em></summary>
+<p><code>awk 'FNR==1{++fileidx} fileidx==1{split($9,a,";|:");ingene[$1,$4,$5]=a[2]} fileidx==2{FS="\t";name[$3]=$5} fileidx==3{state="Not in gene";for (trip in ingene) {split(trip, t, SUBSEP); if ($1==t[1] &amp;&amp; $2&gt;=t[2] &amp;&amp; $2&lt;=t[3]) {state=(t[1] "\t" t[2] "\t" t[3] "\t" name[ingene[t[1],t[2],t[3]]])}} print $0, "\t", state }' Drosophila_melanogaster.chr4_genesCDSs.gff3 fbgn_fbtr_fbpp_expanded_fb_2020_06.tsv indels_Drosophila_chr4 &gt; SNPsInNamedGenes_Drosophila_ch4</code>
+<br>
+or
+<br>
+<code>./in_named.awk Drosophila_melanogaster.chr4_genesCDSs.gff3 fbgn_fbtr_fbpp_expanded_fb_2020_06.tsv indels_Drosophila_chr4 &gt; SNPsInNamedGenes_Drosophila_ch4</code></p>
+<details>
+<summary><strong>in_named.awk</strong></summary>
+<div class="highlight"><pre><span></span><code>#!/usr/bin/awk -f
+FNR==1{
+    ++fileidx
+}
+{
+    if (fileidx==1){
+        split($9,a,&quot;;|:&quot;);
+        ingene[$1,$4,$5]=a[2]
+    } 
+    if (fileidx==2){
+        FS=&quot;\t&quot;;
+        name[$3]=$5
+    } 
+    if (fileidx==3){
+        state=&quot;Not in gene&quot;;
+        for (trip in ingene) {
+            split(trip, t, SUBSEP); 
+            if ($1==t[1] &amp;&amp; $2&gt;=t[2] &amp;&amp; $2&lt;=t[3]) {
+                state=(t[1] &quot;\t&quot; t[2] &quot;\t&quot; t[3] &quot;\t&quot; name[ingene[t[1],t[2],t[3]]])
+            }
+        } 
+        print $0, &quot;\t&quot;, state 
+    }
+}
+</code></pre></div>
+</details>
+<p>Look at the distribution of genes:</p>
+<p><code>awk -F"\t" '{print $10}' SNPsInNamedGenes_Drosophila_ch4 | sort | uniq -c | sort -n</code></p>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      <!-- <a href="https://uppmax.uu.se/" target="_blank" rel="noopener"><img align="right" alt="Uppsala" src="https://pmitev.github.io/to-awk-or-not/images/Uppsala.png" /> </a> -->
+      <!-- <a href="https://nbis.se/" target="_blank" rel="noopener"><img align="right" alt="NBIS" src="https://pmitev.github.io/to-awk-or-not/images/nbis.png" /> </a> -->
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["search.highlight", "content.code.annotate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+        <script src="../../javascripts/config.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
